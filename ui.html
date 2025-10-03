@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>מערכת איתור וסימון ניידת</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            background: url(/project\ BG.png) center/cover no-repeat fixed;
+        }
+    </style>
+</head>
+<body>
+
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/SIGNUP.HTML">
+        <img src="/logo_icon_40.png" alt="לוגו" height="40">
+        <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="תפריט">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="ui.html">דף בית</a></li>
+          <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+          <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container py-4 text-center">
+    <h1 class="h4 fw-bold mb-1 text-black">ברוכים הבאים לאתר הפרויקט</h1>
+    <p class="text-body-secondary m-0 text-black">התחברות לחשבון</p>
+  </header>
+
+  <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+          <div class="card shadow-sm rounded-4  bg-secondary">
+            <div class="card-body p-4 p-sm-4">
+
+              <!-- טופס כניסה -->
+              <form class="vstack gap-3 needs-validation" novalidate>
+                <div>
+                  <label for="email" class="form-label">אימייל</label>
+                  <input id="email" type="email" class="form-control bg-light" placeholder="name@example.com" required>
+                  <div class="invalid-feedback">נא להזין אימייל תקין.</div>
+                </div>
+
+                <div>
+                  <label for="loginPass" class="form-label">סיסמה</label>
+                  <div class="input-group">
+                    <input id="loginPass" type="password" class="form-control" placeholder="******" required minlength="6">
+                    <button class="btn btn-outline-black bg-light" type="button" id="toggleLoginPass">הצג</button>
+                    <div class="invalid-feedback w-100">סיסמה בת 6 תווים לפחות.</div>
+                  </div>
+                </div>
+
+                <div class="text-end">
+                  <a href="#" class="small text-light">שכחתי סיסמה</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100">כניסה</button>
+
+                <div class="col-12 mt-3 text-center">
+                    <p class="mb-0">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+
+    <script>
+        const passInput = document.getElementById('loginPass');
+        const toggleBtn = document.getElementById('toggleLoginPass');
+
+        toggleBtn.addEventListener('click', () => {
+            const isPwd = passInput.type === 'password';
+            passInput.type = isPwd ? 'text' : 'password';
+            toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
+        });
+
+        (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+         Array.from(forms).forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+
+    
+    </script>
+  
+</body>
+</html>

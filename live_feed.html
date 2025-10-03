@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            background: url(/project\ BG.png) center/cover no-repeat fixed;
+        }
+    </style>
+</head>
+<body>
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="/SIGNUP.HTML">
+        <img src="/logo_icon_40.png" alt="לוגו" height="40">
+        <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="תפריט">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="ui.html">דף בית</a></li>
+          <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+          <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid py-3">
+  <div class="row g-3">
+    <!-- וידאו: רחב -->
+    <div class="col-12 col-lg-8">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h1 class="h5 m-0">שידור חי</h1>
+        <div class="d-none d-lg-flex gap-2">
+          <button id="btnLockSim" class="btn btn-outline-light btn-sm">סימולציית נעילה</button>
+          <button id="btnSnapshot" class="btn btn-outline-light btn-sm">תמונת מצב</button>
+           <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm" aria-expanded="false">דיווח אירוע</button>
+        </div>
+      </div>
+
+      <!-- מסגרת הווידאו – 16:9 -->
+      <div class="ratio ratio-16x9 rounded-3 overflow-hidden bg-dark">
+        <!-- אם זה MJPEG: img עם src ל־STREAM_URL -->
+        <img id="liveStream" alt="שידור חי" src="http://192.168.1.50:81/stream">
+        <!-- או אם זה HLS/RTSP-WS, תחליף לפי הצורך -->
+      </div>
+
+      <div id="snapshotWrap" class="mt-2 d-none">
+        <img id="snapshotImg" class="img-fluid rounded" alt="תמונת מצב">
+      </div>
+    </div>
+
+    <!-- טופס: צר ודביק רק בדסקטופ -->
+    <div class="col-12 col-lg-4 d-none d-lg-block">
+        <div id="deskForm" class="collapse">
+            <div class="card sticky-card">
+                <div class="card-header py-2"><strong>דיווח אירוע</strong></div>
+                <div class="card-body">
+                <form id="eventFormDesk" class="row g-2 needs-validation" novalidate>
+                    <!-- טקסט קצר -->
+                    <div class="col-12">
+                    <label class="form-label mb-1">כותרת קצרה</label>
+                    <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן" required>
+                    <div class="invalid-feedback">נא למלא כותרת.</div>
+                    </div>
+                    <!-- רשימה נפתחת -->
+                    <div class="col-12">
+                    <label class="form-label mb-1">סוג מטרה</label>
+                    <select id="evSelect_d" class="form-select form-select-sm" required>
+                        <option value="" selected disabled>בחר...</option>
+                        <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
+                    </select>
+                    <div class="invalid-feedback">נא לבחור סוג.</div>
+                    </div>
+                    <!-- רדיו -->
+                    <div class="col-12">
+                    <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת" required>
+                        <label class="form-check-label" for="truthTrue_d">אמת</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא" required>
+                        <label class="form-check-label" for="truthFalse_d">שווא</label>
+                    </div>
+                    <div class="invalid-feedback d-block">נא לבחור אמת/שווא.</div>
+                    </div>
+                    <!-- צ'קבוקסים -->
+                    <div class="col-12">
+                    <label class="form-label mb-1 d-block">ערוצי התראה</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="chEmail_d" value="Email">
+                        <label class="form-check-label" for="chEmail_d">Email</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="chSMS_d" value="SMS">
+                        <label class="form-check-label" for="chSMS_d">SMS</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="chPush_d" value="Push">
+                        <label class="form-check-label" for="chPush_d">Push</label>
+                    </div>
+                    </div>
+                    <!-- טקסט ארוך -->
+                    <div class="col-12">
+                    <label class="form-label mb-1">תיאור האירוע</label>
+                    <textarea id="evLong_d" class="form-control form-control-sm" rows="2" placeholder="מה קרה?..."></textarea>
+                    </div>
+                    <!-- רמת איום + ביטחון -->
+                    <div class="col-6">
+                    <label class="form-label mb-1">רמת איום</label>
+                    <select id="evThreat_d" class="form-select form-select-sm">
+                        <option>נמוך</option><option>בינוני</option><option>גבוה</option>
+                    </select>
+                    </div>
+
+                    <div class="col-12 d-grid">
+                    <button class="btn btn-primary btn-sm" type="submit">שליחת הטופס</button>
+                    </div>
+                </form>
+                </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<button class="btn btn-primary fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">
+  דיווח אירוע
+</button>
+
+<div class="offcanvas offcanvas-bottom d-lg-none" tabindex="-1" id="reportCanvas" aria-labelledby="reportCanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="reportCanvasLabel">דיווח אירוע</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    <form id="eventFormM" class="row g-2 needs-validation" novalidate>
+      <div class="col-12">
+        <label class="form-label mb-1">כותרת קצרה</label>
+        <input type="text" class="form-control form-control-sm" id="evShort_m" placeholder="לדוגמה: זיהוי רחפן" required>
+        <div class="invalid-feedback">נא למלא כותרת.</div>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-1">סוג מטרה</label>
+        <select id="evSelect_m" class="form-select form-select-sm" required>
+          <option value="" selected disabled>בחר...</option>
+          <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
+        </select>
+        <div class="invalid-feedback">נא לבחור סוג.</div>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="evTruth_m" id="truthTrue_m" value="אמת" required>
+          <label class="form-check-label" for="truthTrue_m">אמת</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="evTruth_m" id="truthFalse_m" value="שווא" required>
+          <label class="form-check-label" for="truthFalse_m">שווא</label>
+        </div>
+        <div class="invalid-feedback d-block">נא לבחור אמת/שווא.</div>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-1 d-block">ערוצי התראה</label>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chEmail_m" value="Email">
+          <label class="form-check-label" for="chEmail_m">Email</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chSMS_m" value="SMS">
+          <label class="form-check-label" for="chSMS_m">SMS</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chPush_m" value="Push">
+          <label class="form-check-label" for="chPush_m">Push</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="form-label mb-1">תיאור האירוע</label>
+        <textarea id="evLong_m" class="form-control form-control-sm" rows="3" placeholder="מה קרה?..."></textarea>
+      </div>
+      <div class="col-6">
+        <label class="form-label mb-1">רמת איום</label>
+        <select id="evThreat_m" class="form-select form-select-sm">
+          <option>נמוך</option><option>בינוני</option><option>גבוה</option>
+        </select>
+      </div>
+
+      <div class="col-12 d-grid">
+        <button class="btn btn-primary btn-sm" type="submit">שליחת הטופס</button>
+      </div>
+    </form>
+  </div>
+</div>
+  
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
+
+   <script>
+// ולידציה בסיסית של טפסים (Bootstrap)
+document.querySelectorAll('.needs-validation').forEach(form=>{
+  form.addEventListener('submit', e=>{
+    if(!form.checkValidity()){
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    form.classList.add('was-validated');
+    // בשלב הזה אין שליחה אמיתית, רק UI
+    e.preventDefault();
+  });
+});
+</script>
+</body>
+</html>
