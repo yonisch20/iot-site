@@ -62,75 +62,74 @@
     <!-- טופס: צר ודביק רק בדסקטופ -->
     <div class="col-12 col-lg-4 d-none d-lg-block">
         <div id="deskForm" class="collapse">
-            <div class="card sticky-card">
-                <div class="card-header py-2"><strong>דיווח אירוע</strong></div>
-                <div class="card-body">
-                <form id="eventFormDesk" class="row g-2 needs-validation" novalidate>
-                    <!-- טקסט קצר -->
-                    <div class="col-12">
-                    <label class="form-label mb-1">כותרת קצרה</label>
-                    <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן" required>
-                    <div class="invalid-feedback">נא למלא כותרת.</div>
-                    </div>
-                    <!-- רשימה נפתחת -->
-                    <div class="col-12">
-                    <label class="form-label mb-1">סוג מטרה</label>
-                    <select id="evSelect_d" class="form-select form-select-sm" required>
-                        <option value="" selected disabled>בחר...</option>
-                        <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
-                    </select>
-                    <div class="invalid-feedback">נא לבחור סוג.</div>
-                    </div>
-                    <!-- רדיו -->
-                    <div class="col-12">
-                    <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת" required>
-                        <label class="form-check-label" for="truthTrue_d">אמת</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא" required>
-                        <label class="form-check-label" for="truthFalse_d">שווא</label>
-                    </div>
-                    <div class="invalid-feedback d-block">נא לבחור אמת/שווא.</div>
-                    </div>
-                    <!-- צ'קבוקסים -->
-                    <div class="col-12">
-                    <label class="form-label mb-1 d-block">ערוצי התראה</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="chEmail_d" value="Email">
-                        <label class="form-check-label" for="chEmail_d">Email</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="chSMS_d" value="SMS">
-                        <label class="form-check-label" for="chSMS_d">SMS</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="chPush_d" value="Push">
-                        <label class="form-check-label" for="chPush_d">Push</label>
-                    </div>
-                    </div>
-                    <!-- טקסט ארוך -->
-                    <div class="col-12">
-                    <label class="form-label mb-1">תיאור האירוע</label>
-                    <textarea id="evLong_d" class="form-control form-control-sm" rows="2" placeholder="מה קרה?..."></textarea>
-                    </div>
-                    <!-- רמת איום + ביטחון -->
-                    <div class="col-6">
-                    <label class="form-label mb-1">רמת איום</label>
-                    <select id="evThreat_d" class="form-select form-select-sm">
-                        <option>נמוך</option><option>בינוני</option><option>גבוה</option>
-                    </select>
-                    </div>
-
-                    <div class="col-12 d-grid">
-                    <button class="btn btn-primary btn-sm" type="submit">שליחת הטופס</button>
-                    </div>
-                </form>
-                </div>
+  <div class="card sticky-card">
+    <div class="card-header py-2"><strong>דיווח אירוע</strong></div>
+    <div class="card-body">
+      <!-- הוסף FORM פתוח -->
+      <form id="eventFormDesk" class="row g-2 needs-validation" novalidate>
+        <!-- כל קבוצה קיבלה mb-3 לריווח אנכי -->
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1">כותרת קצרה</label>
+          <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן" required>
         </div>
-      </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1">סוג מטרה</label>
+          <select id="evSelect_d" class="form-select form-select-sm" required>
+            <option value="" selected disabled>בחר...</option>
+            <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
+          </select>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת" required>
+            <label class="form-check-label" for="truthTrue_d">אמת</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא" required>
+            <label class="form-check-label" for="truthFalse_d">שווא</label>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1 d-block">ערוצי התראה</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="chEmail_d" value="Email">
+            <label class="form-check-label" for="chEmail_d">Email</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="chSMS_d" value="SMS">
+            <label class="form-check-label" for="chSMS_d">SMS</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="chPush_d" value="Push">
+            <label class="form-check-label" for="chPush_d">Push</label>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1">תיאור האירוע</label>
+          <textarea id="evLong_d" class="form-control form-control-sm" rows="2" placeholder="מה קרה?..."></textarea>
+        </div>
+
+        <div class="col-6 mb-3">
+          <label class="form-label mb-1">רמת איום</label>
+          <select id="evThreat_d" class="form-select form-select-sm">
+            <option>נמוך</option><option>בינוני</option><option>גבוה</option>
+          </select>
+        </div>
+
+        <!-- כפתור עם ריווח למעלה -->
+        <div class="col-12 d-grid">
+          <button class="btn btn-primary btn-sm mt-3" type="submit">שליחת הטופס</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+
 
   </div>
 </main>
@@ -169,7 +168,6 @@
           <input class="form-check-input" type="radio" name="evTruth_m" id="truthFalse_m" value="שווא" required>
           <label class="form-check-label" for="truthFalse_m">שווא</label>
         </div>
-        <div class="invalid-feedback d-block">נא לבחור אמת/שווא.</div>
       </div>
       <div class="col-12">
         <label class="form-label mb-1 d-block">ערוצי התראה</label>
@@ -191,14 +189,14 @@
         <textarea id="evLong_m" class="form-control form-control-sm" rows="3" placeholder="מה קרה?..."></textarea>
       </div>
       <div class="col-6">
-        <label class="form-label mb-1">רמת איום</label>
+        <label class="form-label mb-">רמת איום</label>
         <select id="evThreat_m" class="form-select form-select-sm">
           <option>נמוך</option><option>בינוני</option><option>גבוה</option>
         </select>
       </div>
 
       <div class="col-12 d-grid">
-        <button class="btn btn-primary btn-sm" type="submit">שליחת הטופס</button>
+        <button class="btn btn-primary btn-sm mt-3" type="submit">שליחת הטופס</button>
       </div>
     </form>
   </div>
