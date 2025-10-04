@@ -10,6 +10,19 @@
         body{
             background: url(project\ BG.png) center/cover no-repeat fixed;
         }
+        .my-table {
+          --bs-table-color: white;
+          --bs-table-striped-color: white;
+          --bs-table-hover-color: white;
+          color: var(--bs-table-color); 
+        }
+        .my-table a {
+           color: inherit;
+            text-decoration: none;
+        }
+        .my-table thead.table-dark th {
+          color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -40,11 +53,11 @@
   <main class="container py-5">
 
   <!-- כותרת ראשית -->
-  <h1 class="mb-4 text-center text-body">רקע הפרויקט והוראות שימוש</h1>
+  <h1 class="mb-4 text-center text-light">רקע הפרויקט והוראות שימוש</h1>
 
   <!-- טקסט הרקע (מהצעת הפרויקט) -->
-  <div class="mb-5 h4 text-body">
-    <h2 class="h4 mb-3 text-body">למה בחרנו בנושא הזה?</h2>
+  <div class="mb-5 h4 text-light">
+    <h2 class="h4 mb-3 text-light">למה בחרנו בנושא הזה?</h2>
     <p>
         מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות של מערכות הגנה כמו כיפת ברזל, מערכת חץ, מגן אור וכו'. הפרויקט משלב בין טכנולוגיות שונות - ESP32, מצלמה, חיישנים, לייזר ו-FPGA כדי ליצור מערכת שמזהה עצם באוויר, ננעלת עליו, ומאפשרת סימון.
     </p>
@@ -56,12 +69,12 @@
 
   <!-- תמונה של המערכת -->
   <div class="text-center mb-5">
-    <img src="" class="img-fluid rounded shadow" alt="תמונה של המערכת בפועל">
-    <p class="mt-2 text-muted">תמונה: המערכת הניידת בזמן בדיקות.</p>
+    <img src="" class="img-fluid rounded shadow text-light" alt="תמונה של המערכת בפועל">
+    <p class="mt-2 text-light">תמונת המערכת</p>
   </div>
 
   <section class="container my-4">
-      <h3 class="mt-4">סרטון הסבר קצר על ה-ESP32</h3>
+      <h3 class="mt-4 text-light">סרטון הסבר קצר על ה-ESP32</h3>
       <div class="mx-auto" style="max-width: 1000px;">
         <div class="ratio ratio-16x9">
           <iframe 
@@ -75,7 +88,7 @@
 
 
   <!-- הוראות שימוש -->
-  <div>
+  <div class="text-light">
     <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
     <ol class="h5 mb-4">
       <li>הפעלת המערכת וחיבור לרשת ה־WiFi.</li>
@@ -98,6 +111,99 @@
     </p>
 
   </div>
+
+  <section class="container my-5">
+  <h2 class="text-center mb-4 text-light">רכיבי המערכת העיקריים</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped text-center align-middle my-table">
+      <thead class="table-dark">
+        <tr>
+          <th>רכיב</th>
+          <th>תמונה</th>
+          <th>תפקיד</th>
+          <th>סוג תקשורת</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ESP32-CAM</td>
+          <td>
+            <a href="https://media.digikey.com/pdf/Data%20Sheets/DFRobot%20PDFs/DFR0602_Web.pdf" target="_blank">
+              <img src="esp32-cam.png" alt="ESP32-CAM" width="65" class="rounded border img-fluid shadow-sm">
+            </a>
+          </td>
+          <td>קליטת תמונה ושליחה לעיבוד</td>
+          <td>UART / Wi-Fi</td>
+        </tr>
+        <tr>
+          <td>FPGA (DE10-Lite)</td>
+          <td>
+            <a href="https://example.com/fpga-de10-lite-datasheet" data-bs-toggle="modal" data-bs-target="#fpgaModal">
+              <img src="fpga_de10.jpg" alt="FPGA DE10-Lite" width="65" class="rounded border img-fluid shadow-sm">
+            </a>
+          </td>
+          <td>בקרת מנועים ולוגיקה מהירה</td>
+          <td>Digital I/O</td>
+        </tr>
+        <tr>
+          <td>MG996R Servo</td>
+          <td>
+            <a href="https://www.electronicoscaldas.com/datasheet/MG996R_Tower-Pro.pdf" target="_blank">
+              <img src="mg996r-servo.jpg" alt="MG996R Servo" width="65" class="rounded border img-fluid shadow-sm">
+            </a>
+          </td>
+          <td>כיוון הלייזר והמצלמה</td>
+          <td>PWM</td>
+        </tr>
+        <tr>
+          <td>KY-008 Laser</td>
+          <td>
+            <a href="https://www.watelectronics.com/ky-008-laser-module" target="_blank">
+              <img src="ky-008.png" alt="KY-008 Laser" width="65" class="rounded border img-fluid shadow-sm">
+            </a>
+          </td>
+          <td>סימון העצם המזוהה</td>
+          <td>Digital Output</td>
+        </tr>
+        <tr>
+          <td>HC-SR04</td>
+          <td>
+            <a href="https://handsontec.com/dataspecs/sensor/SR-04-Ultrasonic.pdf" target="_blank">
+              <img src="hc-sr04.png" alt="HC-SR04 Ultrasonic Sensor" width="65" class="rounded border img-fluid shadow-sm">
+            </a>
+          </td>
+          <td>מדידת מרחק ובדיקת טווח מטרה</td>
+          <td>Trigger / Echo</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="modal fade" id="fpgaModal" tabindex="-1" aria-labelledby="fpgaModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-light border-info">
+      <div class="modal-header border-info">
+        <h5 class="modal-title" id="fpgaModalLabel">בחר דף נתונים</h5>
+      </div>
+      <div class="modal-body text-center">
+        <p class="mb-4">בחר את דף הנתונים שברצונך לפתוח:</p>
+        <div class="d-grid gap-3">
+          <a href="https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/Boards/DE10-Lite/DE10_Lite_User_Manual.pdf" target="_blank" class="btn btn-outline-info">
+            Datasheet של לוח ה־DE10-Lite
+          </a>
+          <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwip-s7SwYqQAxVAXEEAHT6SGhYQFnoECBgQAQ&url=https%3A%2F%2Fcdrdv2-public.intel.com%2F666319%2Fm10_datasheet-683794-666319.pdf&usg=AOvVaw2UfCC9Q193eGoH80xm8go5&opi=89978449" target="_blank" class="btn btn-outline-info">
+            Datasheet של שבב ה־FPGA (MAX10)
+          </a>
+        </div>
+      </div>
+      <div class="modal-footer border-info">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </main>
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

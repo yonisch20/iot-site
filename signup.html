@@ -40,8 +40,8 @@
 
   <!-- כותרת -->
   <header class="container py-4 text-center">
-    <h1 class="h4 fw-bold mb-1">צור חשבון חדש</h1>
-    <p class="text-body-secondary m-0">מלא את הטופס כדי להירשם</p>
+    <h1 class="h4 fw-bold mb-1 text-light">צור חשבון חדש</h1>
+    <p class="text-body-secondary m-0 text-light">מלא את הטופס כדי להירשם</p>
   </header>
 
   <!-- טופס הרשמה -->
@@ -55,33 +55,29 @@
                 
                 <!-- שם מלא -->
                 <div>
-                  <label for="fullname" class="form-label">שם מלא</label>
+                  <label for="fullname" class="form-label text-light">שם מלא</label>
                   <input id="fullname" type="text" class="form-control" required>
-                  <div class="invalid-feedback">נא להזין שם מלא.</div>
                 </div>
 
                 <!-- אימייל -->
                 <div>
-                  <label for="email" class="form-label">Email</label>
+                  <label for="email" class="form-label text-light">אימייל</label>
                   <input id="email" type="email" class="form-control" placeholder="name@example.com" required>
-                  <div class="invalid-feedback">נא להזין אימייל תקין.</div>
                 </div>
 
                 <!-- סיסמה -->
                 <div>
-                  <label for="password" class="form-label">סיסמה</label>
+                  <label for="password" class="form-label text-light">סיסמה</label>
                   <div class="input-group">
                     <input id="password" type="password" class="form-control" placeholder="******" required minlength="6">
-                    <button class="btn btn-outline-black bg-light" type="button" id="togglePass">הצג</button>
+                    <button class="btn btn-outline-black bg-light rounded-start" type="button" id="togglePass">הצג</button>
                   </div>
-                  <div class="invalid-feedback">סיסמה חייבת להיות לפחות 6 תווים.</div>
                 </div>
 
                 <!-- אישור סיסמה -->
                 <div class="mb-4">
-                  <label for="confirmPass" class="form-label">אישור סיסמה</label>
+                  <label for="confirmPass" class="form-label text-light">אישור סיסמה</label>
                   <input id="confirmPass" type="password" class="form-control" placeholder="******" required>
-                  <div class="invalid-feedback">נא לאשר את הסיסמה.</div>
                 </div>
 
                 <!-- כפתור הרשמה -->
@@ -89,7 +85,7 @@
 
                 <!-- קישור לכניסה -->
                 <div class="text-center mt-3">
-                  <p class="mb-0">כבר יש לך חשבון? <a href="index.html" class="text-light">כניסה</a></p>
+                  <p class="mb-0 text-light">כבר יש לך חשבון? <a href="index.html" class="text-light">כניסה</a></p>
                 </div>
 
               </form>

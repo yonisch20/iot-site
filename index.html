@@ -38,8 +38,8 @@
   </nav>
 
   <header class="container py-4 text-center">
-    <h1 class="h4 fw-bold mb-1 text-black">ברוכים הבאים לאתר הפרויקט</h1>
-    <p class="text-body-secondary m-0 text-black">התחברות לחשבון</p>
+    <h1 class="h4 fw-bold mb-1 text-light">ברוכים הבאים לאתר הפרויקט</h1>
+    <p class="text-body-secondary m-0 text-light">התחברות לחשבון</p>
   </header>
 
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
@@ -52,17 +52,15 @@
               <!-- טופס כניסה -->
               <form class="vstack gap-3 needs-validation" novalidate>
                 <div>
-                  <label for="email" class="form-label">אימייל</label>
+                  <label for="email" class="form-label text-light">אימייל</label>
                   <input id="email" type="email" class="form-control bg-light" placeholder="name@example.com" required>
-                  <div class="invalid-feedback">נא להזין אימייל תקין.</div>
                 </div>
 
                 <div>
-                  <label for="loginPass" class="form-label">סיסמה</label>
+                  <label for="loginPass" class="form-label text-light">סיסמה</label>
                   <div class="input-group">
-                    <input id="loginPass" type="password" class="form-control" placeholder="******" required minlength="6">
-                    <button class="btn btn-outline-black bg-light" type="button" id="toggleLoginPass">הצג</button>
-                    <div class="invalid-feedback w-100">סיסמה בת 6 תווים לפחות.</div>
+                    <input id="loginPass" type="password" class="form-control" placeholder="******" required>
+                    <button class="btn btn-outline-black bg-light rounded-start" type="button" id="toggleLoginPass">הצג</button>
                   </div>
                 </div>
 
@@ -73,7 +71,7 @@
                 <button type="submit" class="btn btn-primary btn-lg w-100">כניסה</button>
 
                 <div class="col-12 mt-3 text-center">
-                    <p class="mb-0">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
+                    <p class="mb-0 text-light">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
                 </div>
               </form>
 
