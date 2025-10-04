@@ -8,7 +8,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
      <style>
         body{
-            background: url(/project\ BG.png) center/cover no-repeat fixed;
+            background: url(project\ BG.png) center/cover no-repeat fixed;
         }
     </style>
 </head>
@@ -17,8 +17,8 @@
   <!-- ניווט עליון -->
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="/SIGNUP.HTML">
-        <img src="/logo_icon_40.png" alt="לוגו" height="40">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <img src="logo_icon_40.png" alt="לוגו" height="40">
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
       </a>
 
@@ -49,7 +49,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-          <div class="card shadow-sm rounded-4">
+          <div class="card shadow-sm rounded-4 bg-secondary">
             <div class="card-body p-4 p-sm-5">
               <form class="vstack gap-3 needs-validation" novalidate>
                 
@@ -72,13 +72,13 @@
                   <label for="password" class="form-label">סיסמה</label>
                   <div class="input-group">
                     <input id="password" type="password" class="form-control" placeholder="******" required minlength="6">
-                    <button class="btn btn-outline-secondary" type="button" id="togglePass">הצג</button>
+                    <button class="btn btn-outline-black bg-light" type="button" id="togglePass">הצג</button>
                   </div>
                   <div class="invalid-feedback">סיסמה חייבת להיות לפחות 6 תווים.</div>
                 </div>
 
                 <!-- אישור סיסמה -->
-                <div>
+                <div class="mb-4">
                   <label for="confirmPass" class="form-label">אישור סיסמה</label>
                   <input id="confirmPass" type="password" class="form-control" placeholder="******" required>
                   <div class="invalid-feedback">נא לאשר את הסיסמה.</div>
@@ -89,7 +89,7 @@
 
                 <!-- קישור לכניסה -->
                 <div class="text-center mt-3">
-                  <p class="mb-0">כבר יש לך חשבון? <a href="/UI.HTML">כניסה</a></p>
+                  <p class="mb-0">כבר יש לך חשבון? <a href="index.html" class="text-light">כניסה</a></p>
                 </div>
 
               </form>
@@ -117,25 +117,6 @@
       confirmInput.type = isPwd ? 'text' : 'password';
       toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
     });
-
-    (function () {
-      'use strict';
-      const form = document.querySelector('.needs-validation');
-      form.addEventListener('submit', function (event) {
-        if (!form.checkValidity() || passInput.value !== confirmInput.value) {
-          event.preventDefault();
-          event.stopPropagation();
-          if (passInput.value !== confirmInput.value) {
-            confirmInput.setCustomValidity("סיסמאות לא תואמות");
-            confirmInput.classList.add("is-invalid");
-          } else {
-            confirmInput.setCustomValidity("");
-            confirmInput.classList.remove("is-invalid");
-          }
-        }
-        form.classList.add('was-validated');
-      }, false);
-    })();
   </script>
 
 </body>

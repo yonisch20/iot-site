@@ -8,14 +8,14 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <style>
         body{
-            background: url(/project\ BG.png) center/cover no-repeat fixed;
+            background: url(project\ BG.png) center/cover no-repeat fixed;
         }
     </style>
 </head>
 <body>
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="/SIGNUP.HTML">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
         <img src="/logo_icon_40.png" alt="לוגו" height="40">
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
       </a>
@@ -45,15 +45,13 @@
         <div class="d-none d-lg-flex gap-2">
           <button id="btnLockSim" class="btn btn-outline-light btn-sm">סימולציית נעילה</button>
           <button id="btnSnapshot" class="btn btn-outline-light btn-sm">תמונת מצב</button>
-           <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm" aria-expanded="false">דיווח אירוע</button>
+            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm" aria-expanded="false">דיווח אירוע</button>
         </div>
-      </div>
+    </div>
 
       <!-- מסגרת הווידאו – 16:9 -->
       <div class="ratio ratio-16x9 rounded-3 overflow-hidden bg-dark">
-        <!-- אם זה MJPEG: img עם src ל־STREAM_URL -->
-        <img id="liveStream" alt="שידור חי" src="http://192.168.1.50:81/stream">
-        <!-- או אם זה HLS/RTSP-WS, תחליף לפי הצורך -->
+        <img id="liveStream" alt="שידור חי" src="#">
       </div>
 
       <div id="snapshotWrap" class="mt-2 d-none">
@@ -137,7 +135,7 @@
   </div>
 </main>
 
-<button class="btn btn-primary fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">
+<button class="btn btn-light fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">
   דיווח אירוע
 </button>
 
@@ -210,19 +208,6 @@
           integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
           crossorigin="anonymous"></script>
 
-   <script>
-// ולידציה בסיסית של טפסים (Bootstrap)
-document.querySelectorAll('.needs-validation').forEach(form=>{
-  form.addEventListener('submit', e=>{
-    if(!form.checkValidity()){
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    form.classList.add('was-validated');
-    // בשלב הזה אין שליחה אמיתית, רק UI
-    e.preventDefault();
-  });
-});
-</script>
+
 </body>
 </html>
