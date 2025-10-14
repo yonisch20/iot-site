@@ -20,8 +20,7 @@
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="תפריט">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -43,10 +42,10 @@
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h1 class="h5 m-0 text-light">שידור חי</h1>
         <div class="d-none d-lg-flex gap-2">
-            <button id="btnLaser" class="btn btn-danger btn-sm" data-bs-toggle="button" aria-pressed="false" autocomplete="off">לייזר</button>
+            <button id="btnLaser" class="btn btn-danger btn-sm" data-bs-toggle="button" autocomplete="off">לייזר</button>
           <button id="btnLockSim" class="btn btn-outline-light btn-sm">סימולציית נעילה</button>
           <button id="btnSnapshot" class="btn btn-outline-light btn-sm">תמונת מצב</button>
-            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm" aria-expanded="false">דיווח אירוע</button>
+            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm">דיווח אירוע</button>
         </div>
     </div>
 
@@ -67,16 +66,16 @@
     <div class="card-header py-2"><strong>דיווח אירוע</strong></div>
     <div class="card-body">
       <!-- הוסף FORM פתוח -->
-      <form id="eventFormDesk" class="row g-2 needs-validation" novalidate>
+      <form id="eventFormDesk" class="row g-2 needs-validation">
         <!-- כל קבוצה קיבלה mb-3 לריווח אנכי -->
         <div class="col-12 mb-3">
           <label class="form-label mb-1">כותרת קצרה</label>
-          <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן" required>
+          <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן">
         </div>
 
         <div class="col-12 mb-3">
           <label class="form-label mb-1">סוג מטרה</label>
-          <select id="evSelect_d" class="form-select form-select-sm" required>
+          <select id="evSelect_d" class="form-select form-select-sm">
             <option value="" selected disabled>בחר...</option>
             <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
           </select>
@@ -85,11 +84,11 @@
         <div class="col-12 mb-3">
           <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת" required>
+            <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת">
             <label class="form-check-label" for="truthTrue_d">אמת</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא" required>
+            <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא">
             <label class="form-check-label" for="truthFalse_d">שווא</label>
           </div>
         </div>
@@ -136,12 +135,12 @@
 </main>
 
 <button class="btn btn-light fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">דיווח אירוע</button>
-<button id="btnLaserMobile" class="btn btn-danger btn-sm position-fixed bottom-3 start-0 m-3 rounded-pill shadow d-lg-none" data-bs-toggle="button" aria-pressed="false" autocomplete="off">לייזר</button>
+<button id="btnLaserMobile" class="btn btn-danger btn-sm position-fixed bottom-3 start-0 m-3 rounded-pill shadow d-lg-none" data-bs-toggle="button" autocomplete="off">לייזר</button>
 
-<div class="offcanvas offcanvas-bottom d-lg-none" tabindex="-1" id="reportCanvas" aria-labelledby="reportCanvasLabel">
+<div class="offcanvas offcanvas-bottom d-lg-none" tabindex="-1" id="reportCanvas">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="reportCanvasLabel">דיווח אירוע</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body small">
     <form id="eventFormM" class="row g-2 needs-validation" novalidate>
