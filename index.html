@@ -3,33 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>מערכת איתור וסימון ניידת</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <style>
-        body{
-            background: url(project\ BG.png) center/cover no-repeat fixed;
-        }
-    </style>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+        rel="stylesheet"> <!-- טוען את עיצוב Bootstrap -->
+
+  <style>
+    body{
+      background: url(project_BG.png) center/cover no-repeat fixed;
+    }
+  </style>
 </head>
 
 <body>
-  <!--תפריט-->
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- תפריט ניווט -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- navbar = תפריט בסיסי -->
+    <!-- navbar-expand-lg = מתקפל במסכים קטנים -->
+    <!-- navbar-dark = טקסט בהיר לתפריט כהה -->
+    <!-- bg-dark = רקע שחור -->
+
     <div class="container-fluid">
+      <!-- container-fluid = פריסה מלאה לרוחב -->
+
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <!-- navbar-brand = עיצוב לכותרת/לוגו -->
+        <!-- d-flex = מציב את התוכן בשורה -->
+        <!-- align-items-center = יישור אנכי של הפריטים -->
+        <!-- gap-2 = רווח קטן בין האייקון לטקסט -->
+
         <img src="project_logo.png" alt="לוגו" height="40">
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+        <!-- d-none d-lg-inline = מופיע רק במסכים גדולים -->
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="תפריט">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- navbar-toggler = כפתור תפריט לנייד -->
+        <!-- data-bs-toggle="collapse" = מפעיל פתיחה/סגירה -->
+        <!-- data-bs-target="#navbarNav" = מזהה את אזור הכיווץ -->
+
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- collapse navbar-collapse = תוכן מתקפל בתפריט -->
+        
         <ul class="navbar-nav me-auto">
+          <!-- navbar-nav = רשימת קישורים -->
+          <!-- me-auto = דחיפה לצד ההפוך לשם יישור -->
+
           <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
+          <!-- nav-link = עיצוב קישור תפריט -->
+
           <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
           <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
           <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
@@ -38,67 +66,124 @@
     </div>
   </nav>
 
-  <!--כותרת-->
+  <!-- כותרת הדף -->
   <header class="container py-4 text-center">
-    <h1 class="h4 fw-bold mb-1 text-light">ברוכים הבאים לאתר הפרויקט</h1>
+    <!-- container = מרכז ומגביל רוחב -->
+    <!-- py-4 = ריווח אנכי גדול -->
+    <!-- text-center = טקסט ממורכז -->
+
+    <h1 class="h4 fw-bold mb-1 text-light">ברוכים הבאים לאתר מערכת איתור וסימון ניידת</h1>
+    <!-- h4 = גודל כותרת -->
+    <!-- fw-bold = מודגש -->
+    <!-- mb-1 = ריווח קטן למטה -->
+    <!-- text-light = צבע בהיר -->
+
     <p class="text-body-secondary m-0 text-light">התחברות לחשבון</p>
+    <!-- m-0 = בלי מרווח כלל -->
   </header>
 
-  <!--הקטע בעיקרי בעמוד-->
+  <!-- תוכן מרכזי -->
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
+    <!-- d-flex = פריסה בעזרת Flexbox -->
+    <!-- align-items-center = יישור אנכי למרכז -->
+    <!-- justify-content-center = יישור אופקי למרכז -->
+    <!-- min-vh-75 = גובה מינימלי – 75% מהמסך -->
+    <!-- pb-5 = ריווח תחתון גדול -->
+
     <div class="container">
       <div class="row justify-content-center">
+        <!-- row = שורה של Bootstrap -->
+        <!-- justify-content-center = מרכז את העמודות -->
+
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-          <div class="card shadow-sm rounded-4  bg-secondary">
+          <!-- col-12 = רוחב מלא במסכים קטנים -->
+          <!-- col-sm-10 = מעט צר יותר בטלפונים -->
+          <!-- col-md-8 = במסכים בינוניים -->
+          <!-- col-lg-5 = במסכים גדולים רחב 5/12 -->
+
+          <div class="card shadow-sm rounded-4 bg-secondary">
+            <!-- card = קופסה עם עיצוב אחיד -->
+            <!-- shadow-sm = צל קטן -->
+            <!-- rounded-4 = פינות מעוגלות -->
+            <!-- bg-secondary = רקע אפור כהה -->
+
             <div class="card-body p-4 p-sm-4">
+              <!-- card-body = תוכן הקופסה -->
+              <!-- p-4 = ריווח פנימי גדול -->
+              <!-- p-sm-4 = ריווח שקיים גם במסכים קטנים -->
 
               <!-- טופס כניסה -->
               <form class="vstack gap-3">
+                <!-- vstack = סידור אלמנטים בטור -->
+                <!-- gap-3 = רווח ביניהם -->
+
                 <div>
                   <label for="email" class="form-label text-light">אימייל</label>
+                  <!-- form-label = עיצוב לתוויות -->
                   <input id="email" type="email" class="form-control bg-light" placeholder="name@example.com">
+                  <!-- form-control = עיצוב אינפוטים -->
+                  <!-- bg-light = רקע בהיר -->
                 </div>
 
                 <div>
                   <label for="loginPass" class="form-label text-light">סיסמה</label>
                   <div class="input-group">
+                    <!-- input-group = חיבור בין שדה וכפתור -->
+                    
                     <input id="loginPass" type="password" class="form-control" placeholder="******">
-                    <button class="btn btn-outline-black bg-light rounded-start" type="button" id="toggleLoginPass">הצג</button>
+                    <button class="btn btn-outline-black bg-light rounded-start" type="button" id="toggleLoginPass">
+                      <!-- btn = כפתור -->
+                      <!-- btn-outline-black = מסגרת כהה -->
+                      <!-- bg-light = רקע לבן -->
+                      <!-- rounded-start = עיגול בצד שמאל בלבד -->
+                      הצג
+                    </button>
                   </div>
                 </div>
 
                 <div class="text-end">
+                  <!-- text-end = יישור לימין (ב־RTL זה שמאל) -->
                   <a href="#" class="small text-light">שכחתי סיסמה</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg w-100">כניסה</button>
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                  <!-- btn-primary = כפתור כחול -->
+                  <!-- btn-lg = כפתור גדול -->
+                  <!-- w-100 = רוחב מלא -->
+                  כניסה
+                </button>
 
                 <div class="col-12 mt-3 text-center">
-                    <p class="mb-0 text-light">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
+                  <!-- col-12 = בלוק ברוחב מלא -->
+                  <!-- mt-3 = רווח עליון -->
+                  <!-- text-center = יישור טקסט למרכז -->
+
+                  <p class="mb-0 text-light">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
                 </div>
               </form>
 
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-          <!--קטע סקריפט להסתרה/גילוי של שדה הסיסמה-->
-    <script>
-        const passInput = document.getElementById('loginPass');
-        const toggleBtn = document.getElementById('toggleLoginPass');
+  <!-- JavaScript להצגת/הסתרת הסיסמה -->
+  <script>
+    const passInput = document.getElementById('loginPass');
+    const toggleBtn = document.getElementById('toggleLoginPass');
 
-        toggleBtn.addEventListener('click', () => {
-            const isPwd = passInput.type === 'password';
-            passInput.type = isPwd ? 'text' : 'password';
-            toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
-        });
-    </script>
+    toggleBtn.addEventListener('click', () => {
+      const isPwd = passInput.type === 'password';
+      passInput.type = isPwd ? 'text' : 'password';
+      toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
+    });
+  </script>
+
 </body>
 </html>

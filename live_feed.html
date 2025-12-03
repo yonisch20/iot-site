@@ -3,206 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>שידור חי</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body{
-            background: url(project\ BG.png) center/cover no-repeat fixed;
+            background: url(project_BG.png) center/cover no-repeat fixed;
         }
     </style>
 </head>
 <body>
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="project_logo.png" alt="לוגו" height="40">
-        <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
-      </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <!-- NAVBAR (ללא הסברים לפי בקשתך) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="project_logo.png" alt="לוגו" height="40">
+                <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+            </a>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
-          <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-          <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-  <main class="container-fluid py-3">
-  <div class="row g-3">
-    <!-- וידאו: רחב -->
-    <div class="col-12 col-lg-8">
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <h1 class="h5 m-0 text-light">שידור חי</h1>
-        <div class="d-none d-lg-flex gap-2">
-            <button id="btnLaser" class="btn btn-danger btn-sm" data-bs-toggle="button" autocomplete="off">לייזר</button>
-          <button id="btnLockSim" class="btn btn-outline-light btn-sm">סימולציית נעילה</button>
-          <button id="btnSnapshot" class="btn btn-outline-light btn-sm">תמונת מצב</button>
-            <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm">דיווח אירוע</button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
 
-      <!-- מסגרת הווידאו – 16:9 -->
+<main class="container-fluid py-3">
+    <!-- container-fluid = פריסה לרוחב מלא -->
+    <!-- py-3 = ריווח אנכי (padding-top + padding-bottom) -->
+
+  <div class="row g-3">
+    <!-- row = שורת Bootstrap -->
+    <!-- g-3 = מרווח בין עמודות (gap 3) -->
+
+    <!-- צד שמאל: וידאו -->
+    <div class="col-12 col-lg-8">
+      <!-- col-12 = רוחב מלא בנייד -->
+      <!-- col-lg-8 = 8/12 בדסקטופ -->
+
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <!-- d-flex = פריסת Flexbox -->
+        <!-- justify-content-between = הפרדה בין אלמנטים -->
+        <!-- align-items-center = יישור אנכי -->
+        <!-- mb-2 = רווח תחתון -->
+
+        <h1 class="h5 m-0 text-light">
+          <!-- h5 = כותרת קטנה -->
+          <!-- m-0 = ללא רווח חיצוני -->
+          <!-- text-light = טקסט בהיר -->
+          שידור חי
+        </h1>
+
+        <div class="d-none d-lg-flex gap-2">
+          <!-- d-none d-lg-flex = מוסתר בנייד, מופיע בדסקטופ כ־Flex -->
+          <!-- gap-2 = רווח בין הכפתורים -->
+          
+          <button id="btnLaser" class="btn btn-danger btn-sm" data-bs-toggle="button">
+            <!-- btn = כפתור -->
+            <!-- btn-danger = אדום -->
+            <!-- btn-sm = קטן -->
+            <!-- data-bs-toggle="button" = כפתור במצב ON/OFF -->
+            לייזר
+          </button>
+
+          <button id="btnLockSim" class="btn btn-outline-light btn-sm">
+            <!-- btn-outline-light = כפתור מסגרת לבנה -->
+            סימולציית נעילה
+          </button>
+
+          <button id="btnSnapshot" class="btn btn-outline-light btn-sm">
+            תמונת מצב
+          </button>
+
+          <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm">
+            <!-- btn-light = כפתור לבן -->
+            <!-- data-bs-toggle="collapse" = פתיחה/סגירה -->
+            דיווח אירוע
+          </button>
+        </div>
+      </div>
+
+      <!-- וידאו 16:9 -->
       <div class="ratio ratio-16x9 rounded-3 overflow-hidden bg-dark">
+        <!-- ratio-16x9 = יחס מסך קבוע -->
+        <!-- rounded-3 = פינות מעוגלות -->
+        <!-- overflow-hidden = חתיכה של מה שזולג -->
+        <!-- bg-dark = רקע כהה -->
         <img id="liveStream" alt="שידור חי" src="#">
       </div>
 
       <div id="snapshotWrap" class="mt-2 d-none">
+        <!-- mt-2 = ריווח מעל -->
+        <!-- d-none = מוסתר עד הצגת תמונת מצב -->
         <img id="snapshotImg" class="img-fluid rounded" alt="תמונת מצב">
+        <!-- img-fluid = התאמה למסך -->
+        <!-- rounded = פינות עגולות -->
       </div>
     </div>
 
-    <!-- טופס: צר ודביק רק בדסקטופ -->
+    <!-- צד ימין: טופס דסקטופ -->
     <div class="col-12 col-lg-4 d-none d-lg-block">
-        <div id="deskForm" class="collapse">
-  <div class="card sticky-card">
-    <div class="card-header py-2"><strong>דיווח אירוע</strong></div>
-    <div class="card-body">
-      <!-- הוסף FORM פתוח -->
-      <form id="eventFormDesk" class="row g-2 needs-validation">
-        <!-- כל קבוצה קיבלה mb-3 לריווח אנכי -->
-        <div class="col-12 mb-3">
-          <label class="form-label mb-1">כותרת קצרה</label>
-          <input type="text" class="form-control form-control-sm" id="evShort_d" placeholder="לדוגמה: זיהוי רחפן">
-        </div>
+      <!-- col-12 = בנייד -->
+      <!-- col-lg-4 = בדסקטופ -->
+      <!-- d-none d-lg-block = מוסתר בנייד, מוצג בדסקטופ -->
 
-        <div class="col-12 mb-3">
-          <label class="form-label mb-1">סוג מטרה</label>
-          <select id="evSelect_d" class="form-select form-select-sm">
-            <option value="" selected disabled>בחר...</option>
-            <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
-          </select>
-        </div>
+      <div id="deskForm" class="collapse">
+        <!-- collapse = נפתח/נסגר לפי כפתור למעלה -->
 
-        <div class="col-12 mb-3">
-          <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="evTruth_d" id="truthTrue_d" value="אמת">
-            <label class="form-check-label" for="truthTrue_d">אמת</label>
+        <div class="card sticky-card">
+          <!-- card = קופסה מעוצבת -->
+          <!-- sticky-card = כנראה CSS שלך להצמדה -->
+
+          <div class="card-header py-2">
+            <!-- card-header = אזור כותרת -->
+            <!-- py-2 = padding אנכי קטן -->
+            <strong>דיווח אירוע</strong>
           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="evTruth_d" id="truthFalse_d" value="שווא">
-            <label class="form-check-label" for="truthFalse_d">שווא</label>
+
+          <div class="card-body">
+            <!-- card-body = תוכן פנימי -->
+
+            <form id="eventFormDesk" class="row g-2 needs-validation">
+              <!-- row = שורות טופס -->
+              <!-- g-2 = רווח בין תאים -->
+              <!-- needs-validation = תמיכה בהודעות שגיאה -->
+
+              <div class="col-12 mb-3">
+                <!-- col-12 = רוחב מלא -->
+                <!-- mb-3 = ריווח תחתון -->
+                <label class="form-label mb-1">כותרת קצרה</label>
+                <!-- form-label = עיצוב לתוויות -->
+                <input type="text" class="form-control form-control-sm">
+                <!-- form-control = שדה מעוצב -->
+                <!-- form-control-sm = שדה קטן -->
+              </div>
+
+              <div class="col-12 mb-3">
+                <label class="form-label mb-1">סוג מטרה</label>
+                <select class="form-select form-select-sm">
+                  <!-- form-select = עיצוב לבחירה -->
+                  <!-- form-select-sm = קטן -->
+                  <option selected disabled>בחר...</option>
+                  <option>רחפן</option>
+                  <option>ציפור</option>
+                  <option>בלון</option>
+                  <option>מטוס</option>
+                  <option>לא ידוע</option>
+                </select>
+              </div>
+
+              <div class="col-12 mb-3">
+                <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+                <!-- d-block = כל התווית שורה מלאה -->
+
+                <div class="form-check form-check-inline">
+                  <!-- form-check = עטיפה לסימון -->
+                  <!-- form-check-inline = אחד ליד השני -->
+                  <input class="form-check-input" type="radio">
+                  <label class="form-check-label">אמת</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio">
+                  <label class="form-check-label">שווא</label>
+                </div>
+              </div>
+
+              <div class="col-12 mb-3">
+                <label class="form-label mb-1 d-block">ערוצי התראה</label>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox">
+                  <label class="form-check-label">Email</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox">
+                  <label class="form-check-label">SMS</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox">
+                  <label class="form-check-label">Push</label>
+                </div>
+              </div>
+
+              <div class="col-12 mb-3">
+                <label class="form-label mb-1">תיאור האירוע</label>
+                <textarea class="form-control form-control-sm" rows="2"></textarea>
+              </div>
+
+              <div class="col-6 mb-3">
+                <label class="form-label mb-1">רמת איום</label>
+                <select class="form-select form-select-sm">
+                  <option>נמוך</option>
+                  <option>בינוני</option>
+                  <option>גבוה</option>
+                </select>
+              </div>
+
+              <div class="col-12 d-grid">
+                <!-- d-grid = כפתור פרוס מלא -->
+                <button class="btn btn-primary btn-sm mt-3" type="submit">
+                  <!-- btn-primary = כפתור כחול -->
+                  <!-- btn-sm = קטן -->
+                  <!-- mt-3 = רווח עליון -->
+                  שליחת הטופס
+                </button>
+              </div>
+
+            </form>
           </div>
         </div>
-
-        <div class="col-12 mb-3">
-          <label class="form-label mb-1 d-block">ערוצי התראה</label>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chEmail_d" value="Email">
-            <label class="form-check-label" for="chEmail_d">Email</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chSMS_d" value="SMS">
-            <label class="form-check-label" for="chSMS_d">SMS</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chPush_d" value="Push">
-            <label class="form-check-label" for="chPush_d">Push</label>
-          </div>
-        </div>
-
-        <div class="col-12 mb-3">
-          <label class="form-label mb-1">תיאור האירוע</label>
-          <textarea id="evLong_d" class="form-control form-control-sm" rows="2" placeholder="מה קרה?..."></textarea>
-        </div>
-
-        <div class="col-6 mb-3">
-          <label class="form-label mb-1">רמת איום</label>
-          <select id="evThreat_d" class="form-select form-select-sm">
-            <option>נמוך</option><option>בינוני</option><option>גבוה</option>
-          </select>
-        </div>
-
-        <!-- כפתור עם ריווח למעלה -->
-        <div class="col-12 d-grid">
-          <button class="btn btn-primary btn-sm mt-3" type="submit">שליחת הטופס</button>
-        </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
-
-
   </div>
 </main>
 
-<button class="btn btn-light fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">דיווח אירוע</button>
-<button id="btnLaserMobile" class="btn btn-danger btn-sm position-fixed bottom-3 start-0 m-3 rounded-pill shadow d-lg-none" data-bs-toggle="button" autocomplete="off">לייזר</button>
+<!-- כפתור דיווח במובייל -->
+<button class="btn btn-light fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">
+    <!-- btn-light = כפתור לבן -->
+    <!-- d-lg-none = מופיע רק בנייד -->
+    <!-- data-bs-toggle="offcanvas" = פתיחת חלונית תחתית -->
+    דיווח אירוע
+</button>
 
+<button id="btnLaserMobile" class="btn btn-danger btn-sm position-fixed bottom-3 start-0 m-3 rounded-pill shadow d-lg-none" data-bs-toggle="button">
+    <!-- position-fixed = קבוע במסך -->
+    <!-- bottom-3 / start-0 = מיקום בפינה -->
+    <!-- rounded-pill = כפתור עגול -->
+    <!-- shadow = צל -->
+    לייזר
+</button>
+
+<!-- חלונית Offcanvas לנייד -->
 <div class="offcanvas offcanvas-bottom d-lg-none" tabindex="-1" id="reportCanvas">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="reportCanvasLabel">דיווח אירוע</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
-  </div>
-  <div class="offcanvas-body small">
-    <form id="eventFormM" class="row g-2 needs-validation" novalidate>
-      <div class="col-12">
-        <label class="form-label mb-1">כותרת קצרה</label>
-        <input type="text" class="form-control form-control-sm" id="evShort_m" placeholder="לדוגמה: זיהוי רחפן" required>
-        <div class="invalid-feedback">נא למלא כותרת.</div>
-      </div>
-      <div class="col-12">
-        <label class="form-label mb-1">סוג מטרה</label>
-        <select id="evSelect_m" class="form-select form-select-sm" required>
-          <option value="" selected disabled>בחר...</option>
-          <option>רחפן</option><option>ציפור</option><option>בלון</option><option>מטוס</option><option>לא ידוע</option>
-        </select>
-        <div class="invalid-feedback">נא לבחור סוג.</div>
-      </div>
-      <div class="col-12">
-        <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="evTruth_m" id="truthTrue_m" value="אמת" required>
-          <label class="form-check-label" for="truthTrue_m">אמת</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="evTruth_m" id="truthFalse_m" value="שווא" required>
-          <label class="form-check-label" for="truthFalse_m">שווא</label>
-        </div>
-      </div>
-      <div class="col-12">
-        <label class="form-label mb-1 d-block">ערוצי התראה</label>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chEmail_m" value="Email">
-          <label class="form-check-label" for="chEmail_m">Email</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chSMS_m" value="SMS">
-          <label class="form-check-label" for="chSMS_m">SMS</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chPush_m" value="Push">
-          <label class="form-check-label" for="chPush_m">Push</label>
-        </div>
-      </div>
-      <div class="col-12">
-        <label class="form-label mb-1">תיאור האירוע</label>
-        <textarea id="evLong_m" class="form-control form-control-sm" rows="3" placeholder="מה קרה?..."></textarea>
-      </div>
-      <div class="col-6">
-        <label class="form-label mb-">רמת איום</label>
-        <select id="evThreat_m" class="form-select form-select-sm">
-          <option>נמוך</option><option>בינוני</option><option>גבוה</option>
-        </select>
-      </div>
+    <!-- offcanvas-bottom = חלונית עולה מלמטה -->
+    <!-- d-lg-none = רק לנייד -->
 
-      <div class="col-12 d-grid">
-        <button class="btn btn-primary btn-sm mt-3" type="submit">שליחת הטופס</button>
-      </div>
-    </form>
+  <div class="offcanvas-header">
+    <!-- offcanvas-header = כותרת -->
+    <h5 class="offcanvas-title">דיווח אירוע</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+
+  <div class="offcanvas-body small">
+    <!-- small = טקסט קטן -->
+
+    <form class="row g-2 needs-validation">
+      <!-- row = פריסה -->
+      <!-- g-2 = רווחים -->
+      <!-- needs-validation = תמיכה באימות שדות -->
+
+      <div class="col-12">
+  <!-- col-12 = שורה ברוחב מלא -->
+
+  <label class="form-label mb-1">כותרת קצרה</label>
+  <!-- form-label = עיצוב כותרת שדה -->
+  <!-- mb-1 = רווח קטן מתחת -->
+
+  <input type="text" class="form-control form-control-sm" required>
+  <!-- form-control = עיצוב שדה Bootstrap -->
+  <!-- form-control-sm = גרסה קטנה יותר לשדה -->
+  <!-- required = חובה למלא (HTML) -->
+
+  <div class="invalid-feedback">נא למלא כותרת.</div>
+  <!-- invalid-feedback = הודעת שגיאה שמופיעה אחרי בדיקת תקינות -->
+</div>
+
+<div class="col-12">
+  <label class="form-label mb-1">סוג מטרה</label>
+
+  <select class="form-select form-select-sm" required>
+    <!-- form-select = עיצוב של select -->
+    <!-- form-select-sm = גרסה קטנה -->
+    <!-- required = חובה לבחור -->
+
+    <option disabled selected>בחר...</option>
+    <option>רחפן</option>
+    <option>ציפור</option>
+    <option>בלון</option>
+    <option>מטוס</option>
+    <option>לא ידוע</option>
+  </select>
+
+  <div class="invalid-feedback">נא לבחור סוג.</div>
+</div>
+
+<div class="col-12">
+  <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+  <!-- d-block = הופך את הלייבל לשורה מלאה -->
+
+  <div class="form-check form-check-inline">
+    <!-- form-check = עטיפה ל־checkbox/radio -->
+    <!-- form-check-inline = מציג אותם בשורה אחת -->
+
+    <input class="form-check-input" type="radio" required>
+    <!-- form-check-input = עיצוב רדיו -->
+
+    <label class="form-check-label">אמת</label>
+    <!-- form-check-label = עיצוב טקסט ליד הרדיו -->
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" required>
+    <label class="form-check-label">שווא</label>
   </div>
 </div>
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+
+<div class="col-12">
+  <label class="form-label mb-1 d-block">ערוצי התראה</label>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox">
+    <label class="form-check-label">Email</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox">
+    <label class="form-check-label">SMS</label>
+  </div>
+
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox">
+    <label class="form-check-label">Push</label>
+  </div>
+</div>
+
+<div class="col-12">
+  <label class="form-label mb-1">תיאור האירוע</label>
+  <textarea class="form-control form-control-sm" rows="3"></textarea>
+  <!-- textarea + form-control-sm = שדה טקסט קטן -->
+</div>
+
+<div class="col-6">
+  <!-- col-6 = חצי רוחב בשורה -->
+
+  <label class="form-label mb-">רמת איום</label>
+
+  <select class="form-select form-select-sm">
+    <!-- form-select-sm = בחירה קטנה -->
+    <option>נמוך</option>
+    <option>בינוני</option>
+    <option>גבוה</option>
+  </select>
+</div>
+
+<div class="col-12 d-grid">
+  <!-- col-12 = רוחב מלא -->
+  <!-- d-grid = הופך את הקונטיינר לגריד כך שהכפתור מתפרס 100% -->
+
+  <button class="btn btn-primary btn-sm mt-3" type="submit">
+    <!-- btn = כפתור -->
+    <!-- btn-primary = כחול -->
+    <!-- btn-sm = קטן -->
+    <!-- mt-3 = רווח עליון -->
+    שליחת הטופס
+  </button>
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

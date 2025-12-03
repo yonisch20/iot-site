@@ -3,48 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>יומן אירועים</title>
+
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body class="text-light"
-      style="background: url('project BG.png') center/cover no-repeat fixed;">
+      style="background: url(project_BG.png) center/cover no-repeat fixed;">
+      <!-- text-light = טקסט לבן בכל הדף -->
 
-  <!-- ניווט עליון -->
+  <!-- NAVBAR (בלי הסברים לפי בקשתך) -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow">
+    <!-- navbar = תפריט עליון -->
+    <!-- navbar-expand-lg = נפתח בתצוגה גדולה -->
+    <!-- navbar-dark bg-dark = עיצוב כהה -->
+    <!-- border-bottom border-info = מסגרת תחתונה בצבע info -->
+    <!-- shadow = צל עדין -->
+
     <div class="container-fluid">
+      <!-- container-fluid = תופס 100% מהמסך -->
+
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <!-- d-flex = פריסה אופקית -->
+        <!-- align-items-center = יישור אנכי -->
+        <!-- gap-2 = רווח בין אייקון לטקסט -->
         <img src="project_logo.png" alt="לוגו" height="40">
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+        <!-- d-none d-lg-inline = מוסתר בנייד, מוצג בדסקטופ -->
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <!-- navbar-toggler = כפתור פתיחת תפריט בנייד -->
+        <!-- data-bs-toggle="collapse" = פתיחה/סגירה -->
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- collapse navbar-collapse = הופך את התפריט למתקפל בנייד -->
+
         <ul class="navbar-nav me-auto">
+          <!-- me-auto = דחיפה של הכפתורים לצד שמאל -->
+
           <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
           <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
           <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
           <li class="nav-item"><a class="nav-link active" href="log.html">יומן אירועים</a></li>
+          <!-- nav-link active = צביעה מיוחדת לטאב הנוכחי -->
         </ul>
+
       </div>
     </div>
   </nav>
 
-  <!-- תוכן הדף -->
+  <!-- גוף הדף -->
   <main class="container my-5">
+    <!-- container = מרכזת ומגבילה רוחב -->
+    <!-- my-5 = ריווח עליון ותחתון גדול -->
 
     <div class="card bg-dark bg-opacity-75 border-info shadow-lg">
+      <!-- card = קופסה מעוצבת -->
+      <!-- bg-dark = רקע כהה -->
+      <!-- bg-opacity-75 = שקיפות 75% -->
+      <!-- border-info = מסגרת בצבע info -->
+      <!-- shadow-lg = צל גדול -->
+
       <div class="card-header border-info">
-        <h3 class="text-info mb-0">יומן אירועים</h3>
+        <!-- card-header = אזור כותרת כרטיס -->
+        <!-- border-info = מסגרת בצבע תכלת -->
+        <h3 class="text-info mb-0">
+          <!-- text-info = טקסט בצבע תכלת -->
+          <!-- mb-0 = בלי מרווח תחתון -->
+          יומן אירועים
+        </h3>
       </div>
 
       <div class="card-body p-0">
+        <!-- p-0 = ביטול רווח פנימי -->
+        
         <div class="table-responsive">
+          <!-- table-responsive = מאפשר גלילה אופקית בנייד -->
+
           <table class="table table-dark table-striped table-hover align-middle text-center mb-0">
+            <!-- table = טבלה מעוצבת -->
+            <!-- table-dark = עיצוב כהה -->
+            <!-- table-striped = פסים בין שורות -->
+            <!-- table-hover = שינוי צבע במעבר עכבר -->
+            <!-- align-middle = יישור טקסט באמצע אנכי -->
+            <!-- text-center = טקסט ממורכז -->
+            <!-- mb-0 = ללא רווח תחתון -->
+
             <thead class="table-info text-dark">
+              <!-- table-info = ראש טבלה בצבע תכלת -->
+              <!-- text-dark = טקסט שחור -->
               <tr>
                 <th>תאריך ושעה</th>
                 <th>סוג אירוע</th>
@@ -52,31 +104,48 @@
                 <th>פרטים</th>
               </tr>
             </thead>
+
             <tbody>
               <tr>
                 <td>2025-10-04 14:12</td>
+
                 <td><span class="badge bg-success">Login</span></td>
+                <!-- badge = תגית קטנה -->
+                <!-- bg-success = ירוק -->
+
                 <td>yoni@example.com</td>
                 <td>התחברות מוצלחת</td>
               </tr>
+
               <tr>
                 <td>2025-10-04 14:20</td>
+
                 <td><span class="badge bg-warning text-dark">Alert</span></td>
+                <!-- bg-warning = צהוב -->
+                <!-- text-dark = טקסט שחור ליצירת ניגודיות -->
+
                 <td>admin@system.com</td>
                 <td>זוהתה מטרה חדשה בטווח</td>
               </tr>
             </tbody>
+
           </table>
         </div>
       </div>
 
       <div class="card-footer text-center text-light border-info text-secondary">
+        <!-- card-footer = אזור תחתון של הכרטיס -->
+        <!-- text-center = טקסט ממורכז -->
+        <!-- text-light + text-secondary = צבעים בהירים -->
+        <!-- border-info = מסגרת תכלת -->
         אין אירועים נוספים להצגה
       </div>
-    </div>
 
+    </div>
   </main>
 
+  <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

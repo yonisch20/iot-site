@@ -3,210 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>רקע הפרויקט והוראות שימוש</title>
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
         body{
-            background: url(project\ BG.png) center/cover no-repeat fixed;
+            background: url("project_BG.png") center/cover no-repeat fixed;
         }
         .my-table {
-          --bs-table-color: white;
-          --bs-table-striped-color: white;
-          --bs-table-hover-color: white;
-          color: var(--bs-table-color); 
-        }
-        .my-table a {
-           color: inherit;
-            text-decoration: none;
-        }
-        .my-table thead.table-dark th {
-          color: #fff;
-        }
+        --bs-table-color: white;
+        /* צבע טקסט ברירת מחדל של הטבלה */
+
+        --bs-table-striped-color: white;
+        /* צבע הטקסט בשורות מפוספסות (striped) */
+
+        --bs-table-hover-color: white;
+        /* צבע הטקסט בעת מעבר עם העכבר על שורה */
+
+        color: var(--bs-table-color);
+        /* החלת צבע הטקסט שהוגדר למעלה בפועל */
+    }
+
+    .my-table a {
+        color: inherit;
+        /* גורם לקישורים לקבל את צבע הטקסט מהטבלה (white) */
+
+        text-decoration: none;
+        /* ביטול קו תחתון מהקישורים */
+    }
+
+    .my-table thead.table-dark th {
+        color: #fff;
+        /* כותרות ראשיות של הטבלה בצבע לבן — גם אם Bootstrap משנה */
+    }
     </style>
 </head>
 <body>
+
+    <!-- NAVBAR (ללא הסברים לפי בקשתך) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="project_logo.png" alt="לוגו" height="40">
-        <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
-      </a>
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="project_logo.png" alt="לוגו" height="40">
+                <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+            </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
-          <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-          <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-  <main class="container py-5">
-
-  <!-- כותרת ראשית -->
-  <h1 class="mb-4 text-center text-light">רקע הפרויקט והוראות שימוש</h1>
-
-  <!-- טקסט הרקע (מהצעת הפרויקט) -->
-  <div class="mb-5 h4 text-light">
-    <h2 class="h4 mb-3 text-light">למה בחרנו בנושא הזה?</h2>
-    <p>
-        מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות של מערכות הגנה כמו כיפת ברזל, מערכת חץ, מגן אור וכו'. הפרויקט משלב בין טכנולוגיות שונות - ESP32, מצלמה, חיישנים, לייזר ו-FPGA כדי ליצור מערכת שמזהה עצם באוויר, ננעלת עליו, ומאפשרת סימון.
-    </p>
-    <p>
-        בחרנו בנושא הזה מכיוון שהוא מחבר בין תחומי ידע שלמדנו במסגרת לימודי ההנדסאי - תקשורת, אלקטרוניקה, עיבוד אותות ותכנות - וגם בגלל שיש בו עניין מעשי: המחשה של מערכות בטחוניות מתקדמות בצורה פשוטה וזולה.
-
-    </p>
-  </div>
-
-  <!-- תמונה של המערכת -->
-  <div class="text-center mb-5">
-    <img src="project_logo.png" class="img-fluid rounded shadow text-light w-50" alt="לוגו הפרויקט">
-    <p class="mt-2 text-light">לוגו הפרויקט</p>
-  </div>
-
-  <section class="container my-4">
-      <h3 class="mt-4 text-light">סרטון הסבר קצר על ה-ESP32</h3>
-      <div class="mx-auto" style="max-width: 1000px;">
-        <div class="ratio ratio-16x9">
-          <iframe 
-            src="https://www.youtube.com/embed/XTm-YL-5G34"
-            title="ESP32 Explained In 1 Minute"
-            allowfullscreen>
-          </iframe>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
+                    <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </nav>
+
+<main class="container py-5">
+    <!-- container = יישור מרכז + מגבלת רוחב -->
+    <!-- py-5 = ריווח אנכי גדול -->
+
+    <!-- כותרת -->
+    <h1 class="mb-4 text-center text-light">
+        <!-- mb-4 = ריווח מתחת -->
+        <!-- text-center = טקסט ממורכז -->
+        <!-- text-light = טקסט בהיר -->
+        רקע הפרויקט והוראות שימוש
+    </h1>
+
+    <!-- בלוק טקסט עם כותרת -->
+    <div class="mb-5 h4 text-light">
+        <!-- mb-5 = ריווח גדול למטה -->
+        <!-- h4 = גודל טקסט -->
+        <!-- text-light = טקסט בהיר -->
+
+        <h2 class="h4 mb-3 text-light">
+            <!-- h4 = כותרת קטנה -->
+            <!-- mb-3 = ריווח -->
+            למה בחרנו בנושא הזה?
+        </h2>
+
+        <p>
+            מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות...
+        </p>
+    </div>
+
+    <!-- תמונה מרכזית -->
+    <div class="text-center mb-5">
+        <!-- text-center = מרכז -->
+        <!-- mb-5 = ריווח -->
+        
+        <img src="project_logo.png" class="img-fluid rounded shadow w-50" alt="לוגו הפרויקט">
+        <!-- img-fluid = התאמה לגודל מסך -->
+        <!-- rounded = פינות מעוגלות -->
+        <!-- shadow = צל -->
+        <!-- w-50 = רוחב 50% -->
+
+        <p class="mt-2 text-light">
+            <!-- mt-2 = רווח מעל הטקסט -->
+            לוגו הפרויקט
+        </p>
+    </div>
+
+    <!-- סרטון יוטיוב -->
+    <section class="container my-4">
+        <!-- container = שמירה על מבנה -->
+        <!-- my-4 = ריווח עליון/תחתון -->
+
+        <h3 class="mt-4 text-light">
+            <!-- mt-4 = רווח עליון -->
+            סרטון הסבר קצר על ה־ESP32
+        </h3>
+
+        <div class="mx-auto" style="max-width: 1000px;">
+            <!-- mx-auto = מרכז את הבלוק -->
+
+            <div class="ratio ratio-16x9">
+                <!-- ratio = שמירה על יחס מסך 16:9 -->
+                <iframe src="https://www.youtube.com/embed/XTm-YL-5G34" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- הוראות שימוש -->
+    <div class="text-light">
+        <!-- text-light = טקסט בהיר -->
+
+        <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
+        <!-- h5 = כותרת קטנה -->
+        <!-- mb-3 = רווח -->
+
+        <ol class="h5 mb-4">
+            <!-- h5 = טקסט גדול יחסית -->
+            <!-- mb-4 = רווח -->
+
+            <li>הפעלת המערכת וחיבור לרשת ה-WiFi.</li>
+            <li>כניסה לשידור חי.</li>
+            <li>המערכת ננעלת על עצם ומתריעה.</li>
+            <li>המשתמש מדווח האם האירוע אמיתי/שווא.</li>
+            <li>הכול נרשם ביומן האירועים.</li>
+        </ol>
+    </div>
+
+    <!-- טבלת רכיבים -->
+<section class="container my-5">
+    <!-- my-5 = רווח גדול -->
+
+    <h2 class="text-center mb-4 text-light">
+        <!-- text-center = מרכז -->
+        <!-- mb-4 = רווח -->
+        רכיבי המערכת העיקריים
+    </h2>
+
+    <div class="table-responsive">
+        <!-- table-responsive = גלילה בטלפון -->
+
+        <div class="table-responsive">
+  <!-- table-responsive = מאפשר גלילה אופקית בטלפונים כדי שהטבלה לא תיחתך -->
+
+  <table class="table table-bordered table-striped text-center align-middle my-table">
+    <!-- table = טבלה מעוצבת -->
+    <!-- table-bordered = גבול סביב כל תאים -->
+    <!-- table-striped = רקע מפוספס לשורות זוגיות -->
+    <!-- text-center = יישור טקסט למרכז -->
+    <!-- align-middle = טקסט באמצע אנכית -->
+    <!-- my-table = המחלקה שהגדרת לצבעי טקסט לבנים -->
+
+    <thead class="table-dark">
+      <!-- table-dark = רקע שחור לשורת הכותרות -->
+      <tr>
+        <th>תקשורת</th>
+        <th>תפקיד</th>
+        <th>תמונה</th>
+        <th>רכיב</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <!-- שורה 1 -->
+      <tr>
+        <td>UART / Wi-Fi</td>
+        <td>קליטת תמונה</td>
+
+        <td>
+          <img src="esp32-cam.png" width="65"
+               class="rounded border img-fluid shadow-sm" alt="ESP32-CAM">
+          <!-- rounded = פינות מעוגלות -->
+          <!-- border = מסגרת דקה -->
+          <!-- img-fluid = התאמת תמונה לרוחב המדויק (Responsiveness) -->
+          <!-- shadow-sm = צל קטן -->
+        </td>
+
+        <td>ESP32-CAM</td>
+      </tr>
+
+      <!-- שורה 2 -->
+      <tr>
+        <td>Digital I/O</td>
+        <td>בקרת מנועים ולוגיקה מהירה</td>
+
+        <td>
+          <img src="fpga_de10.jpg" width="65"
+               class="rounded border img-fluid shadow-sm" alt="FPGA DE10-Lite">
+        </td>
+
+        <td>FPGA (DE10-Lite)</td>
+      </tr>
+
+      <!-- שורה 3 -->
+      <tr>
+        <td>PWM</td>
+        <td>כיוון הלייזר והמצלמה</td>
+
+        <td>
+          <img src="mg996r-servo.jpg" width="65"
+               class="rounded border img-fluid shadow-sm" alt="MG996R Servo">
+        </td>
+
+        <td>MG996R Servo</td>
+      </tr>
+
+      <!-- שורה 4 -->
+      <tr>
+        <td>Digital Output</td>
+        <td>סימון העצם המזוהה</td>
+
+        <td>
+          <img src="ky-008.png" width="65"
+               class="rounded border img-fluid shadow-sm" alt="KY-008 Laser">
+        </td>
+
+        <td>KY-008 Laser</td>
+      </tr>
+
+      <!-- שורה 5 -->
+      <tr>
+        <td>Trigger / Echo</td>
+        <td>מדידת מרחק ובדיקת טווח מטרה</td>
+
+        <td>
+          <img src="hc-sr04.png" width="65"
+               class="rounded border img-fluid shadow-sm" alt="HC-SR04">
+        </td>
+
+        <td>HC-SR04</td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+    </div>
 </section>
 
+<!-- חלונית קופצת (Modal) -->
+<div class="modal fade" id="fpgaModal">
+    <!-- modal + fade = חלונית קופצת עם אנימציה -->
 
-  <!-- הוראות שימוש -->
-  <div class="text-light">
-    <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
-    <ol class="h5 mb-4">
-      <li>הפעלת המערכת וחיבור לרשת ה־WiFi.</li>
-      <li>כניסה לאתר ← עמוד השידור החי.</li>
-      <li>ברגע שמזוהה עצם – המערכת ננעלת עליו ומתריעה.</li>
-      <li>המשתמש בוחר האם להדליק לייזר על העצם וממלא טופס: האם זה אירוע אמת / אירוע שווא.</li>
-      <li>כל האירועים נרשמים ביומן האירועים.</li>
-    </ol>
-
-    <p class="p h5">
-        בפרויקט זה נעשה שימוש בענן <strong>Firebase</strong> לניהול בסיס הנתונים, אימות משתמשים ושידור ההתראות,
-        וכן ב־<strong>Bootstrap</strong> לעיצוב האתר והתאמתו לרזולוציות שונות (מחשב, טאבלט וטלפון נייד).
-    </p>
-    <p class="mb-0 h5">
-        למידע נוסף:
-    <ul>
-        <li><a href="https://firebase.google.com" target="_blank" class="text-light">Firebase - האתר הרשמי</a></li>
-        <li><a href="https://getbootstrap.com" target="_blank" class="text-light">Bootstrap - האתר הרשמי</a></li>
-    </ul>
-    </p>
-
-  </div>
-
-  <section class="container my-5">
-  <h2 class="text-center mb-4 text-light">רכיבי המערכת העיקריים</h2>
-
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center align-middle my-table">
-      <thead class="table-dark">
-        <tr>
-          <th>רכיב</th>
-          <th>תמונה</th>
-          <th>תפקיד</th>
-          <th>סוג תקשורת</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>ESP32-CAM</td>
-          <td>
-            <a href="https://media.digikey.com/pdf/Data%20Sheets/DFRobot%20PDFs/DFR0602_Web.pdf" target="_blank">
-              <img src="esp32-cam.png" alt="ESP32-CAM" width="65" class="rounded border img-fluid shadow-sm">
-            </a>
-          </td>
-          <td>קליטת תמונה ושליחה לעיבוד</td>
-          <td>UART / Wi-Fi</td>
-        </tr>
-        <tr>
-          <td>FPGA (DE10-Lite)</td>
-          <td>
-            <a href="https://example.com/fpga-de10-lite-datasheet" data-bs-toggle="modal" data-bs-target="#fpgaModal">
-              <img src="fpga_de10.jpg" alt="FPGA DE10-Lite" width="65" class="rounded border img-fluid shadow-sm">
-            </a>
-          </td>
-          <td>בקרת מנועים ולוגיקה מהירה</td>
-          <td>Digital I/O</td>
-        </tr>
-        <tr>
-          <td>MG996R Servo</td>
-          <td>
-            <a href="https://www.electronicoscaldas.com/datasheet/MG996R_Tower-Pro.pdf" target="_blank">
-              <img src="mg996r-servo.jpg" alt="MG996R Servo" width="65" class="rounded border img-fluid shadow-sm">
-            </a>
-          </td>
-          <td>כיוון הלייזר והמצלמה</td>
-          <td>PWM</td>
-        </tr>
-        <tr>
-          <td>KY-008 Laser</td>
-          <td>
-            <a href="https://www.watelectronics.com/ky-008-laser-module" target="_blank">
-              <img src="ky-008.png" alt="KY-008 Laser" width="65" class="rounded border img-fluid shadow-sm">
-            </a>
-          </td>
-          <td>סימון העצם המזוהה</td>
-          <td>Digital Output</td>
-        </tr>
-        <tr>
-          <td>HC-SR04</td>
-          <td>
-            <a href="https://handsontec.com/dataspecs/sensor/SR-04-Ultrasonic.pdf" target="_blank">
-              <img src="hc-sr04.png" alt="HC-SR04 Ultrasonic Sensor" width="65" class="rounded border img-fluid shadow-sm">
-            </a>
-          </td>
-          <td>מדידת מרחק ובדיקת טווח מטרה</td>
-          <td>Trigger / Echo</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<div class="modal fade" id="fpgaModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
+      <!-- modal-dialog-centered = מרכז חלונית אנכית -->
+
     <div class="modal-content bg-dark text-light border-info">
+        <!-- modal-content = גוף החלונית -->
+        <!-- bg-dark = רקע כהה -->
+        <!-- text-light = טקסט בהיר -->
+        <!-- border-info = מסגרת תכלת -->
+
       <div class="modal-header border-info">
-        <h5 class="modal-title" id="fpgaModalLabel">בחר דף נתונים</h5>
+          <!-- modal-header = אזור כותרת -->
+
+        <h5 class="modal-title">בחר דף נתונים</h5>
       </div>
+
       <div class="modal-body text-center">
-        <p class="mb-4">בחר את דף הנתונים שברצונך לפתוח:</p>
+          <!-- modal-body = גוף החלונית -->
+          <!-- text-center = טקסט ממורכז -->
+
         <div class="d-grid gap-3">
-          <a href="https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/Boards/DE10-Lite/DE10_Lite_User_Manual.pdf" target="_blank" class="btn btn-outline-info">
+            <!-- d-grid = פריסה בטורים -->
+            <!-- gap-3 = רווח בין כפתורים -->
+
+          <a class="btn btn-outline-info" target="_blank">
+              <!-- btn-outline-info = כפתור מסגרת תכלת -->
             Datasheet של לוח ה־DE10-Lite
           </a>
-          <a href="https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwip-s7SwYqQAxVAXEEAHT6SGhYQFnoECBgQAQ&url=https%3A%2F%2Fcdrdv2-public.intel.com%2F666319%2Fm10_datasheet-683794-666319.pdf&usg=AOvVaw2UfCC9Q193eGoH80xm8go5&opi=89978449" target="_blank" class="btn btn-outline-info">
-            Datasheet של שבב ה־FPGA (MAX10)
+
+          <a class="btn btn-outline-info" target="_blank">
+            Datasheet של ה־FPGA MAX10
           </a>
         </div>
       </div>
+
       <div class="modal-footer border-info">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+        <!-- modal-footer = תחתית החלונית -->
+        <button class="btn btn-secondary" data-bs-dismiss="modal">
+          <!-- btn-secondary = כפתור אפור -->
+          <!-- data-bs-dismiss="modal" = סגירת חלונית -->
+          סגור
+        </button>
       </div>
+
     </div>
   </div>
 </div>
 
 </main>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-          crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
