@@ -20,7 +20,7 @@
 <body>
 
   <!-- תפריט ניווט -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: none;">
     <!-- navbar = תפריט בסיסי -->
     <!-- navbar-expand-lg = מתקפל במסכים קטנים -->
     <!-- navbar-dark = טקסט בהיר לתפריט כהה -->
@@ -40,6 +40,10 @@
         <!-- d-none d-lg-inline = מופיע רק במסכים גדולים -->
       </a>
 
+      <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
+        התנתקות
+      </button>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <!-- navbar-toggler = כפתור תפריט לנייד -->
         <!-- data-bs-toggle="collapse" = מפעיל פתיחה/סגירה -->
@@ -55,10 +59,7 @@
           <!-- navbar-nav = רשימת קישורים -->
           <!-- me-auto = דחיפה לצד ההפוך לשם יישור -->
 
-          <li class="nav-item"><a class="nav-link" href="index.html">דף בית</a></li>
-          <!-- nav-link = עיצוב קישור תפריט -->
-
-          <li class="nav-item"><a class="nav-link" href="backgrounf_&_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+          <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
           <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
           <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
         </ul>
@@ -130,7 +131,7 @@
                   <div class="input-group">
                     <!-- input-group = חיבור בין שדה וכפתור -->
                     
-                    <input id="loginPass" type="password" class="form-control" placeholder="******">
+                    <input id="password" type="password" class="form-control" placeholder="******">
                     <button class="btn btn-outline-black bg-light rounded-start" type="button" id="toggleLoginPass">
                       <!-- btn = כפתור -->
                       <!-- btn-outline-black = מסגרת כהה -->
@@ -146,7 +147,7 @@
                   <a href="#" class="small text-light">שכחתי סיסמה</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-lg w-100">
+                <button type="button" class="btn btn-primary btn-lg w-100" onclick="login()">
                   <!-- btn-primary = כפתור כחול -->
                   <!-- btn-lg = כפתור גדול -->
                   <!-- w-100 = רוחב מלא -->
@@ -173,6 +174,11 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
+
+<script src="/main.js"></script>
   <!-- JavaScript להצגת/הסתרת הסיסמה -->
   <script>
     const passInput = document.getElementById('loginPass');
