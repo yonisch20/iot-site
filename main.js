@@ -105,7 +105,8 @@ firebase.auth().onAuthStateChanged(user => {
     protectedPages = [
         "log.html",
         "live_feed.html",
-        "background_instructions.html"
+        "background_instructions.html",
+        "dc_dontrol.html"
     ];
 
     currentPage = window.location.pathname.split("/").pop();
@@ -130,3 +131,22 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 });
+
+
+//motor control//
+function sendCommand(cmd) {
+    firebase.database().ref("controls/motor").set({
+        command: cmd,
+        timestamp: Date.now()
+    });
+}
+
+document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowUp") sendCommand("forward");
+    if (e.key === "ArrowDown") sendCommand("backward");
+    if (e.key === "ArrowLeft") sendCommand("left");
+    if (e.key === "ArrowRight") sendCommand("right");
+
+    if (e.key === " ") sendCommand("stop"); // מקש רווח
+});
+
