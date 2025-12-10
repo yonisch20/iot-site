@@ -10,121 +10,294 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
+<!--  
+body = תגית התוכן המרכזית של הדף  
+class="text-light" = מחלקת Bootstrap שמגדירה שכל הטקסט בתוך ה־body יהיה בצבע בהיר (לבן־אפור).  
+זה עובד כי Bootstrap נותן CSS: color: #f8f9fa;  
+style="background: ... " = עיצוב פנימי (inline style):  
+• url(project_BG.png) = טוען תמונת רקע בשם project_BG.png  
+• center = ממקם את התמונה במרכז  
+• cover = מותח את הרקע כך שיכסה את כל המסך בלי עיוות  
+• no-repeat = מונע שכפול של התמונה  
+• fixed = הרקע קבוע במסך ואינו זז בגלילה (parallax effect)  
+-->
 <body class="text-light"
       style="background: url(project_BG.png) center/cover no-repeat fixed;">
-      <!-- text-light = טקסט לבן בכל הדף -->
 
-  <!-- NAVBAR (בלי הסברים לפי בקשתך) -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow">
-    <!-- navbar = תפריט עליון -->
-    <!-- navbar-expand-lg = נפתח בתצוגה גדולה -->
-    <!-- navbar-dark bg-dark = עיצוב כהה -->
-    <!-- border-bottom border-info = מסגרת תחתונה בצבע info -->
-    <!-- shadow = צל עדין -->
+<!-- מעבר: פה היית כתבת "text-light = טקסט לבן" אבל עכשיו זה בהערות הנכונות כבר -->
 
-    <div class="container-fluid">
-      <!-- container-fluid = תופס 100% מהמסך -->
 
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <!-- d-flex = פריסה אופקית -->
-        <!-- align-items-center = יישור אנכי -->
-        <!-- gap-2 = רווח בין אייקון לטקסט -->
-        <img src="project_logo.png" alt="לוגו" height="40">
-        <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
-        <!-- d-none d-lg-inline = מוסתר בנייד, מוצג בדסקטופ -->
-      </a>
 
-      <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
-               התנתקות
-      </button>
+<!--  
+nav = אלמנט HTML לניווט  
+class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow"  
+= מחלקות Bootstrap רבות:  
+• navbar = הופך את האלמנט לבר־ניווט עם סט עיצובים בסיסי  
+• navbar-expand-lg = התפריט יתקפל (collapse) במסכים קטנים, וייפתח מלא רק מ־lg ומעלה  
+• navbar-dark = טקסט/אייקונים בהירים לתפריט כהה  
+• bg-dark = רקע כהה (Bootstrap קובע background-color:#212529)  
+• border-bottom = מסגרת תחתונה 1px  
+• border-info = צבע המסגרת תכלת (#0dcaf0)  
+• shadow = צל עדין סביב התפריט  
+-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <!-- navbar-toggler = כפתור פתיחת תפריט בנייד -->
-        <!-- data-bs-toggle="collapse" = פתיחה/סגירה -->
-        <span class="navbar-toggler-icon"></span>
-      </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- collapse navbar-collapse = הופך את התפריט למתקפל בנייד -->
 
-        <ul class="navbar-nav me-auto">
-          <!-- me-auto = דחיפה של הכפתורים לצד שמאל -->
-          <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-          <li class="nav-item"><a class="nav-link" href="dc_control.html">שליטה במנועים</a></li>
-          <li class="nav-item"><a class="nav-link active" href="log.html">יומן אירועים</a></li>
-          <!-- nav-link active = צביעה מיוחדת לטאב הנוכחי -->
-        </ul>
+<!--  
+div.container-fluid =  
+• container-fluid = קונטיינר ברוחב מלא 100% בכל גודל מסך  
+Bootstrap מוסיף padding אוטומטי משני הצדדים לשמירת עיצוב אחיד  
+-->
+<div class="container-fluid">
 
-      </div>
-    </div>
-  </nav>
+
+
+<!--  
+a.navbar-brand = לוגו התפריט  
+class="navbar-brand d-flex align-items-center gap-2"  
+• navbar-brand = עיצוב מותאם ללוגו/שם פרויקט ב־Navbar  
+• d-flex = הופך את האלמנט ל־flexbox  
+• align-items-center = ממרכז פריטים אנכית בתוך ה־flex  
+• gap-2 = רווח אופקי של 0.5rem בין האלמנטים בפנים (לוגו + טקסט)  
+href="index.html" = לחיצה תחזיר לדף הבית  
+-->
+<a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+
+
+
+<!--  
+img = תמונת לוגו  
+src="project_logo.png" = קובץ התמונה  
+alt="לוגו" = טקסט אלטרנטיבי לנגישות  
+height="40" = גובה קבוע של 40px  
+-->
+<img src="project_logo.png" alt="לוגו" height="40">
+
+
+
+<!--  
+span = טקסט ליד הלוגו  
+class="d-none d-lg-inline"  
+• d-none = מוסתר בכל המסכים  
+• d-lg-inline = אבל במסכים גדולים (>=992px) הוא מוצג כ־inline  
+כלומר: הטקסט נראה רק בדסקטופ, לא במובייל  
+-->
+<span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+</a>
+
+
+
+<!--  
+button#signOutBtn = כפתור התנתקות (JS יפעיל/יחביא אותו)  
+id="signOutBtn" = כדי ש־main.js יוכל להגיע אליו  
+class="btn btn-sm btn-outline-danger me-3"  
+• btn = כפתור Bootstrap  
+• btn-sm = גודל קטן  
+• btn-outline-danger = כפתור מסגרת אדומה (לא מילוי)  
+• me-3 = margin-end של 1rem (רווח לצד ימין בשפה RTL זה לצד שמאל ויזואלית)  
+style="display:none" = הכפתור מוסתר עד שהמשתמש מחובר  
+-->
+<button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
+    התנתקות
+</button>
+
+
+
+<!--  
+button.navbar-toggler = כפתור תפריט בנייד  
+משתמש ב־JS של Bootstrap למכניזם collapse  
+type="button" = כפתור רגיל  
+data-bs-toggle="collapse" = מודיע ל־Bootstrap לפתוח/לסגור תפריט  
+data-bs-target="#navbarNav" = מזהה את התפריט שייפתח  
+-->
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+
+
+<!--  
+span.navbar-toggler-icon = אייקון "3 קווים" של תפריט  
+Bootstrap מוסיף אותו עם CSS background-image  
+-->
+<span class="navbar-toggler-icon"></span>
+</button>
+
+
+
+<!--  
+div.collapse.navbar-collapse  
+• collapse = יכול להתקפל ולהיפתח (Mobile menu)  
+• navbar-collapse = עיצוב כשיושב בתוך navbar  
+id="navbarNav" = חייב להתאים לכפתור ה־toggler  
+-->
+<div class="collapse navbar-collapse" id="navbarNav">
+
+
+
+<!--  
+ul.navbar-nav = רשימת פריטים בתפריט  
+class="navbar-nav me-auto"  
+• navbar-nav = עיצוב סטנדרטי של navbar list  
+• me-auto = margin-end:auto → דוחף את הרשימה לצד שמאל (ב־RTL זה ימין/שמאל תלוי בהקשר)  
+-->
+<ul class="navbar-nav me-auto">
+
+
+
+<!--  
+li.nav-item = פריט אחד בתפריט  
+a.nav-link = הקישור עצמו  
+-->
+<li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+<li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+<li class="nav-item"><a class="nav-link" href="dc_control.html">שליטה במנועים</a></li>
+
+
+
+<!--  
+nav-link active =  
+• nav-link = קישור בעיצוב Navbar  
+• active = Bootstrap מדגיש את הטאב הנוכחי  
+-->
+<li class="nav-item"><a class="nav-link active" href="log.html">יומן אירועים</a></li>
+</ul>
+
+</div>
+</div>
+</nav>
+
 
   <!-- גוף הדף -->
-  <main class="container my-5">
-    <!-- container = מרכזת ומגבילה רוחב -->
-    <!-- my-5 = ריווח עליון ותחתון גדול -->
-
-    <div class="card bg-dark bg-opacity-75 border-info shadow-lg">
-      <!-- card = קופסה מעוצבת -->
-      <!-- bg-dark = רקע כהה -->
-      <!-- bg-opacity-75 = שקיפות 75% -->
-      <!-- border-info = מסגרת בצבע info -->
-      <!-- shadow-lg = צל גדול -->
-
-      <div class="card-header border-info">
-        <!-- card-header = אזור כותרת כרטיס -->
-        <!-- border-info = מסגרת בצבע תכלת -->
-        <h3 class="text-info mb-0">
-          <!-- text-info = טקסט בצבע תכלת -->
-          <!-- mb-0 = בלי מרווח תחתון -->
-          יומן אירועים
-        </h3>
-      </div>
-
-      <div class="card-body p-0">
-        <!-- p-0 = ביטול רווח פנימי -->
-        
-        <div class="table-responsive">
-          <!-- table-responsive = מאפשר גלילה אופקית בנייד -->
-
-          <table class="table table-dark table-striped table-hover align-middle text-center mb-0">
-            <!-- table = טבלה מעוצבת -->
-            <!-- table-dark = עיצוב כהה -->
-            <!-- table-striped = פסים בין שורות -->
-            <!-- table-hover = שינוי צבע במעבר עכבר -->
-            <!-- align-middle = יישור טקסט באמצע אנכי -->
-            <!-- text-center = טקסט ממורכז -->
-            <!-- mb-0 = ללא רווח תחתון -->
-
-            <thead class="table-info text-dark">
-              <!-- table-info = ראש טבלה בצבע תכלת -->
-              <!-- text-dark = טקסט שחור -->
-              <tr>
-                <th>תאריך ושעה</th>
-                <th>סוג אירוע</th>
-                <th>משתמש</th>
-                <th>פרטים</th>
-              </tr>
-            </thead>
-
-            <tbody id="logTableBody"></tbody>
+  <!--  
+main = אזור התוכן המרכזי של הדף  
+class="container my-5"  
+• container = רוחב מוגבל + מיושר למרכז ע"י Bootstrap  
+• my-5 = margin-top ו־margin-bottom של 3rem (ריווח גדול)  
+-->
+<main class="container my-5">
 
 
-          </table>
-        </div>
-      </div>
 
-      <div class="card-footer text-center text-light border-info text-secondary">
-        <!-- card-footer = אזור תחתון של הכרטיס -->
-        <!-- text-center = טקסט ממורכז -->
-        <!-- text-light + text-secondary = צבעים בהירים -->
-        <!-- border-info = מסגרת תכלת -->
-        אין אירועים נוספים להצגה
-      </div>
+<!--  
+div.card = תיבת תוכן מעוצבת של Bootstrap  
+class="card bg-dark bg-opacity-75 border-info shadow-lg"  
+• card = עיצוב בסיסי של כרטיס  
+• bg-dark = רקע כהה  
+• bg-opacity-75 = רקע כהה שקוף 75%  
+• border-info = מסגרת בצבע Info (תכלת)  
+• shadow-lg = צל גדול מתחת לכרטיס  
+-->
+<div class="card bg-dark bg-opacity-75 border-info shadow-lg">
 
-    </div>
-  </main>
+
+
+<!--  
+div.card-header = כותרת של הכרטיס  
+class="card-header border-info"  
+• border-info = מסגרת תחתונה בצבע תכלת  
+-->
+<div class="card-header border-info">
+
+
+
+<!--  
+h3 = כותרת ראשית של הכרטיס  
+class="text-info mb-0"  
+• text-info = טקסט בצבע תכלת  
+• mb-0 = ללא מרווח מתחת  
+-->
+<h3 class="text-info mb-0">
+  יומן אירועים
+</h3>
+
+</div> <!-- סוף header -->
+
+
+
+<!--  
+div.card-body = גוף הכרטיס  
+class="card-body p-0"  
+• p-0 = בלי padding פנימי  
+-->
+<div class="card-body p-0">
+
+
+
+<!--  
+div.table-responsive  
+• table-responsive = מאפשר לטבלה לקבל גלילה אופקית במובייל  
+למנוע מצב שבו טבלה גדולה נשפכת מחוץ למסך  
+-->
+<div class="table-responsive">
+
+
+
+<!--  
+table = טבלה מעוצבת  
+class="table table-dark table-striped table-hover align-middle text-center mb-0"  
+• table = בסיס עיצוב של טבלה Bootstrap  
+• table-dark = טבלה כהה  
+• table-striped = פסים בין שורות  
+• table-hover = רקע משתנה במעבר עכבר  
+• align-middle = טקסט באמצע אנכית  
+• text-center = טקסט במרכז אופקי  
+• mb-0 = בלי רווח תחתון  
+-->
+<table class="table table-dark table-striped table-hover align-middle text-center mb-0">
+
+
+
+<!--  
+thead = ראש טבלה  
+class="table-info text-dark"  
+• table-info = רקע תכלת לשורה  
+• text-dark = טקסט כהה (כדי שיהיה ניגודיות טובה)  
+-->
+<thead class="table-info text-dark">
+  <tr>
+    <!-- th = כותרת עמודה -->
+    <th>תאריך ושעה</th>
+    <th>סוג אירוע</th>
+    <th>משתמש</th>
+    <th>פרטים</th>
+  </tr>
+</thead>
+
+
+
+<!--  
+tbody = גוף הטבלה  
+id="logTableBody" = אלמנט דינמי שה־JavaScript יוסיף לתוכו שורות לוג מה־Firebase  
+(כל שורה נוצרת ב-main.js ומוזרקת לפה)  
+-->
+<tbody id="logTableBody"></tbody>
+
+
+
+</table> <!-- סוף טבלה -->
+</div> <!-- סוף table-responsive -->
+</div> <!-- סוף card-body -->
+
+
+
+<!--  
+div.card-footer = החלק התחתון של הכרטיס  
+class="card-footer text-center text-light border-info text-secondary"  
+• card-footer = אזור תחתון מעוצב  
+• text-center = טקסט ממורכז  
+• text-light + text-secondary = צבעים בהירים  
+Bootstrap יודע לחבר ביניהם → יוצא אפור בהיר  
+• border-info = מסגרת תכלת עליונה  
+-->
+<div class="card-footer text-center text-light border-info text-secondary">
+  אין אירועים נוספים להצגה
+</div>
+
+
+
+</div> <!-- סוף כרטיס -->
+</main> <!-- סוף MAIN -->
+
 
   <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

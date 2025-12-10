@@ -7,8 +7,7 @@
   <title>מערכת איתור וסימון ניידת</title>
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
-        rel="stylesheet"> <!-- טוען את עיצוב Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- טוען את עיצוב Bootstrap -->
 
   <style>
     body{
@@ -178,19 +177,53 @@
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
-<script src="/main.js"></script>
+<script src="main.js"></script>
 
   <!-- JavaScript להצגת/הסתרת הסיסמה -->
-  <script>
-    const passInput = document.getElementById('loginPass');
+  <!-- קטע JavaScript שאחראי על הצגת/הסתרת הסיסמה בשדה ה־password -->
+<script>
+
+    // שליפת אלמנט שדה הסיסמה לפי ה-ID שלו
+    // document = אובייקט שמייצג את כל ה־HTML
+    // . = אופרטור גישה (Access Operator) שמאפשר להגיע למתודות/מאפיינים בתוך אובייקט
+    // getElementById = פונקציה שמחזירה אלמנט HTML לפי ה-id שלו
+    // 'password' = מחרוזת — מזהה השדה בקובץ ה־HTML
+    const passInput = document.getElementById('password');
+
+
+    // שליפת כפתור "הצג/הסתר" לפי ה-ID שלו
+    // שוב: document → . → getElementById
     const toggleBtn = document.getElementById('toggleLoginPass');
 
+
+    // הוספת מאזין לאירוע click על הכפתור
+    // addEventListener("click", function) = מפעיל פונקציה ברגע שהמשתמש לוחץ
     toggleBtn.addEventListener('click', () => {
-      const isPwd = passInput.type === 'password';
-      passInput.type = isPwd ? 'text' : 'password';
-      toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
+
+        // בדיקה האם השדה כרגע מסוג password
+        // passInput.type = גישה למאפיין type של האינפוט
+        // === = השוואה מוחלטת (ערך + טיפוס)
+        const isPwd = passInput.type === 'password';
+
+
+        // החלפת סוג השדה בין password ל-text באמצעות אופרטור תנאי (ternary operator)
+        // מה ההיגיון?
+        // אם isPwd true → נציג טקסט
+        // אם false → נסיר ונחזיר ל-password
+        passInput.type = isPwd ? 'text' : 'password';
+
+
+        // שינוי הטקסט בכפתור בהתאם למצב
+        // textContent = המחרוזת שמוצגת בתוך הכפתור
+        // אם הסיסמה נחשפה → הכפתור צריך לרשום "הסתר"
+        // אם הסיסמה הוסתרה → הכפתור צריך לרשום "הצג"
+        toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
+
     });
-  </script>
+
+</script>
+
+
 
 </body>
 </html>

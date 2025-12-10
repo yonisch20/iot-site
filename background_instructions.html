@@ -9,317 +9,448 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body{
-            background: url("project_BG.png") center/cover no-repeat fixed;
-        }
-        .my-table {
+    <!-- בלוק CSS פנימי שמגדיר עיצוב לדף ולטבלה -->
+<style>
+
+    /* עיצוב לאלמנט body – רקע התמונה הכללי של האתר */
+    body{
+        /* הגדרת רקע עם תמונה, ממורכזת, מכסה את כל המסך, ללא חזרה, ונשארת קבועה בגלילה */
+        background: url("project_BG.png") center/cover no-repeat fixed;
+    }
+
+    /* מחלקה מותאמת אישית לטבלת Bootstrap, כדי לשלוט בצבעי טקסט */
+    .my-table {
+
+        /* משתנה CSS פנימי של Bootstrap: צבע הטקסט הרגיל בתאים */
         --bs-table-color: white;
-        /* צבע טקסט ברירת מחדל של הטבלה */
 
+        /* צבע הטקסט בשורות מפוספסות (striped rows) */
         --bs-table-striped-color: white;
-        /* צבע הטקסט בשורות מפוספסות (striped) */
 
+        /* צבע הטקסט כאשר העכבר מרחף מעל שורה (hover) */
         --bs-table-hover-color: white;
-        /* צבע הטקסט בעת מעבר עם העכבר על שורה */
 
+        /* החלת צבע הטקסט בפועל על תוכן הטבלה */
         color: var(--bs-table-color);
-        /* החלת צבע הטקסט שהוגדר למעלה בפועל */
     }
 
+    /* עיצוב לקישורים שנמצאים בתוך טבלה עם המחלקה my-table */
     .my-table a {
+
+        /* הקישור יקבל את צבע הטקסט מהטבלה (לבן), ולא כחול ברירת המחדל */
         color: inherit;
-        /* גורם לקישורים לקבל את צבע הטקסט מהטבלה (white) */
 
-        text-decoration: none;
         /* ביטול קו תחתון מהקישורים */
+        text-decoration: none;
     }
 
+    /* כותרות שורה עליונה (thead) בטבלה כהה יהיו תמיד בצבע לבן, גם אם Bootstrap ישנה צבעים */
     .my-table thead.table-dark th {
+
+        /* קובע במפורש שהטקסט בכותרת יהיה לבן */
         color: #fff;
-        /* כותרות ראשיות של הטבלה בצבע לבן — גם אם Bootstrap משנה */
     }
-    </style>
+
+</style>
+
+<!-- סגירת אזור ה־head של המסמך -->
 </head>
+
+<!-- תחילת גוף הדף – כל מה שמופיע על המסך נמצא בתוך body -->
 <body>
 
-    <!-- NAVBAR-->
+    <!-- תיאור לוגי: אזור הניווט העליון (Navbar) של האתר -->
+    <!-- אלמנט nav מייצג אזור ניווט -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!-- container-fluid = קונטיינר ברוחב מלא אשר מחזיק את תוכן ה־navbar -->
         <div class="container-fluid">
+
+            <!-- קישור המייצג את לוגו ושם המערכת, חוזר לעמוד הראשי -->
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+
+                <!-- תמונת הלוגו של הפרויקט -->
                 <img src="project_logo.png" alt="לוגו" height="40">
+
+                <!-- טקסט שם המערכת, מוסתר במסכים קטנים ומוצג במסכים גדולים בלבד -->
                 <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+
+            <!-- סגירת תגית הקישור של הלוגו -->
             </a>
             
+            <!-- כפתור התנתקות, יופיע רק כשמשתמש מחובר לפי JavaScript (שולט ב-display) -->
             <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
                התנתקות
             </button>
 
+            <!-- כפתור "המבורגר" לפתיחת/סגירת התפריט במסכים קטנים -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+                <!-- אייקון ברירת המחדל של כפתור ה־navbar (3 קווים) -->
                 <span class="navbar-toggler-icon"></span>
+
+            <!-- סגירת כפתור ההמבורגר -->
             </button>
 
+            <!-- אזור התפריט שיכול להתקפל ולהתרחב (collapse) -->
             <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- רשימת פריטי ניווט בתוך ה־navbar -->
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-                    <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dc_control.html">שליטה במנועים</a></li>
-                    <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+
+                    <!-- פריט ניווט: רקע והוראות שימוש -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a>
+                    </li>
+
+                    <!-- פריט ניווט: שידור חי -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="live_feed.html">שידור חי</a>
+                    </li>
+
+                    <!-- פריט ניווט: שליטה במנועים -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="dc_control.html">שליטה במנועים</a>
+                    </li>
+
+                    <!-- פריט ניווט: יומן אירועים -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="log.html">יומן אירועים</a>
+                    </li>
+
+                <!-- סגירת רשימת פריטי הניווט -->
                 </ul>
+
+            <!-- סגירת בלוק ה-collapse של הניווט -->
             </div>
+
+        <!-- סגירת container-fluid -->
         </div>
+
+    <!-- סגירת ה־navbar -->
     </nav>
 
-<main class="container py-5">
-    <!-- container = יישור מרכז + מגבלת רוחב -->
-    <!-- py-5 = ריווח אנכי גדול -->
+    <!-- תחילת אזור התוכן המרכזי של הדף -->
+    <main class="container py-5">
 
-    <!-- כותרת -->
-    <h1 class="mb-4 text-center text-light">
-        <!-- mb-4 = ריווח מתחת -->
-        <!-- text-center = טקסט ממורכז -->
-        <!-- text-light = טקסט בהיר -->
-        רקע הפרויקט והוראות שימוש
-    </h1>
+        <!-- כותרת ראשית של הדף – רקע והוראות שימוש -->
+        <h1 class="mb-4 text-center text-light">
+            רקע הפרויקט והוראות שימוש
+        </h1>
 
-    <!-- בלוק טקסט עם כותרת -->
-    <div class="mb-5 h4 text-light">
-        <!-- mb-5 = ריווח גדול למטה -->
-        <!-- h4 = גודל טקסט -->
-        <!-- text-light = טקסט בהיר -->
+        <!-- בלוק טקסט עם כותרת משנה ותיאור -->
+        <div class="mb-5 h4 text-light">
 
-        <h2 class="h4 mb-3 text-light">
-            <!-- h4 = כותרת קטנה -->
-            <!-- mb-3 = ריווח -->
-            למה בחרנו בנושא הזה?
-        </h2>
+            <!-- כותרת משנה – למה בחרנו בנושא -->
+            <h2 class="h4 mb-3 text-light">
+                למה בחרנו בנושא הזה?
+            </h2>
 
-        <p>
-            מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות...
-        </p>
-    </div>
+            <!-- פסקת טקסט שמסבירה את הרקע לפרויקט -->
+            <p>
+                מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות...
+            </p>
 
-    <!-- תמונה מרכזית -->
-    <div class="text-center mb-5">
-        <!-- text-center = מרכז -->
-        <!-- mb-5 = ריווח -->
-        
-        <img src="project_logo.png" class="img-fluid rounded shadow w-50" alt="לוגו הפרויקט">
-        <!-- img-fluid = התאמה לגודל מסך -->
-        <!-- rounded = פינות מעוגלות -->
-        <!-- shadow = צל -->
-        <!-- w-50 = רוחב 50% -->
+        <!-- סגירת בלוק הטקסט -->
+        </div>
 
-        <p class="mt-2 text-light">
-            <!-- mt-2 = רווח מעל הטקסט -->
-            לוגו הפרויקט
-        </p>
-    </div>
+        <!-- בלוק שמרכז את התמונה (לוגו הפרויקט) -->
+        <div class="text-center mb-5">
 
-    <!-- סרטון יוטיוב -->
-    <section class="container my-4">
-        <!-- container = שמירה על מבנה -->
-        <!-- my-4 = ריווח עליון/תחתון -->
+            <!-- תמונה מרכזית של לוגו הפרויקט, מסתגלת לרוחב המסך, מעוגלת עם צל -->
+            <img src="project_logo.png" class="img-fluid rounded shadow w-50" alt="לוגו הפרויקט">
 
-        <h3 class="mt-4 text-light">
-            <!-- mt-4 = רווח עליון -->
-            סרטון הסבר קצר על ה־ESP32
-        </h3>
+            <!-- טקסט קטן מתחת לתמונה המתאר את התמונה -->
+            <p class="mt-2 text-light">
+                לוגו הפרויקט
+            </p>
 
-        <div class="mx-auto" style="max-width: 1000px;">
-            <!-- mx-auto = מרכז את הבלוק -->
+        <!-- סגירת בלוק התמונה המרכזית -->
+        </div>
 
-            <div class="ratio ratio-16x9">
-                <!-- ratio = שמירה על יחס מסך 16:9 -->
-                <iframe src="https://www.youtube.com/embed/XTm-YL-5G34" allowfullscreen></iframe>
+        <!-- מקטע חדש שבו יש סרטון יוטיוב הסבר על ESP32 -->
+        <section class="container my-4">
+
+            <!-- כותרת למקטע הסרטון -->
+            <h3 class="mt-4 text-light">
+                סרטון הסבר קצר על ה־ESP32
+            </h3>
+
+            <!-- div שמרכז את תוכן הסרטון ומגביל לרוחב מקסימלי -->
+            <div class="mx-auto" style="max-width: 1000px;">
+
+                <!-- div עם יחס מסך 16:9 מתאים לוידאו -->
+                <div class="ratio ratio-16x9">
+
+                    <!-- iframe שמטמיע את סרטון ה-YouTube מתוך קישור embed -->
+                    <iframe src="https://www.youtube.com/embed/XTm-YL-5G34" allowfullscreen></iframe>
+
+                <!-- סגירת בלוק ratio -->
+                </div>
+
+            <!-- סגירת בלוק הוידאו המכיל -->
             </div>
+
+        <!-- סגירת מקטע הסרטון -->
+        </section>
+
+        <!-- בלוק טקסט בהיר עם הוראות שימוש במערכת -->
+        <div class="text-light">
+
+            <!-- כותרת תת-מקטע: איך משתמשים במערכת -->
+            <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
+
+            <!-- רשימה ממוספרת של שלבי השימוש במערכת -->
+            <ol class="h5 mb-4">
+
+                <!-- שלב 1: הפעלת המערכת וחיבור לרשת -->
+                <li>הפעלת המערכת וחיבור לרשת ה-WiFi.</li>
+
+                <!-- שלב 2: כניסה למסך השידור החי -->
+                <li>כניסה לשידור חי.</li>
+
+                <!-- שלב 3: המערכת ננעלת על עצם ומתריעה -->
+                <li>המערכת ננעלת על עצם ומתריעה.</li>
+
+                <!-- שלב 4: המשתמש מאשר אמת/שווא -->
+                <li>המשתמש מדווח האם האירוע אמיתי/שווא.</li>
+
+                <!-- שלב 5: רישום האירוע ביומן -->
+                <li>הכול נרשם ביומן האירועים.</li>
+
+            <!-- סגירת רשימה -->
+            </ol>
+
+        <!-- סגירת בלוק ההוראות -->
         </div>
-    </section>
 
-    <!-- הוראות שימוש -->
-    <div class="text-light">
-        <!-- text-light = טקסט בהיר -->
+        <!-- מקטע נוסף – טבלת רכיבי המערכת העיקריים -->
+        <section class="container my-5">
 
-        <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
-        <!-- h5 = כותרת קטנה -->
-        <!-- mb-3 = רווח -->
+            <!-- כותרת מרכזית לטבלת הרכיבים -->
+            <h2 class="text-center mb-4 text-light">
+                רכיבי המערכת העיקריים
+            </h2>
 
-        <ol class="h5 mb-4">
-            <!-- h5 = טקסט גדול יחסית -->
-            <!-- mb-4 = רווח -->
+            <!-- עטיפה המאפשרת גלילה אופקית בטלפונים במקרה שהטבלה רחבה -->
+            <div class="table-responsive">
 
-            <li>הפעלת המערכת וחיבור לרשת ה-WiFi.</li>
-            <li>כניסה לשידור חי.</li>
-            <li>המערכת ננעלת על עצם ומתריעה.</li>
-            <li>המשתמש מדווח האם האירוע אמיתי/שווא.</li>
-            <li>הכול נרשם ביומן האירועים.</li>
-        </ol>
-    </div>
+                <!-- עטיפה נוספת (מיותרת טכנית, אבל לא מפריעה) שנותנת responsive לטבלה -->
+                <div class="table-responsive">
 
-    <!-- טבלת רכיבים -->
-<section class="container my-5">
-    <!-- my-5 = רווח גדול -->
+                    <!-- טבלה עם גבולות, פסים, יישור למרכז, והמחלקה המותאמת לצבעים -->
+                    <table class="table table-bordered table-striped text-center align-middle my-table">
 
-    <h2 class="text-center mb-4 text-light">
-        <!-- text-center = מרכז -->
-        <!-- mb-4 = רווח -->
-        רכיבי המערכת העיקריים
-    </h2>
+                        <!-- שורת כותרת של הטבלה, עם רקע כהה -->
+                        <thead class="table-dark">
 
-    <div class="table-responsive">
-        <!-- table-responsive = גלילה בטלפון -->
+                            <!-- שורת הכותרת הראשית -->
+                            <tr>
 
-        <div class="table-responsive">
-  <!-- table-responsive = מאפשר גלילה אופקית בטלפונים כדי שהטבלה לא תיחתך -->
+                                <!-- תא כותרת: סוג תקשורת -->
+                                <th>תקשורת</th>
 
-  <table class="table table-bordered table-striped text-center align-middle my-table">
-    <!-- table = טבלה מעוצבת -->
-    <!-- table-bordered = גבול סביב כל תאים -->
-    <!-- table-striped = רקע מפוספס לשורות זוגיות -->
-    <!-- text-center = יישור טקסט למרכז -->
-    <!-- align-middle = טקסט באמצע אנכית -->
-    <!-- my-table = המחלקה שהגדרת לצבעי טקסט לבנים -->
+                                <!-- תא כותרת: תפקיד הרכיב -->
+                                <th>תפקיד</th>
 
-    <thead class="table-dark">
-      <!-- table-dark = רקע שחור לשורת הכותרות -->
-      <tr>
-        <th>תקשורת</th>
-        <th>תפקיד</th>
-        <th>תמונה</th>
-        <th>רכיב</th>
-      </tr>
-    </thead>
+                                <!-- תא כותרת: עמודת תמונה -->
+                                <th>תמונה</th>
 
-    <tbody>
+                                <!-- תא כותרת: שם הרכיב -->
+                                <th>רכיב</th>
 
-      <!-- שורה 1 -->
-      <tr>
-        <td>UART / Wi-Fi</td>
-        <td>קליטת תמונה</td>
+                            <!-- סגירת שורת הכותרת -->
+                            </tr>
 
-        <td>
-          <img src="esp32-cam.png" width="65"
-               class="rounded border img-fluid shadow-sm" alt="ESP32-CAM">
-          <!-- rounded = פינות מעוגלות -->
-          <!-- border = מסגרת דקה -->
-          <!-- img-fluid = התאמת תמונה לרוחב המדויק (Responsiveness) -->
-          <!-- shadow-sm = צל קטן -->
-        </td>
+                        <!-- סגירת thead -->
+                        </thead>
 
-        <td>ESP32-CAM</td>
-      </tr>
+                        <!-- גוף הטבלה – כל שורה מייצגת רכיב במערכת -->
+                        <tbody>
 
-      <!-- שורה 2 -->
-      <tr>
-        <td>Digital I/O</td>
-        <td>בקרת מנועים ולוגיקה מהירה</td>
+                            <!-- שורה 1: ESP32-CAM -->
+                            <tr>
 
-        <td>
-          <img src="fpga_de10.jpg" width="65"
-               class="rounded border img-fluid shadow-sm" alt="FPGA DE10-Lite">
-        </td>
+                                <!-- סוג תקשורת של ESP32-CAM -->
+                                <td>UART / Wi-Fi</td>
 
-        <td>FPGA (DE10-Lite)</td>
-      </tr>
+                                <!-- תפקיד ESP32-CAM -->
+                                <td>קליטת תמונה</td>
 
-      <!-- שורה 3 -->
-      <tr>
-        <td>PWM</td>
-        <td>כיוון הלייזר והמצלמה</td>
+                                <!-- תא תמונה – מציג תמונת ESP32-CAM -->
+                                <td>
+                                    <img src="esp32-cam.png" width="65"
+                                         class="rounded border img-fluid shadow-sm" alt="ESP32-CAM">
+                                </td>
 
-        <td>
-          <img src="mg996r-servo.jpg" width="65"
-               class="rounded border img-fluid shadow-sm" alt="MG996R Servo">
-        </td>
+                                <!-- תא שם הרכיב -->
+                                <td>ESP32-CAM</td>
 
-        <td>MG996R Servo</td>
-      </tr>
+                            <!-- סגירת השורה הראשונה -->
+                            </tr>
 
-      <!-- שורה 4 -->
-      <tr>
-        <td>Digital Output</td>
-        <td>סימון העצם המזוהה</td>
+                            <!-- שורה 2: FPGA DE10-Lite -->
+                            <tr>
 
-        <td>
-          <img src="ky-008.png" width="65"
-               class="rounded border img-fluid shadow-sm" alt="KY-008 Laser">
-        </td>
+                                <!-- סוג תקשורת – קווי I/O דיגיטליים -->
+                                <td>Digital I/O</td>
 
-        <td>KY-008 Laser</td>
-      </tr>
+                                <!-- תפקיד הרכיב – בקרת מנועים ולוגיקה מהירה -->
+                                <td>בקרת מנועים ולוגיקה מהירה</td>
 
-      <!-- שורה 5 -->
-      <tr>
-        <td>Trigger / Echo</td>
-        <td>מדידת מרחק ובדיקת טווח מטרה</td>
+                                <!-- תא תמונה – תמונת לוח FPGA -->
+                                <td>
+                                    <img src="fpga_de10.jpg" width="65"
+                                         class="rounded border img-fluid shadow-sm" alt="FPGA DE10-Lite">
+                                </td>
 
-        <td>
-          <img src="hc-sr04.png" width="65"
-               class="rounded border img-fluid shadow-sm" alt="HC-SR04">
-        </td>
+                                <!-- שם הרכיב -->
+                                <td>FPGA (DE10-Lite)</td>
 
-        <td>HC-SR04</td>
-      </tr>
+                            <!-- סגירת השורה השנייה -->
+                            </tr>
 
-    </tbody>
-  </table>
-</div>
+                            <!-- שורה 3: סרוו MG996R -->
+                            <tr>
 
-    </div>
-</section>
+                                <!-- ערוץ שליטה – PWM -->
+                                <td>PWM</td>
 
-<!-- חלונית קופצת (Modal) -->
-<div class="modal fade" id="fpgaModal">
-    <!-- modal + fade = חלונית קופצת עם אנימציה -->
+                                <!-- תפקיד – כיוון לייזר ומצלמה -->
+                                <td>כיוון הלייזר והמצלמה</td>
 
-  <div class="modal-dialog modal-dialog-centered">
-      <!-- modal-dialog-centered = מרכז חלונית אנכית -->
+                                <!-- תא תמונה – סרוו -->
+                                <td>
+                                    <img src="mg996r-servo.jpg" width="65"
+                                         class="rounded border img-fluid shadow-sm" alt="MG996R Servo">
+                                </td>
 
-    <div class="modal-content bg-dark text-light border-info">
-        <!-- modal-content = גוף החלונית -->
-        <!-- bg-dark = רקע כהה -->
-        <!-- text-light = טקסט בהיר -->
-        <!-- border-info = מסגרת תכלת -->
+                                <!-- שם הרכיב -->
+                                <td>MG996R Servo</td>
 
-      <div class="modal-header border-info">
-          <!-- modal-header = אזור כותרת -->
+                            <!-- סגירת השורה השלישית -->
+                            </tr>
 
-        <h5 class="modal-title">בחר דף נתונים</h5>
-      </div>
+                            <!-- שורה 4: לייזר KY-008 -->
+                            <tr>
 
-      <div class="modal-body text-center">
-          <!-- modal-body = גוף החלונית -->
-          <!-- text-center = טקסט ממורכז -->
+                                <!-- סוג תקשורת – יציאה דיגיטלית -->
+                                <td>Digital Output</td>
 
-        <div class="d-grid gap-3">
-            <!-- d-grid = פריסה בטורים -->
-            <!-- gap-3 = רווח בין כפתורים -->
+                                <!-- תפקיד – סימון העצם המזוהה -->
+                                <td>סימון העצם המזוהה</td>
 
-          <a class="btn btn-outline-info" target="_blank">
-              <!-- btn-outline-info = כפתור מסגרת תכלת -->
-            Datasheet של לוח ה־DE10-Lite
-          </a>
+                                <!-- תא תמונה – לייזר KY-008 -->
+                                <td>
+                                    <img src="ky-008.png" width="65"
+                                         class="rounded border img-fluid shadow-sm" alt="KY-008 Laser">
+                                </td>
 
-          <a class="btn btn-outline-info" target="_blank">
-            Datasheet של ה־FPGA MAX10
-          </a>
+                                <!-- שם הרכיב -->
+                                <td>KY-008 Laser</td>
+
+                            <!-- סגירת השורה הרביעית -->
+                            </tr>
+
+                            <!-- שורה 5: חיישן מרחק HC-SR04 -->
+                            <tr>
+
+                                <!-- ערוצי Trigger / Echo – מדידת זמן החזרה -->
+                                <td>Trigger / Echo</td>
+
+                                <!-- תפקיד – מדידת מרחק ובדיקת טווח -->
+                                <td>מדידת מרחק ובדיקת טווח מטרה</td>
+
+                                <!-- תא תמונה – HC-SR04 -->
+                                <td>
+                                    <img src="hc-sr04.png" width="65"
+                                         class="rounded border img-fluid shadow-sm" alt="HC-SR04">
+                                </td>
+
+                                <!-- שם הרכיב -->
+                                <td>HC-SR04</td>
+
+                            <!-- סגירת השורה החמישית -->
+                            </tr>
+
+                        <!-- סגירת גוף הטבלה -->
+                        </tbody>
+
+                    <!-- סגירת תגית table -->
+                    </table>
+
+                <!-- סגירת ה-table-responsive הפנימי -->
+                </div>
+
+            <!-- סגירת ה-table-responsive החיצוני -->
+            </div>
+
+        <!-- סגירת מקטע הטבלה -->
+        </section>
+
+        <!-- חלונית קופצת (Modal) להצגת קישורים ל-Datasheet של ה-FPGA -->
+        <div class="modal fade" id="fpgaModal">
+
+            <!-- modal-dialog מרכז את החלונית, modal-dialog-centered מיישר אותה אנכית באמצע המסך -->
+            <div class="modal-dialog modal-dialog-centered">
+
+                <!-- תוכן החלונית – רקע כהה, טקסט בהיר, מסגרת בצבע info -->
+                <div class="modal-content bg-dark text-light border-info">
+
+                    <!-- החלק העליון של החלונית – הכותרת -->
+                    <div class="modal-header border-info">
+
+                        <!-- כותרת החלונית -->
+                        <h5 class="modal-title">בחר דף נתונים</h5>
+
+                    <!-- סגירת אזור ה-header של המודל -->
+                    </div>
+
+                    <!-- גוף החלונית – מרכזת את תוכן הכפתורים -->
+                    <div class="modal-body text-center">
+
+                        <!-- d-grid = פריסה כ-grid; gap-3 = מרווח אנכי בין הכפתורים -->
+                        <div class="d-grid gap-3">
+
+                            <!-- כפתור (קישור) לדף נתונים של לוח DE10-Lite – ייפתח בטאב חדש -->
+                            <a class="btn btn-outline-info" target="_blank">
+                                Datasheet של לוח ה־DE10-Lite
+                            </a>
+
+                            <!-- כפתור (קישור) לדף נתונים של FPGA MAX10 – גם בטאב חדש -->
+                            <a class="btn btn-outline-info" target="_blank">
+                                Datasheet של ה־FPGA MAX10
+                            </a>
+
+                        <!-- סגירת ה-grid של הכפתורים במודל -->
+                        </div>
+
+                    <!-- סגירת גוף המודל -->
+                    </div>
+
+                    <!-- אזור התחתית של החלונית – כפתור סגירה -->
+                    <div class="modal-footer border-info">
+
+                        <!-- כפתור סגירה שמסמן ל-Bootstrap לסגור את המודל -->
+                        <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            סגור
+                        </button>
+
+                    <!-- סגירת modal-footer -->
+                    </div>
+
+                <!-- סגירת modal-content -->
+                </div>
+
+            <!-- סגירת modal-dialog -->
+            </div>
+
+        <!-- סגירת אלמנט המודל -->
         </div>
-      </div>
 
-      <div class="modal-footer border-info">
-        <!-- modal-footer = תחתית החלונית -->
-        <button class="btn btn-secondary" data-bs-dismiss="modal">
-          <!-- btn-secondary = כפתור אפור -->
-          <!-- data-bs-dismiss="modal" = סגירת חלונית -->
-          סגור
-        </button>
-      </div>
+    <!-- סגירת main – סוף גוף התוכן המרכזי של הדף -->
+    </main>
 
-    </div>
-  </div>
-</div>
-
-</main>
 
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
