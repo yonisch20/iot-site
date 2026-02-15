@@ -1,165 +1,355 @@
 <!DOCTYPE html>
+<!--
+  <!DOCTYPE html> אומר לדפדפן:
+  "זה מסמך HTML מודרני (HTML5)".
+  זה לא תג שסוגר משהו, זה רק הכרזה בתחילת הקובץ.
+-->
+
 <html lang="he" dir="rtl">
+<!--
+  <html> = תג שמכיל את כל הדף.
+  lang="he" = אומר לדפדפן שהשפה של התוכן היא עברית.
+  זה חשוב במיוחד למנועי חיפוש, קוראי מסך וכו'.
+  dir="rtl" = right-to-left, כלומר כיוון הכתיבה הוא מימין לשמאל
+  (כמו בעברית), ולכן הטקסט מיושר בהתאם.
+-->
+
 <head>
+  <!--
+    <head> = אזור הגדרות של הדף.
+    כאן לא מופיע תוכן שהמשתמש רואה ישירות,
+    אלא הגדרות/קישורים/כותרת הדף וכו'.
+  -->
+
   <meta charset="UTF-8" />
+  <!--
+    <meta charset="UTF-8"> = הגדרה שאומרת:
+    "הטקסט בדף הזה הוא בקידוד UTF-8".
+    UTF-8 זה סט קידוד שתומך בעברית, אנגלית, סימנים מיוחדים וכו'.
+    בלי זה, אותיות בעברית יכולות להופיע כשיבושים.
+  -->
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--
+    meta name="viewport" = הגדרה שקשורה לאיך האתר נראה בטלפונים.
+    content="width=device-width" = אומר לדפדפן בטלפון:
+    "תתאים את רוחב הדף לרוחב המסך הפיזי של המכשיר".
+    initial-scale=1.0 = רמת הזום ההתחלתית (לא להגדיל/להקטין אוטומטית).
+    בלעדיה, אתר יכול להיראות "מוזר" או קטן מדי במובייל.
+  -->
 
   <title>מערכת איתור וסימון ניידת</title>
+  <!--
+    <title> = הכותרת שמופיעה בטאב של הדפדפן למעלה,
+    ולא בתוך הדף עצמו.
+  -->
 
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- טוען את עיצוב Bootstrap -->
+  <!--
+    השורה הבאה מטעינה קובץ CSS חיצוני של Bootstrap.
+    Bootstrap היא ספריית עיצוב מוכנה שנותנת הרבה מחלקות CSS
+    (כמו container, row, col, btn וכו') שעוזרות לסדר ולעצב את הדף.
+    href="..." = הכתובת של הקובץ.
+    rel="stylesheet" = אומר שזה קובץ עיצוב (CSS).
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <style>
+    /* 
+      כאן אנחנו כותבים עיצוב (CSS) בתוך הדף עצמו.
+      בוחר את תגית <body> של כל הדף.
+    */
     body{
+      /*
+        background: ... = עיצוב רקע של הגוף (כל הדף).
+        url(project_BG.png) = תמונה בשם project_BG.png מתוך תקיית הקבצים.
+        center = ממקם את התמונה במרכז.
+        cover = גורם לתמונה לכסות את כל המסך גם אם היא נחתכת.
+        no-repeat = שלא יחזרו את התמונה שוב ושוב כמו טפט.
+        fixed = הרקע "צמוד" למסך ולא זז כשמגלגלים.
+      */
       background: url(project_BG.png) center/cover no-repeat fixed;
     }
   </style>
 </head>
 
 <body>
+  <!--
+    <body> = כל מה שנמצא כאן הוא החלק שהמשתמש רואה בפועל בדף:
+    טקסט, תמונות, תפריטים, כפתורים, טפסים וכו'.
+  -->
 
-  <!-- תפריט ניווט -->
+  <!--
+    זהו התפריט העליון (Navbar).
+    <nav> = רכיב שמייצג "אזור ניווט" בדף, כמו תפריט ראשי.
+    id="mainNavbar" = נותן שם ייחודי לתפריט הזה, כדי שנוכל להתייחס אליו בג'אווה־סקריפט.
+    class="navbar navbar-expand-lg navbar-dark bg-dark":
+      - navbar = עיצוב בסיסי של תפריט Bootstrap.
+      - navbar-expand-lg = התפריט ייפתח לרוחב רק במסכים גדולים (lg ומעלה),
+        ובמסכים קטנים יותר הוא מתקפל.
+      - navbar-dark = טקסט בהיר על רקע כהה.
+      - bg-dark = רקע כהה.
+    style="display: none;" = בהתחלה התפריט מוסתר (לא מוצג),
+    כנראה כי הוא יופיע רק אחרי התחברות, דרך ג'אווה־סקריפט.
+  -->
   <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-dark" style="display: none;">
-    <!-- navbar = תפריט בסיסי -->
-    <!-- navbar-expand-lg = מתקפל במסכים קטנים -->
-    <!-- navbar-dark = טקסט בהיר לתפריט כהה -->
-    <!-- bg-dark = רקע שחור -->
 
+    <!--
+      container-fluid = מיכל (div) שתופס את כל רוחב המסך,
+      ומשמש לעטוף את התוכן של התפריט בצורה מסודרת.
+    -->
     <div class="container-fluid">
-      <!-- container-fluid = פריסה מלאה לרוחב -->
 
+      <!--
+        <a> = קישור.
+        class="navbar-brand" = עיצוב של "מותג" בתפריט (לוגו/שם).
+        d-flex = הופך את התוכן לפלקסבוקס (סידור גמיש).
+        align-items-center = מיישר את הפריטים אנכית למרכז.
+        gap-2 = מוסיף רווח קטן בין הפריטים שבשורה.
+        href="index.html" = כאשר לוחצים על הלוגו, הולכים לדף index.html.
+      -->
       <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <!-- navbar-brand = עיצוב לכותרת/לוגו -->
-        <!-- d-flex = מציב את התוכן בשורה -->
-        <!-- align-items-center = יישור אנכי של הפריטים -->
-        <!-- gap-2 = רווח קטן בין האייקון לטקסט -->
 
+        <!--
+          <img> = תמונה.
+          src="project_logo.png" = שם קובץ התמונה של הלוגו.
+          alt="לוגו" = טקסט חלופי למקרה שהתמונה לא נטענת (וגם לקוראי מסך).
+          height="40" = גובה התמונה בפיקסלים.
+        -->
         <img src="project_logo.png" alt="לוגו" height="40">
+
+        <!--
+          <span> = תיבת טקסט קטנה.
+          class="d-none d-lg-inline":
+            d-none = אל תציג את האלמנט בכלל כברירת מחדל.
+            d-lg-inline = במסכים גדולים (lg ומעלה), להציג אותו כספאן רגיל.
+          כלומר: בטלפונים הטקסט לא יופיע, רק הלוגו.
+          במסכים גדולים - יופיע גם הטקסט "מערכת איתור וסימון ניידת".
+        -->
         <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
-        <!-- d-none d-lg-inline = מופיע רק במסכים גדולים -->
       </a>
 
+      <!--
+        כפתור "התנתקות":
+        id="signOutBtn" = מזהה שנשתמש בו בג'אווה־סקריפט כדי להפעיל Logout.
+        class="btn btn-sm btn-outline-danger me-3":
+          - btn = כפתור Bootstrap.
+          - btn-sm = כפתור קטן.
+          - btn-outline-danger = כפתור עם מסגרת אדומה.
+          - me-3 = margin-end 3 (רווח מצד ימין/שמאל בהתאם לכיוון כתיבה).
+        style="display: none;" = לא יופיע בהתחלה, רק אחרי התחברות.
+      -->
       <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
         התנתקות
       </button>
 
+      <!--
+        כפתור שמופיע רק במסכים קטנים כדי לפתוח/לסגור את התפריט.
+        class="navbar-toggler" = עיצוב לכפתור תפריט במובייל.
+        type="button" = כפתור רגיל (לא שליחה של טופס).
+        data-bs-toggle="collapse" = אומר ל-Bootstrap לפתוח/לסגור אלמנט.
+        data-bs-target="#navbarNav" = מזהה את האזור שייפתח/ייסגר (שמתחיל ב-id="navbarNav").
+      -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <!-- navbar-toggler = כפתור תפריט לנייד -->
-        <!-- data-bs-toggle="collapse" = מפעיל פתיחה/סגירה -->
-        <!-- data-bs-target="#navbarNav" = מזהה את אזור הכיווץ -->
-
+        <!--
+          <span class="navbar-toggler-icon"> = אייקון של "שלוש שורות" (תפריט המבורגר).
+        -->
         <span class="navbar-toggler-icon"></span>
       </button>
 
+      <!--
+        אזור הקישורים בתפריט:
+        class="collapse navbar-collapse" = אזור שיכול להתקפל ולהיפתח.
+        id="navbarNav" = השם שלו, אליו מתייחס data-bs-target בכפתור למעלה.
+      -->
       <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- collapse navbar-collapse = תוכן מתקפל בתפריט -->
         
+        <!--
+          <ul> = רשימה לא ממוספרת של פריטים.
+          class="navbar-nav me-auto":
+            navbar-nav = רשימת קישורים בתפריט.
+            me-auto = דוחף את הקישורים לצד אחד כדי לפנות מקום בצד השני.
+        -->
         <ul class="navbar-nav me-auto">
-          <!-- navbar-nav = רשימת קישורים -->
-          <!-- me-auto = דחיפה לצד ההפוך לשם יישור -->
 
-          <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-          <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-          <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+          <!-- כל אחד מה-li הוא קישור אחד בתפריט -->
+          <li class="nav-item">
+            <a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="live_feed.html">שידור חי</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="log.html">יומן אירועים</a>
+          </li>
+
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- כותרת הדף -->
+  <!--
+    <header> = אזור כותרת ראשי של הדף.
+    class="container py-4 text-center":
+      container = מרכז את התוכן ומגביל את רוחבו.
+      py-4 = padding (ריווח פנימי) למעלה ולמטה.
+      text-center = ממרכז את הטקסט באמצע.
+  -->
   <header class="container py-4 text-center">
-    <!-- container = מרכז ומגביל רוחב -->
-    <!-- py-4 = ריווח אנכי גדול -->
-    <!-- text-center = טקסט ממורכז -->
 
-    <h1 class="h4 fw-bold mb-1 text-light">ברוכים הבאים לאתר מערכת איתור וסימון ניידת</h1>
-    <!-- h4 = גודל כותרת -->
-    <!-- fw-bold = מודגש -->
-    <!-- mb-1 = ריווח קטן למטה -->
-    <!-- text-light = צבע בהיר -->
+    <!--
+      <h1> עם class="h4" = כותרת ראשית אבל בעיצוב בגודל h4.
+      fw-bold = טקסט מודגש.
+      mb-1 = מרווח קטן מתחת.
+      text-light = טקסט בצבע בהיר (לבן/אפור בהיר).
+    -->
+    <h1 class="h4 fw-bold mb-1 text-light">
+      ברוכים הבאים לאתר מערכת איתור וסימון ניידת
+    </h1>
 
+    <!--
+      <p> = פסקה.
+      class="text-body-secondary m-0 text-light":
+        text-body-secondary = צבע טקסט משני (טיפה פחות בולט).
+        m-0 = ללא מרווח סביב הפסקה.
+        text-light = טקסט בהיר (כאן בעצם זה מה שדומיננטי).
+      הטקסט מסביר שזה אזור התחברות לחשבון.
+    -->
     <p class="text-body-secondary m-0 text-light">התחברות לחשבון</p>
-    <!-- m-0 = בלי מרווח כלל -->
   </header>
 
-  <!-- תוכן מרכזי -->
+  <!--
+    <main> = אזור התוכן העיקרי של הדף.
+    class="d-flex align-items-center justify-content-center min-vh-75 pb-5":
+      d-flex = משתמש ב-Flexbox כדי לסדר את הילדים שלו.
+      align-items-center = מיישר את הילדים למרכז בציר האנכי.
+      justify-content-center = ממרכז בציר האופקי.
+      min-vh-75 = גובה מינימלי של 75% מגובה המסך (vh = viewport height).
+      pb-5 = padding-bottom = רווח בתחתית.
+  -->
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
-    <!-- d-flex = פריסה בעזרת Flexbox -->
-    <!-- align-items-center = יישור אנכי למרכז -->
-    <!-- justify-content-center = יישור אופקי למרכז -->
-    <!-- min-vh-75 = גובה מינימלי – 75% מהמסך -->
-    <!-- pb-5 = ריווח תחתון גדול -->
 
+    <!-- container = עוד פעם מיכל שמרכז את התוכן -->
     <div class="container">
+      <!-- row = שורה של Bootstrap לסידור עמודות -->
       <div class="row justify-content-center">
-        <!-- row = שורה של Bootstrap -->
-        <!-- justify-content-center = מרכז את העמודות -->
-
+        <!--
+          col-12 = במסכים הכי קטנים, תופס את כל הרוחב.
+          col-sm-10 = במסכים קצת יותר גדולים (טלפון בקטן), תופס 10/12 מהרוחב.
+          col-md-8 = בטאבלטים/מסכים בינוניים, תופס 8/12.
+          col-lg-5 = במסכים גדולים, תופס פחות רוחב (5/12) כדי שהטופס יהיה צר ואלגנטי.
+        -->
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-          <!-- col-12 = רוחב מלא במסכים קטנים -->
-          <!-- col-sm-10 = מעט צר יותר בטלפונים -->
-          <!-- col-md-8 = במסכים בינוניים -->
-          <!-- col-lg-5 = במסכים גדולים רחב 5/12 -->
 
+          <!--
+            <div class="card ..."> = קופסה עם עיצוב Bootstrap:
+            shadow-sm = צל קטן למראה "מרחף".
+            rounded-4 = פינות מעוגלות.
+            bg-secondary = רקע אפור כהה.
+          -->
           <div class="card shadow-sm rounded-4 bg-secondary">
-            <!-- card = קופסה עם עיצוב אחיד -->
-            <!-- shadow-sm = צל קטן -->
-            <!-- rounded-4 = פינות מעוגלות -->
-            <!-- bg-secondary = רקע אפור כהה -->
 
+            <!--
+              card-body = אזור התוכן בתוך הקארד.
+              p-4 = ריווח פנימי גדול.
+              p-sm-4 = אותו דבר במסכים קטנים (מבטיח שלא יהיה צמוד).
+            -->
             <div class="card-body p-4 p-sm-4">
-              <!-- card-body = תוכן הקופסה -->
-              <!-- p-4 = ריווח פנימי גדול -->
-              <!-- p-sm-4 = ריווח שקיים גם במסכים קטנים -->
 
-              <!-- טופס כניסה -->
+              <!--
+                <form> = טופס התחברות.
+                class="vstack gap-3":
+                  vstack = "vertical stack" – שם כל דבר בשורה חדשה מתחת לקודם.
+                  gap-3 = רווח בין הפריטים.
+              -->
               <form class="vstack gap-3">
-                <!-- vstack = סידור אלמנטים בטור -->
-                <!-- gap-3 = רווח ביניהם -->
 
+                <!-- שדה אימייל -->
                 <div>
                   <label for="email" class="form-label text-light">אימייל</label>
-                  <!-- form-label = עיצוב לתוויות -->
+                  <!--
+                    <label> = תווית לשדה קלט.
+                    for="email" = מחובר לאינפוט עם id="email".
+                    כשמקליקים על הלייבל, הדפדפן יתמקד בשדה המתאים.
+                    text-light = טקסט בהיר.
+                  -->
                   <input id="email" type="email" class="form-control bg-light" placeholder="name@example.com">
-                  <!-- form-control = עיצוב אינפוטים -->
-                  <!-- bg-light = רקע בהיר -->
+                  <!--
+                    <input> = שדה להזנת טקסט.
+                    id="email" = מזהה שנשתמש בו בג'אווה־סקריפט.
+                    type="email" = דפדפן יודע שזה אימייל (יכול לבדוק פורמט).
+                    class="form-control" = עיצוב Bootstrap לשדה יפה.
+                    bg-light = רקע בהיר לשדה.
+                    placeholder="..." = טקסט רמז שמופיע עד שהמשתמש כותב.
+                  -->
                 </div>
 
+                <!-- שדה סיסמה + כפתור הצגת סיסמה -->
                 <div>
                   <label for="loginPass" class="form-label text-light">סיסמה</label>
+
+                  <!--
+                    input-group = קבוצה של שדות+כפתורים שיושבים אחד ליד השני.
+                  -->
                   <div class="input-group">
-                    <!-- input-group = חיבור בין שדה וכפתור -->
                     
                     <input id="password" type="password" class="form-control" placeholder="******">
+                    <!--
+                      זה שדה הסיסמה:
+                      type="password" = מסתיר את הטקסט (מציג נקודות/כוכביות).
+                      id="password" = נשתמש בזה בג'אווה־סקריפט כדי לשלוט בשדה.
+                    -->
+
                     <button class="btn btn-outline-black bg-light rounded-start" type="button" id="toggleLoginPass">
-                      <!-- btn = כפתור -->
-                      <!-- btn-outline-black = מסגרת כהה -->
-                      <!-- bg-light = רקע לבן -->
-                      <!-- rounded-start = עיגול בצד שמאל בלבד -->
+                      <!--
+                        זה כפתור "הצג/הסתר":
+                        class="btn" = כפתור Bootstrap.
+                        btn-outline-black = מסגרת שחורה (לא מילוי).
+                        bg-light = רקע בהיר.
+                        rounded-start = עיגול פינה בצד ההתחלה (בשילוב עם ה-input).
+                        type="button" = כפתור שלא שולח טופס, אלא רק מפעיל ג'אווה־סקריפט.
+                        id="toggleLoginPass" = מזהה שנשתמש בו כדי להוסיף לו לוגיקה.
+                      -->
                       הצג
                     </button>
                   </div>
                 </div>
 
                 <div class="text-end">
-                  <!-- text-end = יישור לימין (ב־RTL זה שמאל) -->
+                  <!--
+                    text-end = יישור טקסט לקצה (ב-RTL זה יוצא שמאל).
+                    כאן שמים קישור לשכחת סיסמה (כרגע href="#" = קישור שלא עושה כלום).
+                  -->
                   <a href="#" class="small text-light">שכחתי סיסמה</a>
                 </div>
 
+                <!--
+                  כפתור ראשי ללחיצה על התחברות:
+                  type="button" = לא שולח את הטופס אוטומטית, במקום זה מפעיל login().
+                  onclick="login()" = כשמשתמש לוחץ, הפונקציה login() (שמוגדרת ב-main.js)
+                  תרוץ ותבצע את התחברות Firebase.
+                  btn-primary = כפתור כחול.
+                  btn-lg = כפתור גדול.
+                  w-100 = רוחב מלא של השורה.
+                -->
                 <button type="button" class="btn btn-primary btn-lg w-100" onclick="login()">
-                  <!-- btn-primary = כפתור כחול -->
-                  <!-- btn-lg = כפתור גדול -->
-                  <!-- w-100 = רוחב מלא -->
                   כניסה
                 </button>
 
+                <!-- טקסט קטן למטה: מעבר לדף הרשמה -->
                 <div class="col-12 mt-3 text-center">
-                  <!-- col-12 = בלוק ברוחב מלא -->
-                  <!-- mt-3 = רווח עליון -->
-                  <!-- text-center = יישור טקסט למרכז -->
-
-                  <p class="mb-0 text-light">אין לך חשבון? <a href="signup.html" class="text-light">הרשמה</a></p>
+                  <!--
+                    col-12 = תופס רוחב מלא.
+                    mt-3 = רווח מעל.
+                    text-center = מרכז את הטקסט.
+                  -->
+                  <p class="mb-0 text-light">
+                    אין לך חשבון?
+                    <a href="signup.html" class="text-light">הרשמה</a>
+                  </p>
                 </div>
+
               </form>
 
             </div>
@@ -170,60 +360,114 @@
     </div>
   </main>
 
-  <!-- Bootstrap JS -->
+  <!--
+    כאן טוענים ג'אווה־סקריפט של Bootstrap.
+    בלי הקובץ הזה, כפתור התפריט במובייל (navbar-toggler)
+    לא היה עובד, כי Bootstrap משתמש בג'אווה־סקריפט כדי לפתוח/לסגור את התפריט.
+    bundle.min.js כולל גם את Popper.js שנדרש לדברים כמו תפריטים נפתחים.
+  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!--
+    שלושת הקבצים האלו הם של Firebase:
+    firebase-app-compat.js = החלק הבסיסי של Firebase (איתחול אפליקציה).
+    firebase-auth-compat.js = מודול שמטפל בהתחברות / הרשמה / משתמשים.
+    firebase-database-compat.js = מודול שמטפל בבסיס נתונים בזמן אמת.
+    הסיומת compat אומרת שזה API "תואם" לגרסאות ישנות (תחביר ישן).
+  -->
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
-<script src="main.js"></script>
+  <!--
+    main.js = קובץ ג'אווה־סקריפט שאתה כתבת.
+    שם כנראה מוגדרות פונקציות כמו login() שמטפלות בהתחברות לאתר
+    בעזרת Firebase.
+  -->
+  <script src="main.js"></script>
 
-  <!-- JavaScript להצגת/הסתרת הסיסמה -->
-  <!-- קטע JavaScript שאחראי על הצגת/הסתרת הסיסמה בשדה ה־password -->
-<script>
+  <!--
+    עכשיו מגיע קטע ג'אווה־סקריפט בתוך הדף עצמו.
+    הקטע הזה ספציפית מטפל בהצגה/הסתרה של הסיסמה.
+  -->
+  <script>
+    /*
+      const = הגדרת משתנה "קבוע". כלומר:
+      אי אפשר לשנות את ההפניה עצמה למשהו אחר, אבל אפשר לשנות דברים בתוכו
+      (למשל, אם זה אובייקט).
 
-    // שליפת אלמנט שדה הסיסמה לפי ה-ID שלו
-    // document = אובייקט שמייצג את כל ה־HTML
-    // . = אופרטור גישה (Access Operator) שמאפשר להגיע למתודות/מאפיינים בתוך אובייקט
-    // getElementById = פונקציה שמחזירה אלמנט HTML לפי ה-id שלו
-    // 'password' = מחרוזת — מזהה השדה בקובץ ה־HTML
+      document = מייצג את כל עץ ה-HTML בדף.
+      getElementById('password') = פונקציה שמחפשת אלמנט ב-HTML
+      שיש לו id="password", ומחזירה לנו אותו.
+
+      passInput = שם המשתנה שבו נשמור את אותו אלמנט (שדה הסיסמה).
+    */
     const passInput = document.getElementById('password');
 
+    /*
+      כאן אנחנו לוקחים את הכפתור "הצג/הסתר" לפי ה-id שלו.
 
-    // שליפת כפתור "הצג/הסתר" לפי ה-ID שלו
-    // שוב: document → . → getElementById
+      document.getElementById('toggleLoginPass') =
+      שוב, אנחנו פונים למסמך (document),
+      מחפשים בו אלמנט עם מזהה (id) בשם "toggleLoginPass",
+      ומקבלים חזרה את האובייקט שמייצג אותו.
+    */
     const toggleBtn = document.getElementById('toggleLoginPass');
 
+    /*
+      עכשיו אנחנו אומרים:
+      "כשמישהו לוחץ (click) על הכפתור toggleBtn,
+      תפעיל את הפונקציה שכתובה לנו כאן".
 
-    // הוספת מאזין לאירוע click על הכפתור
-    // addEventListener("click", function) = מפעיל פונקציה ברגע שהמשתמש לוחץ
+      addEventListener('click', () => { ... }) =
+      - 'click' = שם האירוע (לחיצה בעכבר/בטאצ').
+      - () => { ... } = פונקציה "חץ" (Arrow Function),
+        שהיא פשוט דרך לכתוב פונקציה בצורה קצרה יותר.
+    */
     toggleBtn.addEventListener('click', () => {
 
-        // בדיקה האם השדה כרגע מסוג password
-        // passInput.type = גישה למאפיין type של האינפוט
-        // === = השוואה מוחלטת (ערך + טיפוס)
+        /*
+          passInput.type = המאפיין "type" של שדה ה-<input>.
+          למשל: "password" או "text".
+
+          passInput.type === 'password':
+            === = השוואה "חזקה" שמוודאת גם שהסוג זהה וגם הערך.
+            אם type בדיוק שווה למחרוזת 'password' → התוצאה true.
+            אחרת → false.
+
+          את הערך הזה אנחנו שומרים בתוך isPwd.
+          אם isPwd === true, זה אומר שהשדה כרגע במצב "מוסתר" (password).
+        */
         const isPwd = passInput.type === 'password';
 
+        /*
+          כאן אנחנו מחליטים מהו ה-type החדש של השדה.
 
-        // החלפת סוג השדה בין password ל-text באמצעות אופרטור תנאי (ternary operator)
-        // מה ההיגיון?
-        // אם isPwd true → נציג טקסט
-        // אם false → נסיר ונחזיר ל-password
+          אופרטור תנאי (ternary operator):
+          תנאי ? ערך_אם_נכון : ערך_אם_לא_נכון
+
+          isPwd ? 'text' : 'password'
+          - אם isPwd true (השדה היה password):
+              passInput.type נהיה 'text' (כלומר עכשיו מראים את הסיסמה).
+          - אם isPwd false (השדה היה text):
+              passInput.type נהיה 'password' (מסתירים שוב את הסיסמה).
+        */
         passInput.type = isPwd ? 'text' : 'password';
 
+        /*
+          toggleBtn.textContent = הטקסט שמופיע על הכפתור.
 
-        // שינוי הטקסט בכפתור בהתאם למצב
-        // textContent = המחרוזת שמוצגת בתוך הכפתור
-        // אם הסיסמה נחשפה → הכפתור צריך לרשום "הסתר"
-        // אם הסיסמה הוסתרה → הכפתור צריך לרשום "הצג"
+          אם עכשיו אנחנו חושפים את הסיסמה (היה password והפך ל-text),
+          כלומר isPwd היה true,
+          אז נרצה לכתוב על הכפתור "הסתר" (כי עכשיו הלחיצה הבאה תסתיר).
+
+          אם isPwd היה false (הסיסמה כבר היתה גלויה),
+          אז אנחנו מחזירים את הכפתור למצב "הצג".
+        */
         toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
 
     });
-
-</script>
-
-
+  </script>
 
 </body>
 </html>

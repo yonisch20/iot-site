@@ -1,141 +1,161 @@
 <!DOCTYPE html>
+<!--
+  שורה שמצהירה לדפדפן:
+  "הדף הזה כתוב ב־HTML5".
+  זה חשוב כדי שהדפדפן ידע איך לפרש את הקוד כראוי.
+-->
+
 <html lang="he" dir="rtl">
+<!--
+  <html> — התגית שעוטפת את כל הדף.
+  lang="he" אומר שהשפה היא עברית.
+  dir="rtl" אומר שהטקסט ייכתב מימין לשמאל — כמו שרוצים בעברית.
+-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    <head> — אזור הגדרות הדף שלא מוצג על המסך.
+    כאן נמצאות הגדרות: עיצוב, קידוד, כותרת, ספריות חיצוניות וכו'.
+  -->
 
-    <title>שידור חי</title>
+  <meta charset="UTF-8">
+  <!--
+    מגדיר קידוד תווים UTF-8.
+    הכרחי כדי שהעברית לא תופיע כג‘יבריש.
+  -->
 
-    <!-- 
-Bootstrap CSS — קובץ העיצוב הראשי של Bootstrap.
-הקישור הזה טוען את כל המחלקות הוויזואליות:
-גריד, כפתורים, טופס, navbar, פריסות, צבעים ועוד.
-CDN = Content Delivery Network → טעינה מהירה מהשרתים של Bootstrap ברחבי העולם.
-href= קישור לקובץ CSS החיצוני.
-rel="stylesheet" → אומר לדפדפן שזה קובץ עיצוב.
--->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    חשוב במיוחד לנייד:
+    - width=device-width → כל רוחב המסך מופיע באמת כ־100%.
+    - initial-scale=1.0 → זום רגיל, לא מוגזם.
+    בלעדיו — העיצוב לא נראה טוב בסמארטפונים.
+  --> 
 
-<!-- 
-תגית <style> מאפשרת להכניס CSS פנימי ישירות בתוך דף ה־HTML.
-כאן אנחנו מגדירים רקע לדף כולו (body).
--->
-<style>
+  <title>שליטה על המערכת</title>
+  <!--
+    הטקסט שמופיע בכרטיסייה של הדפדפן.
+  -->
 
-    /* 
-    body = אלמנט כללי המכיל את כל תוכן הדף.
-    background: url(...) = מגדיר תמונה כרקע.
-    center/cover = ממקם את התמונה במרכז ומתאים אותה לכל המסך,
-    no-repeat = לא לחזור על התמונה,
-    fixed = הרקע נשאר קבוע בגלילה.
+  <!-- 
+    טעינת Bootstrap CSS — ספריית העיצוב החזקה ביותר לאתרים.
+    Bootstrap מספקת:
+      - רשת עמודות (Grid)
+      - כפתורים
+      - טפסים
+      - navbar
+      - חלוניות (modals)
+      - צבעים וגדלים מוכנים
+    בקיצור: היא חוסכת בניית עיצוב מאפס.
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /*
+      כאן אנחנו מעצבים את גוף הדף כולו (body).
+      כל מה שמופיע באתר נמצא בתוך גוף הדף.
     */
     body{
+        /*
+          background: … → קובע תמונה כרקע.
+          url(project_BG.png) — שם הקובץ של התמונה.
+          center — ממקם את התמונה במרכז.
+          cover — מכסה את כל המסך, גם אם צריך לחתוך קצת.
+          no-repeat — מונע "טפט" שחוזר על עצמו.
+          fixed — התמונה נשארת קבועה כשגוללים.
+        */
         background: url(project_BG.png) center/cover no-repeat fixed;
     }
+    #btnLaserMobile{
+      z-index: 9999;
+    }
 
-</style>
+  </style>
 
 </head>
 
-<!-- 
-תגית <body> מכילה את כל מה שיוצג על המסך:
-תוכן, כפתורים, וידאו, ניווטים, טפסים וכו’.
--->
 <body>
-
-<!-- 
-NAVBAR = תפריט עליון של ניווט.
-תגית <nav> מסמנת לדפדפן ול־SEO שזה איזור ניווט.
-class="navbar" → הופך את הבלוק לאלמנט ניווט Bootstrap.
-navbar-expand-lg = navbar שמתרחב (נפתח) רק במסכים גדולים (lg).
-navbar-dark = טקסט בהיר (לרקע כהה).
-bg-dark = רקע שחור.
+<!--
+  <body> — האזור שרואים על המסך.
+  כל מה שתכניס פה — כותרות, וידאו, טפסים, כפתורים — יוצג למשתמש.
 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-    <!-- 
-    container-fluid = קונטיינר מלא 100% רוחב.
-    מאפשר עקביות ברוחב בין תפריטים בכל הרזולוציות.
+<!-- ====================================================== -->
+<!--                  NAVBAR (התפריט העליון)               -->
+<!-- ====================================================== -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    <!--
+      navbar — מרכיב מהיר לבניית תפריט עליון.
+      navbar-expand-lg — במכשירים גדולים, התפריט מוצג במלואו.
+                           במכשירים קטנים — הוא מתקפל לאייקון "המבורגר".
+      navbar-dark — טקסט בהיר על רקע כהה.
+      bg-dark — רקע שחור/כהה.
     -->
+
     <div class="container-fluid">
-
-        <!-- 
-        <a> = קישור.
-        class="navbar-brand" → מגדיר לוגו/כותרת של הניווט.
-        d-flex = הפיכת התוכן בפנים ל־flexbox,
-        align-items-center = מיישר אנכית לאמצע,
-        gap-2 = רווח של 2 יחידות בין האלמנטים.
-        href="index.html" → לחיצה על הלוגו מחזירה לדף הבית.
+        <!--
+          container-fluid — בלוק שגודלו 100% רוחב,
+          כך שה־navbar יימתח על כל רוחב המסך.
         -->
+
         <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-
-            <!-- 
-            <img> מציג את לוגו הפרויקט.
-            alt="לוגו" → טקסט חלופי לגישה/SEO.
-            height="40" → גובה קבוע של 40px.
+            <!--
+              navbar-brand — אזור הלוגו או שם האתר.
+              d-flex — מציג את התוכן בשורה.
+              align-items-center — מיישר אנכית למרכז.
+              gap-2 — רווח בין האלמנטים.
+              href="index.html" — לחיצה על הלוגו מחזירה לדף הבית.
             -->
+
             <img src="project_logo.png" alt="לוגו" height="40">
-
-            <!-- 
-            <span> מכיל טקסט בלבד.
-            d-none = מוסתר ברוב המצבים.
-            d-lg-inline = מוצג רק במסכים גדולים (lg ומעלה).
-            נועד לחסוך מקום במסכים קטנים — בנייד לא מראים את שם המערכת.
+            <!--
+              הצגת לוגו בגובה 40px.
+              alt — טקסט תיאורי אם התמונה לא נטענת.
             -->
-            <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
 
+            <span class="d-none d-lg-inline">
+              <!--
+                d-none — מוסתר במסכים קטנים.
+                d-lg-inline — מוצג במסכים גדולים.
+                למה? כדי לא להעמיס טקסט במובייל.
+              -->
+              מערכת איתור וסימון ניידת
+            </span>
         </a>
 
-        <!-- 
-        כפתור התנתקות.
-        id="signOutBtn" — מאפשר לקוד JS לזהות את הכפתור.
-        btn → כפתור Bootstrap.
-        btn-sm → כפתור קטן.
-        btn-outline-danger → מסגרת אדומה.
-        me-3 = margin-end (ימין ב־RTL) של 3.
-        style="display:none" = מוסתר כברירת מחדל עד שהמשתמש מחובר.
-        -->
         <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
+            <!--
+              כפתור יציאה מהחשבון.
+              הוא מוסתר עד ש-JavaScript יזהה שהמשתמש מחובר.
+              btn-sm — כפתור קטן.
+              btn-outline-danger — מסגרת אדומה.
+              me-3 — רווח קטן בצד ימין / שמאל (תלוי RTL).
+            -->
             התנתקות
         </button>
 
-        <!-- 
-        כפתור פתיחה/סגירה של ה־navbar במסכים קטנים.
-        class="navbar-toggler" → כפתור קטן עם אייקון של "המבורגר".
-        type="button" → מונע שליחה בטופס.
-        data-bs-toggle="collapse" → מפעיל מנגנון פתיחה/סגירה של Bootstrap.
-        data-bs-target="#navbarNav" → מזהה את הבלוק שייפתח/ייסגר.
-        -->
+        <!-- כפתור המבורגר לנייד -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
-            <!-- 
-            <span class="navbar-toggler-icon"> מצייר את אייקון ההמבורגר (שלושה קווים).
-            Bootstrap מוסיף לו רקע אוטומטי בהתאם ל־navbar-dark או navbar-light.
+            <!--
+              כפתור שנועד לפתוח/לסגור את התפריט במכשירים קטנים.
+              data-bs-target="#navbarNav" — זה ה-ID של האזור שייפתח.
             -->
             <span class="navbar-toggler-icon"></span>
-
         </button>
 
-        <!-- 
-        בלוק הנפתח/נסגר בנייד כאשר לוחצים על כפתור הטוגגלר למעלה.
-        class="collapse navbar-collapse" → מגדיר שהדיב יתחבא/יופיע בעת לחיצה.
-        id="navbarNav" → הכפתור למעלה יודע לפתוח/לסגור לפי ID זה.
-        -->
         <div class="collapse navbar-collapse" id="navbarNav">
+            <!--
+              collapse navbar-collapse:
+              - collapse = מאפשר פתיחה/סגירה
+              - navbar-collapse = סגנון פנימי של Bootstrap
 
-            <!-- 
-            <ul> = רשימת ניווט.
-            class="navbar-nav" → מעצב אותה כרשימה אופקית.
-            me-auto = margin-end auto → דוחף את כל הרשימה לצד שמאל (או ימין ב־RTL).
+              פה נמצאים הקישורים של התפריט.
             -->
+
             <ul class="navbar-nav me-auto">
+                <!-- me-auto → דוחף את הרשימה לצד שמאל/ימין לפי כיוון הדף -->
 
-                <!-- כל <li> הוא פריט תפריט -->
-
-                <!-- 
-                class="nav-item" = פריט ניווט.
-                <a class="nav-link"> = קישור ניווט מעוצב Bootstrap.
-                -->
                 <li class="nav-item">
                     <a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a>
                 </li>
@@ -145,557 +165,116 @@ bg-dark = רקע שחור.
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="dc_control.html">שליטה במנועים</a>
+                    <a class="nav-link" href="form.html">טופס אירוע</a>
                 </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="log.html">יומן אירועים</a>
                 </li>
-
             </ul>
-
         </div>
 
     </div>
 </nav>
 
-<!-- 
-main = תגית סמנטית המציינת את תוכן העמוד המרכזי.
-class="container-fluid" = תוכן ברוחב מלא.
-py-3 = padding-top + padding-bottom של 3 יחידות Bootstrap.
--->
+<!-- ====================================================== -->
+<!--              MAIN CONTENT – אזור הווידאו               -->
+<!-- ====================================================== -->
+
 <main class="container-fluid py-3">
-  <!-- 
-  row = יצירת שורה בפריסת Bootstrap.
-  g-3 = gap (רווח) בין כל העמודות ברמת 3 ( יחידות Bootstrap).
-  Bootstrap Grid עובד בשיטת 12 עמודות, וכל col מבטא חלק מה־12 האלה.
-  -->
   <div class="row g-3">
 
-    <!-- 
-    צד שמאל: וידאו.
-    col-12 = במסך קטן (מובייל) האלמנט תופס את כל 12 העמודות → רוחב מלא.
-    col-lg-8 = במסך גדול (lg ומעלה) האלמנט תופס 8 מתוך 12 עמודות → כלומר 2/3 מהרוחב.
-    -->
-    <div class="col-12 col-lg-8">
+    <div class="col-12 col-lg-4 mt-lg-5">
 
-      <!-- 
-      d-flex = הפיכת המכולה ל־flexbox.
-      justify-content-between = פיזור הפריטים לקצוות (שמאל וימין).
-      align-items-center = יישור אנכי אמצעי בין הפריטים.
-      mb-2 = margin-bottom 2 יחידות.
-      זהו אזור שהכותרת (שידור חי) נמצאת בו משמאל וכפתורים מימין (בדסקטופ).
-      -->
-      <div class="d-flex justify-content-between align-items-center mb-2">
-
-        <!-- 
-        h1 עם class h5 = כותרת ברמת גודל קטנה (h5) אך עדיין סמנטית h1.
-        m-0 = ללא מרווח חיצוני.
-        text-light = טקסט בצבע בהיר (לרקע כהה).
-        -->
-        <h1 class="h5 m-0 text-light">
-          <!-- 
-          הטקסט שמוצג למשתמש בתוך הכותרת.
-          -->
-          שידור חי
-        </h1>
-
-        <!-- 
-        d-none = מוסתר כברירת מחדל.
-        d-lg-flex = מוצג כ־flex רק במסכים גדולים ומעלה (lg).
-        gap-2 = רווח בין הכפתורים.
-        המשמעות: בנייד כפתורי הלייזר/נעילה/תמונת מצב/דיווח לא יוצגו כאן,
-        אלא יוצגו בגרסת מובייל למטה.
-        -->
-        <div class="d-none d-lg-flex gap-2">
-
-          <!-- 
-          כפתור הלייזר (גרסת דסקטופ).
-          id="btnLaser" → משמש ל־JS.
-          class="btn btn-danger btn-sm" → כפתור אדום קטן.
-          data-bs-toggle="button" → מאפשר לממשק של Bootstrap להגדיר כפתור ON/OFF ויזואלית.
-          onclick="toggleLaser()" → מפעיל את פונקציית ה־JS המפעילה לייזר (פירוט ב-main.js).
-          -->
-          <button id="btnLaser" class="btn btn-danger btn-sm" data-bs-toggle="button" onclick="toggleLaser()">
-            <!-- טקסט הכפתור -->
-            לייזר
-          </button>
-
-          <!-- 
-          סימולציית נעילה — כפתור מדומה (לא מחובר לקוד במצבו הנוכחי).
-          btn-outline-light = כפתור שקוף עם מסגרת לבנה.
-          -->
-          <button id="btnLockSim" class="btn btn-outline-light btn-sm">
-            סימולציית נעילה
-          </button>
-
-
-          <!-- 
-          כפתור שמפעיל/מסתיר את טופס הדיווח בדסקטופ.
-          data-bs-toggle="collapse" = מפעיל את מנגנון הקיפול/פתיחה של Bootstrap.
-          data-bs-target="#deskForm" = מזהה את האלמנט אותו צריך לפתוח/לסגור.
-          -->
-          <button class="btn btn-light btn-sm" data-bs-toggle="collapse" data-bs-target="#deskForm">
-            דיווח אירוע
-          </button>
-
-        </div> <!-- סוף קבוצת כפתורים בדסקטופ -->
-      </div> <!-- סוף כותרת + כפתורים -->
-
-      <!-- 
-      אזור הווידאו עצמו.
-      ratio ratio-16x9 = שמירה על יחס גובה־רוחב 16:9.
-      rounded-3 = פינות מעוגלות.
-      overflow-hidden = כל מה שיגלוש מעבר לגבולות ייחתך.
-      bg-dark = רקע כהה (עד שטעינת הווידאו תתחיל).
-      -->
-      <div class="ratio ratio-16x9 rounded-3 overflow-hidden bg-dark">
-
-        <!-- 
-        תגית img במקום <video> כי הזרמת הווידאו מגיעה כ־MJPEG או תמונה שמתעדכנת.
-        id="liveStream" → JS יעדכן את ה־src לתמונת הזרימה.
-        alt="שידור חי" → טקסט חלופי נדרש לגישה.
-        src="#" → בינתיים אין תמונה עד ש־main.js מטעין את התוכן.
-        -->
-        <img id="liveStream" alt="שידור חי" src="#">
-      </div>
-
-      <!-- 
-      wrapper עבור תמונת מצב (Snapshot).
-      id="snapshotWrap" → מאפשר להציג ולהסתיר.
-      class="mt-2 d-none" → מוסתר כברירת מחדל (d-none), יופיע כאשר מציגים תמונת מצב.
-      mt-2 = רווח עליון.
-      -->
-      <div id="snapshotWrap" class="mt-2 d-none">
-
-        <!-- 
-        תמונת המצב עצמה.
-        id="snapshotImg" → JS יכניס לתוכה את תמונת ה-snapshot.
-        class="img-fluid" → מותאם לרוחב המסך.
-        rounded → פינות עגולות.
-        alt="תמונת מצב" → טקסט חלופי.
-        -->
-        <img id="snapshotImg" class="img-fluid rounded" alt="תמונת מצב">
-
-      </div> <!-- סוף snapshot wrapper -->
-    </div> <!-- סוף col שמאל (וידאו) -->
-
-
-
-    <!-- צד ימין: טופס דסקטופ -->
-    <!-- 
-    col-12 = רוחב מלא בנייד.
-    col-lg-4 = תופס שליש מסך בדסקטופ (4 מתוך 12).
-    d-none d-lg-block = מוסתר לגמרי בנייד, מוצג רק במסכים גדולים (lg ומעלה).
-    -->
-    <div class="col-12 col-lg-4 d-none d-lg-block">
-
-      <!-- 
-      אלמנט ה־collapse טומן בחובו את טופס הדיווח.
-      ייפתח/ייסגר בלחיצה על כפתור “דיווח אירוע” בדסקטופ.
-      id="deskForm" = היעד של data-bs-target מהכפתור למעלה.
-      -->
-      <div id="deskForm" class="collapse">
-
-        <!-- 
-        card = קופסת תוכן מעוצבת של Bootstrap (מסגרת, רקע בהיר/כהה וכו’).
-        sticky-card = כנראה מחלקה שלך שמצמידה את הכרטיס (position: sticky).
-        -->
-        <div class="card sticky-card">
-
-          <!-- 
-          card-header = אזור הכותרת של הכרטיס.
-          py-2 = padding vertical (למעלה ולמטה) 2 יחידות.
-          -->
-          <div class="card-header py-2">
-            <!-- strong = טקסט מודגש. -->
-            <strong>דיווח אירוע</strong>
+      <div class="card bg-dark text-light border border-secondary rounded-3 shadow-sm">
+        <div class="card-header py-2">
+          <strong>שליטה על הרכב</strong>
+        </div>
+        <div class="card-body">
+          
+          <div class="d-grid gap-2 mb-4">
+            <button class="btn btn-primary btn-lg" onclick="sendCommand('forward')">קדימה ⬆</button>
+            <div class="d-grid" style="grid-template-columns: 1fr 1fr 1fr; gap: .5rem;">
+              <button class="btn btn-primary btn-lg" onclick="sendCommand('right')">ימינה ➡</button>
+              <button class="btn btn-secondary btn-lg" onclick="sendCommand('stop')">⏹ עצור</button>
+              <button class="btn btn-primary btn-lg" onclick="sendCommand('left')">⬅ שמאלה</button>
+            </div>
+            <button class="btn btn-primary btn-lg" onclick="sendCommand('backward')">⬇ אחורה</button>
           </div>
 
-          <!-- card-body = תוכן הכרטיס -->
-          <div class="card-body">
+          <div class="p-3 rounded-3 border border-secondary bg-black bg-opacity-25">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="fw-bold">מהירות</div>
+              <div class="badge bg-info text-dark">מצב: <span id="speedLevelText">1</span>/3</div>
+            </div>
+            <div class="btn-group w-100" role="group">
+              <button type="button" class="btn btn-outline-info" id="spd1" onclick="setSpeedLevel(1)">1</button>
+              <button type="button" class="btn btn-outline-info" id="spd2" onclick="setSpeedLevel(2)">2</button>
+              <button type="button" class="btn btn-outline-info" id="spd3" onclick="setSpeedLevel(3)">3</button>
+            </div>
+          </div>
 
-            <!-- 
-            form = טופס HTML.
-            id="eventFormDesk" → JS קורא לפונקציה לפי ID זה.
-            class="row g-2 needs-validation":
-                row = פריסה לשליטה בגריד.
-                g-2 = רווח בין תאים.
-                needs-validation = Bootstrap class להודעות שגיאה ואימות שדות.
-            -->
-            <form id="eventFormDesk" class="row g-2 needs-validation">
+        </div>
+      </div>
+      
+    </div> 
+    
+    <div class="col-12 col-lg-8">
+      
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h1 class="h5 m-0 text-light">שידור חי</h1>
+        <div class="d-none d-lg-flex gap-2">
+           <button id="btnLaser" class="btn btn-danger btn-sm" onclick="toggleLaser()">לייזר</button>
+        </div>
+      </div>
 
-              <!-- 
-              טופס “כותרת קצרה”.
-              col-12 = שורה שלמה.
-              mb-3 = margin-bottom 3.
-              -->
-              <div class="col-12 mb-3">
+      <div class="ratio ratio-16x9 rounded-3 overflow-hidden bg-dark border border-secondary">
+        <img id="liveStream" alt="ממתין לשידור..." src="" style="width: 100%; height: 100%; object-fit: cover;">
+      </div>
 
-                <!-- 
-                label = תווית שדה.
-                class="form-label" = עיצוב של Bootstrap.
-                mb-1 = מרווח קטן מתחת.
-                -->
-                <label class="form-label mb-1">כותרת קצרה</label>
-
-                <!-- 
-                input טקסט רגיל.
-                form-control = עיצוב טופס Bootstrap.
-                form-control-sm = גרסה קטנה יותר.
-                -->
-                <input type="text" class="form-control form-control-sm">
-
-              </div>
-
-              <!-- בחירת סוג מטרה -->
-              <div class="col-12 mb-3">
-
-                <label class="form-label mb-1">סוג מטרה</label>
-
-                <!-- 
-                <select> להצגת רשימת אפשרויות.
-                form-select + form-select-sm: עיצוב Bootstrap.
-                -->
-                <select class="form-select form-select-sm">
-
-                  <!-- option disabled selected = מצב ברירת מחדל "בחר..." -->
-                  <option selected disabled>בחר...</option>
-                  <option>רחפן</option>
-                  <option>ציפור</option>
-                  <option>בלון</option>
-                  <option>מטוס</option>
-                  <option>לא ידוע</option>
-
-                </select>
-              </div>
-
-              <!-- בחירה בין אמת לשווא -->
-              <div class="col-12 mb-3">
-
-                <!-- 
-                d-block = הלייבל תופס שורה מלאה.
-                -->
-                <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
-
-                <!-- 
-                form-check = עטיפה של רדיו/צ'קבוקס.
-                form-check-inline = מופיע בשורה אחת.
-                -->
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio">
-                  <label class="form-check-label">אמת</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio">
-                  <label class="form-check-label">שווא</label>
-                </div>
-              </div>
-
-              <!-- בחירת ערוצי התראה -->
-              <div class="col-12 mb-3">
-
-                <label class="form-label mb-1 d-block">ערוצי התראה</label>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">Email</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">SMS</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox">
-                  <label class="form-check-label">Push</label>
-                </div>
-
-              </div>
-
-              <!-- תיאור האירוע -->
-              <div class="col-12 mb-3">
-                <label class="form-label mb-1">תיאור האירוע</label>
-
-                <!-- textarea = שדה טקסט רב־שורות -->
-                <textarea class="form-control form-control-sm" rows="2"></textarea>
-              </div>
-
-              <!-- רמת איום -->
-              <div class="col-6 mb-3">
-
-                <label class="form-label mb-1">רמת איום</label>
-
-                <select class="form-select form-select-sm">
-                  <option>נמוך</option>
-                  <option>בינוני</option>
-                  <option>גבוה</option>
-                </select>
-              </div>
-
-              <!-- כפתור שליחת הטופס -->
-              <!-- 
-              d-grid = הופך את ה־div לגריד שמאפשר שהכפתור יתפרס על כל הרוחב.
-              -->
-              <div class="col-12 d-grid">
-
-                <!-- 
-                class="btn btn-primary btn-sm" → כפתור כחול קטן.
-                mt-3 = רווח מעל.
-                type="submit" → שולח את הטופס (JS מטפל בזה).
-                -->
-                <button class="btn btn-primary btn-sm mt-3" type="submit">
-                  שליחת הטופס
-                </button>
-
-              </div>
-
-            </form> <!-- סוף טופס דסקטופ -->
-          </div> <!-- סוף card-body -->
-        </div> <!-- סוף card -->
-      </div> <!-- סוף collapse -->
-    </div> <!-- סוף col ימין -->
-  </div> <!-- סוף row -->
+    </div> 
+  </div> 
 </main>
 
 
-<!-- 
-כפתור דיווח במובייל.
-class="btn btn-light" → כפתור לבן.
-fab-report = מחלקה שלך (כמו Floating Action Button).
-d-lg-none = הכפתור יוצג *רק* במסכים קטנים (מובייל), ייעלם לגמרי בדסקטופ.
-data-bs-toggle="offcanvas" → מפעיל חלונית Offcanvas של Bootstrap.
-data-bs-target="#reportCanvas" → מזהה את ה-offcanvas שאמור להיפתח.
--->
-<button class="btn btn-light fab-report d-lg-none" data-bs-toggle="offcanvas" data-bs-target="#reportCanvas">
-    <!-- הטקסט המוצג על הכפתור -->
-    דיווח אירוע
-</button>
 
-<!-- 
-כפתור לייזר במובייל.
-id="btnLaserMobile" = מאפשר שליטה ב־JavaScript.
-class="btn btn-danger btn-sm" → כפתור אדום קטן.
-position-fixed → צמוד למסך, גם בגלילה.
-bottom-3 → במרחק 3 יחידות מהתחתית.
-start-0 → מיושר לצד שמאל (ב־RTL start=left).
-m-3 → רווח כללי 3 יחידות מסביב.
-rounded-pill → כפתור אובלי.
-shadow → צל קטן.
-d-lg-none → מוצג רק במובייל.
-data-bs-toggle="button" → מצב ON/OFF ויזואלי.
-onclick="toggleLaser()" → מפעיל את פונקציית הלייזר.
--->
-<button id="btnLaserMobile" 
-        class="btn btn-danger btn-sm position-fixed bottom-3 start-0 m-3 rounded-pill shadow d-lg-none" 
-        data-bs-toggle="button" 
+<!-- ====================================================== -->
+<!--     כפתור לייזר למובייל — במקום זה שבדסקטופ            -->
+<!-- ====================================================== -->
+
+<button id="btnLaserMobile"
+        class="btn btn-danger btn-sm position-fixed bottom-0 end-0 m-3 rounded-pill shadow d-lg-none"
+        data-bs-toggle="button"
         onclick="toggleLaser()">
-    לייזר
+         לייזר
 </button>
 
-<!-- 
-פתיחת חלונית Offcanvas מהמובייל.
-offcanvas-bottom → החלונית עולה מלמטה.
-d-lg-none → מוצג רק במובייל.
-tabindex="-1" → החלק לא מקבל פוקוס בטעות (מונע התנהגות מוזרה).
-id="reportCanvas" → אלמנט זה ייפתח כשהמשתמש לוחץ על כפתור הדיווח.
+</div>
+
+
+
+<!-- ====================================================== -->
+<!--                 טעינת קבצי JavaScript                 -->
+<!-- ====================================================== -->
+
+<!-- Bootstrap JS — מאפשר הפעלה של:
+     collapse, navbar-toggler, offcanvas, modal, dropdown ועוד.
 -->
-<div class="offcanvas offcanvas-bottom d-lg-none" tabindex="-1" id="reportCanvas">
-
-  <!-- 
-  כותרת ה-Offcanvas.
-  offcanvas-header = אזור כותרת מעוצב.
-  -->
-  <div class="offcanvas-header">
-
-    <!-- 
-    כותרת הטופס במובייל.
-    -->
-    <h5 class="offcanvas-title">דיווח אירוע</h5>
-
-    <!-- 
-    כפתור סגירה.
-    btn-close = איקס Bootstrap.
-    data-bs-dismiss="offcanvas" → מסמן לבוטסטראפ לסגור את החלונית.
-    -->
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-  </div>
-
-  <!-- 
-  גוף החלונית.
-  class="offcanvas-body small" → טקסט קטן, הרבה רווח פנימי.
-  -->
-  <div class="offcanvas-body small">
-
-    <!-- 
-    טופס הדיווח במובייל.
-    id="eventFormMobile" → הקוד ב-main.js מתייחס לזה.
-    class="row g-2 needs-validation":
-        row = מערכת גריד.
-        g-2 = רווח בין תאים.
-        needs-validation = הפעלת אימות Bootstrap.
-    -->
-    <form id="eventFormMobile" class="row g-2 needs-validation">
-
-      <!-- ========================================================= -->
-      <!--                     כותרת קצרה (מובייל)                 -->
-      <!-- ========================================================= -->
-      <div class="col-12">
-        <!-- 
-        label = תווית שדה.
-        form-label = עיצוב Bootstrap.
-        mb-1 = רווח קטן.
-        -->
-        <label class="form-label mb-1">כותרת קצרה</label>
-
-        <!-- 
-        input type="text" = שדה טקסט רגיל.
-        class="form-control form-control-sm" = שדה קטן מעוצב Bootstrap.
-        required = חובה למלא (HTML validation).
-        -->
-        <input type="text" class="form-control form-control-sm" required>
-
-        <!-- 
-        invalid-feedback = טקסט שגיאה שיוצג אם המשתמש ינסה לשלוח בלי להזין.
-        Bootstrap חושף אותו אוטומטית אחרי ניסיון שליחה כושל.
-        -->
-        <div class="invalid-feedback">נא למלא כותרת.</div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--                       סוג המטרה                           -->
-      <!-- ========================================================= -->
-      <div class="col-12">
-        <!-- 
-        תווית לשדה הסלקט.
-        -->
-        <label class="form-label mb-1">סוג מטרה</label>
-
-        <!-- 
-        <select> מאפשר למשתמש לבחור סוג.
-        form-select-sm = גרסה קטנה.
-        required = חובה לבחור.
-        -->
-        <select class="form-select form-select-sm" required>
-          <option disabled selected>בחר...</option>
-          <option>רחפן</option>
-          <option>ציפור</option>
-          <option>בלון</option>
-          <option>מטוס</option>
-          <option>לא ידוע</option>
-        </select>
-
-        <!-- הודעת שגיאה אם לא נבחר כלום -->
-        <div class="invalid-feedback">נא לבחור סוג.</div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--      בחירת אמת / שווא — רדיו ב-Inline במובייל            -->
-      <!-- ========================================================= -->
-      <div class="col-12">
-        <!-- 
-        d-block = שורה מלאה ללייבל.
-        -->
-        <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
-
-        <!-- 
-        form-check-inline → מציג את שני הרדיו בשורה אחת.
-        -->
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" required>
-          <label class="form-check-label">אמת</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" required>
-          <label class="form-check-label">שווא</label>
-        </div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--                 ערוצי התראה — צ'קבוקסים                  -->
-      <!-- ========================================================= -->
-      <div class="col-12">
-        <label class="form-label mb-1 d-block">ערוצי התראה</label>
-
-        <!-- 
-        כל ערוץ עם checkbox משלו.
-        form-check-inline → הצג בשורה אחת.
-        -->
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox">
-          <label class="form-check-label">Email</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox">
-          <label class="form-check-label">SMS</label>
-        </div>
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox">
-          <label class="form-check-label">Push</label>
-        </div>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--                       תיאור האירוע                       -->
-      <!-- ========================================================= -->
-      <div class="col-12">
-        <label class="form-label mb-1">תיאור האירוע</label>
-
-        <!-- 
-        textarea = שדה טקסט רב־שורות.
-        form-control-sm → גופן קטן.
-        rows="3" → גובה 3 שורות.
-        -->
-        <textarea class="form-control form-control-sm" rows="3"></textarea>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--                        רמת איום                          -->
-      <!-- ========================================================= -->
-      <div class="col-6">
-        <!-- תווית -->
-        <label class="form-label mb-">רמת איום</label>
-
-        <!-- בחירת רמת איום -->
-        <select class="form-select form-select-sm">
-          <option>נמוך</option>
-          <option>בינוני</option>
-          <option>גבוה</option>
-        </select>
-      </div>
-
-      <!-- ========================================================= -->
-      <!--                   כפתור שליחה במובייל                    -->
-      <!-- ========================================================= -->
-      <div class="col-12 d-grid">
-        <!-- 
-        d-grid → הכפתור תופס 100% רוחב.
-        -->
-        <button class="btn btn-primary btn-sm mt-3" type="submit">
-          שליחת הטופס
-        </button>
-      </div>
-
-    </form> <!-- סוף טופס מובייל -->
-  </div> <!-- סוף offcanvas-body -->
-</div> <!-- סוף Offcanvas לנייד -->
-
-
-
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Firebase v12 -->
+<!-- טעינת ספריות Firebase -->
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
-<!-- הקובץ הראשי -->
+<!-- קובץ הקוד הראשי שלך — כאן נמצאות כל הפונקציות:
+     • toggleLaser()
+     • טעינת וידאו
+     • שליחת טפסים ל־Firebase
+     • Authentication
+     • כתיבה ללוג אירועים
+-->
 <script src="main.js"></script>
+
 </body>
 </html>

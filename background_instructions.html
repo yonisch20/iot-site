@@ -1,105 +1,261 @@
 <!DOCTYPE html>
+<!--
+  השורה הזאת היא הכרזה שאומרת לדפדפן:
+  "הדף הזה כתוב ב-HTML מודרני (HTML5)".
+  היא לא מציירת שום דבר על המסך, רק מגדירה את סוג המסמך.
+-->
+
 <html lang="he" dir="rtl">
+<!--
+  <html> = האלמנט שעוטף את *כל* הדף.
+  lang="he" = השפה העיקרית של התוכן היא עברית.
+  dir="rtl" = כיוון הכתיבה הוא מימין לשמאל (Right To Left),
+  מה שמתאים לעברית וגורם לטקסט, תפריטים וטבלאות להתיישר בהתאם.
+-->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    <head> = אזור ההגדרות של הדף.
+    כאן שמים דברים שהמשתמש לא רואה ישירות על המסך:
+    כותרת הדף, קישורים לעיצוב, הגדרות מטה וכו'.
+  -->
 
-    <title>רקע הפרויקט והוראות שימוש</title>
+  <meta charset="UTF-8">
+  <!--
+    meta charset = הגדרת סוג קידוד הטקסט.
+    UTF-8 = קידוד שמאפשר להציג עברית, אנגלית, סמלים ועוד כמו שצריך.
+    בלי זה, העברית יכולה להופיע כג‘יבריש.
+  -->
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    הגדרה חשובה למסכים קטנים (טלפונים / טאבלטים):
+    - width=device-width = רוחב הדף יתאים לרוחב המסך האמיתי של המכשיר.
+    - initial-scale=1.0 = זום התחלתי 100%, לא קרוב מדי ולא רחוק מדי.
+    זה מונע מצב שהאתר ייראה קטן/מוזר בסמארטפון.
+  -->
 
-    <!-- בלוק CSS פנימי שמגדיר עיצוב לדף ולטבלה -->
-<style>
+  <title>רקע הפרויקט והוראות שימוש</title>
+  <!--
+    <title> = השם שמופיע בטאב של הדפדפן למעלה.
+    המשתמש רואה אותו בסרגל הלשוניות, לא בתוך גוף הדף.
+  -->
 
-    /* עיצוב לאלמנט body – רקע התמונה הכללי של האתר */
+  <!--
+    כאן אנחנו טוענים את קובץ העיצוב (CSS) של Bootstrap.
+    Bootstrap היא ספרייה מוכנה שמוסיפה הרבה מחלקות עיצוב מוכנות מראש:
+    טבלאות, כפתורים, תפריטים, גריד של עמודות ועוד.
+    href="..." = הכתובת שבה נמצא קובץ ה-CSS.
+    rel="stylesheet" = אומר שהקובץ הזה הוא קובץ עיצוב.
+  -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!--
+    כאן מתחיל בלוק CSS פנימי – עיצוב שאנחנו כותבים ישירות בקובץ ה-HTML.
+    כל מה שנכתוב בתוך <style> ישפיע על איך האלמנטים נראים.
+  -->
+  <style>
+
+    /*
+      כאן אנחנו מעצבים את אלמנט <body>, כלומר את כל רקע הדף.
+      כל מה שנגדיר כאן ישפיע על כל הדף.
+    */
     body{
-        /* הגדרת רקע עם תמונה, ממורכזת, מכסה את כל המסך, ללא חזרה, ונשארת קבועה בגלילה */
+        /*
+          background: = עיצוב רקע.
+          url("project_BG.png") = נטען תמונה בשם project_BG.png מתוך תקיית הקבצים.
+          center = ממקם את התמונה במרכז.
+          cover = גורם לתמונה לכסות את כל המסך גם אם היא נחתכת בקצוות.
+          no-repeat = מונע חזרה של התמונה (לא טפט של כמה פעמים).
+          fixed = התמונה נשארת במקום כשגוללים – כמו "מודבקת" למסך.
+        */
         background: url("project_BG.png") center/cover no-repeat fixed;
     }
 
-    /* מחלקה מותאמת אישית לטבלת Bootstrap, כדי לשלוט בצבעי טקסט */
+    /*
+      כאן אנחנו מגדירים מחלקה (class) חדשה בשם my-table.
+      זו מחלקה שנוסיף לטבלאות כדי לשלוט בצבעים שלהן,
+      מעבר למה ש-Bootstrap נותן ברירת מחדל.
+    */
     .my-table {
 
-        /* משתנה CSS פנימי של Bootstrap: צבע הטקסט הרגיל בתאים */
+        /*
+          אלה משתני CSS פנימיים של Bootstrap (משתנים שמתחילים ב---bs).
+          הם מגדירים מה יהיה צבע הטקסט בטבלה.
+          --bs-table-color = צבע טקסט רגיל בתאים.
+        */
         --bs-table-color: white;
 
-        /* צבע הטקסט בשורות מפוספסות (striped rows) */
+        /*
+          זה צבע לטקסט בשורות "מפוספסות" (striped),
+          אם משתמשים באפשרות table-striped.
+        */
         --bs-table-striped-color: white;
 
-        /* צבע הטקסט כאשר העכבר מרחף מעל שורה (hover) */
+        /*
+          זה צבע הטקסט כשמרחפים עם העכבר מעל שורה (מצב hover).
+        */
         --bs-table-hover-color: white;
 
-        /* החלת צבע הטקסט בפועל על תוכן הטבלה */
+        /*
+          כאן אנחנו מוודאים שהטקסט בטבלה באמת יוצג בצבע שהגדרנו.
+          color: var(--bs-table-color) = משתמשים בערך של המשתנה שהגדרנו למעלה.
+        */
         color: var(--bs-table-color);
     }
 
-    /* עיצוב לקישורים שנמצאים בתוך טבלה עם המחלקה my-table */
+    /*
+      כאן אנו מעצבים קישורים (<a>) שנמצאים בתוך טבלה שיש לה class="my-table".
+      כלומר: כל קישור בתוך הטבלה שלנו יושפע מהכללים האלה.
+    */
     .my-table a {
 
-        /* הקישור יקבל את צבע הטקסט מהטבלה (לבן), ולא כחול ברירת המחדל */
+        /*
+          color: inherit = הקישור יקבל את צבע הטקסט מההורה שלו (הטבלה),
+          ולא את הצבע הכחול הרגיל של קישור.
+          במקרה שלנו – לבן.
+        */
         color: inherit;
 
-        /* ביטול קו תחתון מהקישורים */
+        /*
+          text-decoration: none = מבטל קו תחתון של קישורים,
+          כדי שייראו יותר "נקיים".
+        */
         text-decoration: none;
     }
 
-    /* כותרות שורה עליונה (thead) בטבלה כהה יהיו תמיד בצבע לבן, גם אם Bootstrap ישנה צבעים */
+    /*
+      כאן אנחנו מעצבים את כותרות העמודות בשורה העליונה של הטבלה.
+      .my-table thead.table-dark th = תאי כותרת (th) בתוך thead שיש לו class="table-dark",
+      בתוך טבלה עם class="my-table".
+      כלומר: כותרת הטבלה המודגשת.
+    */
     .my-table thead.table-dark th {
 
-        /* קובע במפורש שהטקסט בכותרת יהיה לבן */
+        /*
+          color: #fff = קובע במפורש שהטקסט יהיה לבן,
+          גם אם Bootstrap בוחר צבע אחר.
+          #fff = קיצור ל-#ffffff (לבן).
+        */
         color: #fff;
     }
 
-</style>
+  </style>
 
-<!-- סגירת אזור ה־head של המסמך -->
 </head>
 
-<!-- תחילת גוף הדף – כל מה שמופיע על המסך נמצא בתוך body -->
 <body>
+  <!--
+    <body> = גוף הדף.
+    כל מה שנכתוב כאן יופיע על המסך: תפריטים, טבלאות, טקסטים, תמונות וכו'.
+  -->
 
-    <!-- תיאור לוגי: אזור הניווט העליון (Navbar) של האתר -->
-    <!-- אלמנט nav מייצג אזור ניווט -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!--
+      כאן מתחיל אזור הניווט העליון – ה"Navbar".
+      <nav> = אלמנט שמשמש לסרגל ניווט (קישורים לעמודים אחרים באתר).
+      class="navbar navbar-expand-lg navbar-dark bg-dark":
+        - navbar = הופך את האלמנט ל-Navbar של Bootstrap.
+        - navbar-expand-lg = במסכים גדולים (lg ומעלה) התפריט פרוש.
+          במסכים קטנים הוא מתקפל לתפריט "המבורגר".
+        - navbar-dark = סגנון כהה (טקסט בהיר על רקע כהה).
+        - bg-dark = רקע כהה (שחור/אפור כהה).
+    -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
 
-        <!-- container-fluid = קונטיינר ברוחב מלא אשר מחזיק את תוכן ה־navbar -->
+        <!--
+          container-fluid = קונטיינר ברוחב מלא, לא מגביל את הרוחב של התוכן.
+          הוא דואג לכך שהתוכן יהיה מיושר ומסודר.
+        -->
         <div class="container-fluid">
 
-            <!-- קישור המייצג את לוגו ושם המערכת, חוזר לעמוד הראשי -->
+            <!--
+              <a> = קישור.
+              class="navbar-brand" = מייצג את "המותג" של התפריט (לוגו/שם האתר).
+              d-flex = מפעיל Flexbox כדי לסדר את התוכן בשורה.
+              align-items-center = מיישר אנכית את התוכן למרכז.
+              gap-2 = רווח קטן בין הפריטים (לוגו וטקסט).
+              href="index.html" = לחיצה על זה מחזירה לעמוד הראשי.
+            -->
             <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
 
-                <!-- תמונת הלוגו של הפרויקט -->
+                <!--
+                  תמונת הלוגו של המערכת.
+                  src="project_logo.png" = שם קובץ התמונה.
+                  alt="לוגו" = תיאור טקסטואלי לתמונה (בשביל נגישות או אם התמונה לא נטענת).
+                  height="40" = גובה התמונה יהיה 40 פיקסלים.
+                -->
                 <img src="project_logo.png" alt="לוגו" height="40">
 
-                <!-- טקסט שם המערכת, מוסתר במסכים קטנים ומוצג במסכים גדולים בלבד -->
+                <!--
+                  <span> = אלמנט טקסט קטן.
+                  class="d-none d-lg-inline":
+                    d-none = אל תציג את האלמנט במסכים קטנים.
+                    d-lg-inline = במסכים גדולים (lg ומעלה) תציג אותו כטקסט רגיל.
+                  זאת אומרת: בטלפון רואים רק את הלוגו, לא את הטקסט.
+                  במסך מחשב גדול נראה גם את הטקסט "מערכת איתור וסימון ניידת".
+                -->
                 <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
 
-            <!-- סגירת תגית הקישור של הלוגו -->
             </a>
             
-            <!-- כפתור התנתקות, יופיע רק כשמשתמש מחובר לפי JavaScript (שולט ב-display) -->
+            <!--
+              כפתור התנתקות.
+              id="signOutBtn" = מזהה שנשתמש בו בג'אווה־סקריפט כדי להציג/להסתיר ולהפעיל logout.
+              class="btn btn-sm btn-outline-danger me-3":
+                - btn = כפתור Bootstrap.
+                - btn-sm = כפתור קטן יחסית.
+                - btn-outline-danger = מסגרת אדומה (סגנון "אזהרה").
+                - me-3 = רווח בצד (margin-end) בגודל 3.
+              style="display: none;" = כפתור לא מוצג בהתחלה.
+              במקרה שלך – יוצג רק אחרי שהמשתמש מחובר, לפי הקוד ב-main.js.
+            -->
             <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
                התנתקות
             </button>
 
-            <!-- כפתור "המבורגר" לפתיחת/סגירת התפריט במסכים קטנים -->
+            <!--
+              כפתור "המבורגר" שנועד למסכים קטנים.
+              כשהמסך קטן, התפריט הארוך לא נכנס בשורה אחת,
+              אז Bootstrap מחביא אותו ומראה כפתור קטן שמקפל/פותח את התפריט.
+              class="navbar-toggler" = עיצוב כפתור תפריט קטן.
+              type="button" = זה כפתור רגיל, לא כפתור ששייך לטופס.
+              data-bs-toggle="collapse" = אומר ל-Bootstrap שהלחיצה תפעיל פתיחה/סגירה.
+              data-bs-target="#navbarNav" = מזהה את האלמנט שנפתח/נסגר (div עם id="navbarNav").
+            -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
 
-                <!-- אייקון ברירת המחדל של כפתור ה־navbar (3 קווים) -->
+                <!--
+                  זה האייקון הקטן של שלוש שורות ("המבורגר"),
+                  שמייצג תפריט.
+                -->
                 <span class="navbar-toggler-icon"></span>
 
-            <!-- סגירת כפתור ההמבורגר -->
             </button>
 
-            <!-- אזור התפריט שיכול להתקפל ולהתרחב (collapse) -->
+            <!--
+              זה האזור של הקישורים שבתוך ה-Navbar,
+              שמתקפל/נפתח במסכים קטנים.
+              class="collapse navbar-collapse":
+                collapse = מאפשר הסתרה/הצגה.
+                navbar-collapse = עיצוב פנימי של ה-Navbar.
+              id="navbarNav" = מזהה שהכפתור למעלה מתייחס אליו.
+            -->
             <div class="collapse navbar-collapse" id="navbarNav">
 
-                <!-- רשימת פריטי ניווט בתוך ה־navbar -->
+                <!--
+                  <ul> = רשימה של פריטים.
+                  class="navbar-nav me-auto":
+                    navbar-nav = כיתת Bootstrap שמסדרת פריטי ניווט.
+                    me-auto = "דחיפה" לצד השני כדי להשאיר רווח.
+                -->
                 <ul class="navbar-nav me-auto">
 
-                    <!-- פריט ניווט: רקע והוראות שימוש -->
+                    <!-- פריט ניווט ראשון בתפריט -->
                     <li class="nav-item">
+                        <!--
+                          class="nav-link" = קישור בעיצוב של פריט בתפריט.
+                          href="background_instructions.html" = מוביל לדף הנוכחי (רקע והוראות שימוש).
+                        -->
                         <a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a>
                     </li>
 
@@ -110,7 +266,7 @@
 
                     <!-- פריט ניווט: שליטה במנועים -->
                     <li class="nav-item">
-                        <a class="nav-link" href="dc_control.html">שליטה במנועים</a>
+                        <a class="nav-link" href="form.html">טופס אירוע</a>
                     </li>
 
                     <!-- פריט ניווט: יומן אירועים -->
@@ -118,57 +274,92 @@
                         <a class="nav-link" href="log.html">יומן אירועים</a>
                     </li>
 
-                <!-- סגירת רשימת פריטי הניווט -->
                 </ul>
 
-            <!-- סגירת בלוק ה-collapse של הניווט -->
             </div>
 
-        <!-- סגירת container-fluid -->
         </div>
 
-    <!-- סגירת ה־navbar -->
     </nav>
 
-    <!-- תחילת אזור התוכן המרכזי של הדף -->
+    <!--
+      כאן מתחיל אזור התוכן המרכזי של הדף.
+      <main> = אלמנט שמייצג את "החלק העיקרי" של הדף מבחינה לוגית.
+      class="container py-5":
+        container = מרכז את התוכן ומגביל את הרוחב.
+        py-5 = padding אנכי (למעלה ולמטה) יחסית גדול.
+    -->
     <main class="container py-5">
 
-        <!-- כותרת ראשית של הדף – רקע והוראות שימוש -->
+        <!--
+          כותרת ראשית של הדף עצמו (לא של הטאב).
+          class="mb-4 text-center text-light":
+            mb-4 = מרווח מתחת לכותרת.
+            text-center = טקסט ממורכז.
+            text-light = טקסט בצבע בהיר (לבן).
+        -->
         <h1 class="mb-4 text-center text-light">
             רקע הפרויקט והוראות שימוש
         </h1>
 
-        <!-- בלוק טקסט עם כותרת משנה ותיאור -->
+        <!--
+          זה בלוק טקסט גדול עם כותרת משנה ותיאור.
+          class="mb-5 h4 text-light":
+            mb-5 = מרווח גדול מתחת.
+            h4 = גודל טקסט דומה לכותרת h4.
+            text-light = טקסט בהיר.
+        -->
         <div class="mb-5 h4 text-light">
 
-            <!-- כותרת משנה – למה בחרנו בנושא -->
+            <!-- כותרת משנה: למה בחרנו בנושא הזה? -->
             <h2 class="h4 mb-3 text-light">
                 למה בחרנו בנושא הזה?
             </h2>
 
-            <!-- פסקת טקסט שמסבירה את הרקע לפרויקט -->
+            <!--
+              פסקה שמתארת את רקע הפרויקט.
+              כרגע כתוב טקסט דוגמה, אבל אפשר להרחיב.
+            -->
             <p>
-                מערכת איתור וסימון ניידת נועדה להדגים באופן מוחשי עקרונות...
+              הרעיון שלנו הוא לנסות לשנות ולשפר את הנושא של מערכות איתור וסימון באמצעות תכנון ובנייה של מערכת, בקנה מידה קטן וזול יחסית לשוק של היום, שתאפשר להבין את עיקרון הפעולה של מערכות איתור וסימון ניידות.             
             </p>
 
-        <!-- סגירת בלוק הטקסט -->
         </div>
 
-        <!-- בלוק שמרכז את התמונה (לוגו הפרויקט) -->
+        <!--
+          בלוק שמרכז את הלוגו באמצע הדף.
+          class="text-center mb-5":
+            text-center = ממרכז גם את התמונה וגם את הכיתוב מתחתיה.
+            mb-5 = מרווח מתחת לבלוק הזה.
+        -->
         <div class="text-center mb-5">
 
-            <!-- תמונה מרכזית של לוגו הפרויקט, מסתגלת לרוחב המסך, מעוגלת עם צל -->
+            <!--
+              תמונה שמדגישה את לוגו הפרויקט.
+              src="project_logo.png" = קובץ התמונה.
+              class="img-fluid rounded shadow w-50":
+                img-fluid = תמונה "נוזלית" שמתאימה את עצמה לרוחב המסך (לא שוברת את העיצוב).
+                rounded = פינות מעוגלות.
+                shadow = צל עדין.
+                w-50 = רוחב 50% מרוחב הקונטיינר.
+              alt="לוגו הפרויקט" = תיאור טקסטואלי לתמונה.
+            -->
             <img src="project_logo.png" class="img-fluid rounded shadow w-50" alt="לוגו הפרויקט">
 
-            <!-- טקסט קטן מתחת לתמונה המתאר את התמונה -->
+            <!-- מתחת לתמונה יש טקסט קטן שמסביר מהי התמונה. -->
             <p class="mt-2 text-light">
                 לוגו הפרויקט
             </p>
 
-        <!-- סגירת בלוק התמונה המרכזית -->
         </div>
 
-        <!-- מקטע חדש שבו יש סרטון יוטיוב הסבר על ESP32 -->
+        <!--
+          כאן מתחיל מקטע (section) שמכיל סרטון YouTube
+          שמסביר על ה-ESP32.
+          class="container my-4":
+            container = מרכז את התוכן.
+            my-4 = רווח אנכי קטן לפני ואחרי.
+        -->
         <section class="container my-4">
 
             <!-- כותרת למקטע הסרטון -->
@@ -176,290 +367,315 @@
                 סרטון הסבר קצר על ה־ESP32
             </h3>
 
-            <!-- div שמרכז את תוכן הסרטון ומגביל לרוחב מקסימלי -->
+            <!--
+              div שמרכז את תוכן הסרטון ומגביל את הרוחב המקסימלי.
+              class="mx-auto" = ממרכז את הבלוק.
+              style="max-width: 1000px" = רוחב מקסימלי 1000 פיקסלים.
+            -->
             <div class="mx-auto" style="max-width: 1000px;">
 
-                <!-- div עם יחס מסך 16:9 מתאים לוידאו -->
+                <!--
+                  ratio ratio-16x9 = קלאס של Bootstrap ששומר על יחס רוחב/גובה של 16:9,
+                  שמתאים לסרטי וידאו.
+                -->
                 <div class="ratio ratio-16x9">
 
-                    <!-- iframe שמטמיע את סרטון ה-YouTube מתוך קישור embed -->
+                    <!--
+                      iframe = חלון שמטמיע דף אחר בתוך הדף הזה.
+                      במקרה הזה – וידאו מ-YouTube.
+                      src="https://www.youtube.com/embed/XTm-YL-5G34" = קישור לפורמט embed.
+                      allowfullscreen = מאפשר צפייה במסך מלא.
+                    -->
                     <iframe src="https://www.youtube.com/embed/XTm-YL-5G34" allowfullscreen></iframe>
 
-                <!-- סגירת בלוק ratio -->
                 </div>
 
-            <!-- סגירת בלוק הוידאו המכיל -->
             </div>
 
-        <!-- סגירת מקטע הסרטון -->
         </section>
 
-        <!-- בלוק טקסט בהיר עם הוראות שימוש במערכת -->
+        <!--
+          עכשיו יש בלוק טקסט נוסף שבו מוסברים שלבי השימוש במערכת.
+          class="text-light" = טקסט בהיר.
+        -->
         <div class="text-light">
 
-            <!-- כותרת תת-מקטע: איך משתמשים במערכת -->
+            <!-- כותרת קטנה לתת-מקטע -->
             <h2 class="h5 mb-3">איך משתמשים במערכת?</h2>
 
-            <!-- רשימה ממוספרת של שלבי השימוש במערכת -->
+            <!--
+              רשימה ממוספרת (ol = Ordered List).
+              class="h5 mb-4":
+                h5 = גודל טקסט.
+                mb-4 = מרווח מתחת.
+            -->
             <ol class="h5 mb-4">
 
-                <!-- שלב 1: הפעלת המערכת וחיבור לרשת -->
+                <!-- כל <li> הוא שלב אחד ברשימת ההוראות -->
                 <li>הפעלת המערכת וחיבור לרשת ה-WiFi.</li>
-
-                <!-- שלב 2: כניסה למסך השידור החי -->
                 <li>כניסה לשידור חי.</li>
-
-                <!-- שלב 3: המערכת ננעלת על עצם ומתריעה -->
                 <li>המערכת ננעלת על עצם ומתריעה.</li>
-
-                <!-- שלב 4: המשתמש מאשר אמת/שווא -->
                 <li>המשתמש מדווח האם האירוע אמיתי/שווא.</li>
-
-                <!-- שלב 5: רישום האירוע ביומן -->
                 <li>הכול נרשם ביומן האירועים.</li>
 
-            <!-- סגירת רשימה -->
             </ol>
 
-        <!-- סגירת בלוק ההוראות -->
         </div>
 
-        <!-- מקטע נוסף – טבלת רכיבי המערכת העיקריים -->
+        <!--
+          פה מתחיל מקטע נוסף (section) שמכיל טבלה של רכיבי המערכת.
+          class="container my-5":
+            container = מרכז.
+            my-5 = רווח אנכי גדול.
+        -->
         <section class="container my-5">
 
-            <!-- כותרת מרכזית לטבלת הרכיבים -->
+            <!-- כותרת הטבלה -->
             <h2 class="text-center mb-4 text-light">
                 רכיבי המערכת העיקריים
             </h2>
 
-            <!-- עטיפה המאפשרת גלילה אופקית בטלפונים במקרה שהטבלה רחבה -->
+            <!--
+              table-responsive = עוטף טבלה ומאפשר לה לגלול לצדדים במסך קטן,
+              במקום לשבור את העיצוב.
+            -->
             <div class="table-responsive">
 
-                <!-- עטיפה נוספת (מיותרת טכנית, אבל לא מפריעה) שנותנת responsive לטבלה -->
+                <!--
+                  כאן יש עטיפה נוספת גם עם table-responsive –
+                  היא לא חובה, אבל גם לא מפריעה.
+                -->
                 <div class="table-responsive">
 
-                    <!-- טבלה עם גבולות, פסים, יישור למרכז, והמחלקה המותאמת לצבעים -->
+                    <!--
+                      table = יצירת טבלה.
+                      class="table table-bordered table-striped text-center align-middle my-table":
+                        table = טבלת Bootstrap בסיסית.
+                        table-bordered = עם מסגרת מסביב לתאים.
+                        table-striped = שורות מפוספסות (שורה בהירה/כהה לסירוגין).
+                        text-center = טקסט מיושר למרכז.
+                        align-middle = תאים מיושרים למרכז אנכית.
+                        my-table = המחלקה המיוחדת שלנו שמגדירה צבעי טקסט.
+                    -->
                     <table class="table table-bordered table-striped text-center align-middle my-table">
 
-                        <!-- שורת כותרת של הטבלה, עם רקע כהה -->
+                        <!--
+                          thead = ראש הטבלה (כותרות עמודות).
+                          class="table-dark" = רקע כהה לכותרת.
+                        -->
                         <thead class="table-dark">
 
-                            <!-- שורת הכותרת הראשית -->
+                            <!-- שורה של כותרת -->
                             <tr>
 
-                                <!-- תא כותרת: סוג תקשורת -->
+                                <!-- th = תא כותרת. בכל תא כתוב שם עמודה. -->
                                 <th>תקשורת</th>
-
-                                <!-- תא כותרת: תפקיד הרכיב -->
                                 <th>תפקיד</th>
-
-                                <!-- תא כותרת: עמודת תמונה -->
                                 <th>תמונה</th>
-
-                                <!-- תא כותרת: שם הרכיב -->
                                 <th>רכיב</th>
 
-                            <!-- סגירת שורת הכותרת -->
                             </tr>
 
-                        <!-- סגירת thead -->
                         </thead>
 
-                        <!-- גוף הטבלה – כל שורה מייצגת רכיב במערכת -->
+                        <!--
+                          tbody = גוף הטבלה – כל השורות שמתארות את הרכיבים.
+                        -->
                         <tbody>
 
-                            <!-- שורה 1: ESP32-CAM -->
-                            <tr>
-
-                                <!-- סוג תקשורת של ESP32-CAM -->
-                                <td>UART / Wi-Fi</td>
-
-                                <!-- תפקיד ESP32-CAM -->
-                                <td>קליטת תמונה</td>
-
-                                <!-- תא תמונה – מציג תמונת ESP32-CAM -->
-                                <td>
+                        <tr>
+                            <td>UART / Wi-Fi</td>
+                            <td>קליטת תמונה</td>
+                            <td>
+                                <a href="https://www.digikey.com/en/htmldatasheets/production/9125147/0/0/1/esp32-cam#:~:text=View%20ESP32-CAM%20datasheet%20for%20technical,specifications%2C%20dimensions%20and%20more%20at%20DigiKey.?msockid=1dfe1186180061d1323b0347191e6032" target="_blank" title="לחץ לדף נתונים">
                                     <img src="esp32-cam.png" width="65"
-                                         class="rounded border img-fluid shadow-sm" alt="ESP32-CAM">
-                                </td>
+                                        class="rounded border img-fluid shadow-sm" alt="ESP32-CAM">
+                                </a>
+                            </td>
+                            <td>ESP32-CAM</td>
+                        </tr>
 
-                                <!-- תא שם הרכיב -->
-                                <td>ESP32-CAM</td>
+                        <tr>
+                            <td>Digital I/O</td>
+                            <td>בקרת מנועים ולוגיקה מהירה</td>
+                            <td>
+                                <img src="fpga_de10.jpg" width="65"
+                                    class="rounded border img-fluid shadow-sm" 
+                                    alt="FPGA DE10-Lite"
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#fpgaModal"
+                                    style="cursor: pointer;">
+                            </td>
+                            <td>FPGA (DE10-Lite)</td>
+                        </tr>
 
-                            <!-- סגירת השורה הראשונה -->
-                            </tr>
-
-                            <!-- שורה 2: FPGA DE10-Lite -->
-                            <tr>
-
-                                <!-- סוג תקשורת – קווי I/O דיגיטליים -->
-                                <td>Digital I/O</td>
-
-                                <!-- תפקיד הרכיב – בקרת מנועים ולוגיקה מהירה -->
-                                <td>בקרת מנועים ולוגיקה מהירה</td>
-
-                                <!-- תא תמונה – תמונת לוח FPGA -->
-                                <td>
-                                    <img src="fpga_de10.jpg" width="65"
-                                         class="rounded border img-fluid shadow-sm" alt="FPGA DE10-Lite">
-                                </td>
-
-                                <!-- שם הרכיב -->
-                                <td>FPGA (DE10-Lite)</td>
-
-                            <!-- סגירת השורה השנייה -->
-                            </tr>
-
-                            <!-- שורה 3: סרוו MG996R -->
-                            <tr>
-
-                                <!-- ערוץ שליטה – PWM -->
-                                <td>PWM</td>
-
-                                <!-- תפקיד – כיוון לייזר ומצלמה -->
-                                <td>כיוון הלייזר והמצלמה</td>
-
-                                <!-- תא תמונה – סרוו -->
-                                <td>
+                        <tr>
+                            <td>PWM</td>
+                            <td>כיוון הלייזר והמצלמה</td>
+                            <td>
+                                <a href="https://www.electronicoscaldas.com/datasheet/MG996R_Tower-Pro.pdf" target="_blank" title="לחץ לדף נתונים">
                                     <img src="mg996r-servo.jpg" width="65"
-                                         class="rounded border img-fluid shadow-sm" alt="MG996R Servo">
-                                </td>
+                                        class="rounded border img-fluid shadow-sm" alt="MG996R Servo">
+                                </a>
+                            </td>
+                            <td>MG996R Servo</td>
+                        </tr>
 
-                                <!-- שם הרכיב -->
-                                <td>MG996R Servo</td>
-
-                            <!-- סגירת השורה השלישית -->
-                            </tr>
-
-                            <!-- שורה 4: לייזר KY-008 -->
-                            <tr>
-
-                                <!-- סוג תקשורת – יציאה דיגיטלית -->
-                                <td>Digital Output</td>
-
-                                <!-- תפקיד – סימון העצם המזוהה -->
-                                <td>סימון העצם המזוהה</td>
-
-                                <!-- תא תמונה – לייזר KY-008 -->
-                                <td>
+                        <tr>
+                            <td>Digital Output</td>
+                            <td>סימון העצם המזוהה</td>
+                            <td>
+                                <a href="https://arduinomodules.info/ky-008-laser-transmitter-module/" target="_blank" title="לחץ למידע נוסף">
                                     <img src="ky-008.png" width="65"
-                                         class="rounded border img-fluid shadow-sm" alt="KY-008 Laser">
-                                </td>
+                                        class="rounded border img-fluid shadow-sm" alt="KY-008 Laser">
+                                </a>
+                            </td>
+                            <td>KY-008 Laser</td>
+                        </tr>
 
-                                <!-- שם הרכיב -->
-                                <td>KY-008 Laser</td>
-
-                            <!-- סגירת השורה הרביעית -->
-                            </tr>
-
-                            <!-- שורה 5: חיישן מרחק HC-SR04 -->
-                            <tr>
-
-                                <!-- ערוצי Trigger / Echo – מדידת זמן החזרה -->
-                                <td>Trigger / Echo</td>
-
-                                <!-- תפקיד – מדידת מרחק ובדיקת טווח -->
-                                <td>מדידת מרחק ובדיקת טווח מטרה</td>
-
-                                <!-- תא תמונה – HC-SR04 -->
-                                <td>
+                        <tr>
+                            <td>Trigger / Echo</td>
+                            <td>מדידת מרחק ובדיקת טווח מטרה</td>
+                            <td>
+                                <a href="https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf" target="_blank" title="לחץ לדף נתונים">
                                     <img src="hc-sr04.png" width="65"
-                                         class="rounded border img-fluid shadow-sm" alt="HC-SR04">
-                                </td>
+                                        class="rounded border img-fluid shadow-sm" alt="HC-SR04">
+                                </a>
+                            </td>
+                            <td>HC-SR04</td>
+                        </tr>
 
-                                <!-- שם הרכיב -->
-                                <td>HC-SR04</td>
+                    </tbody>
 
-                            <!-- סגירת השורה החמישית -->
-                            </tr>
-
-                        <!-- סגירת גוף הטבלה -->
-                        </tbody>
-
-                    <!-- סגירת תגית table -->
                     </table>
 
-                <!-- סגירת ה-table-responsive הפנימי -->
                 </div>
 
-            <!-- סגירת ה-table-responsive החיצוני -->
             </div>
 
-        <!-- סגירת מקטע הטבלה -->
         </section>
 
-        <!-- חלונית קופצת (Modal) להצגת קישורים ל-Datasheet של ה-FPGA -->
+        <!--
+          כאן אנחנו מגדירים "חלונית קופצת" (Modal) שמופיעה מעל הדף,
+          למשל כדי להציג קישורים ל-Datasheet.
+          class="modal fade" = חלון שנפתח באנימציה עדינה.
+          id="fpgaModal" = מזהה שנשתמש בו ב-JS כדי לפתוח/לסגור את החלון.
+        -->
         <div class="modal fade" id="fpgaModal">
 
-            <!-- modal-dialog מרכז את החלונית, modal-dialog-centered מיישר אותה אנכית באמצע המסך -->
+            <!--
+              modal-dialog = הקונטיינר של החלונית.
+              modal-dialog-centered = מיישר את החלונית למרכז המסך (גם אנכית).
+            -->
             <div class="modal-dialog modal-dialog-centered">
 
-                <!-- תוכן החלונית – רקע כהה, טקסט בהיר, מסגרת בצבע info -->
+                <!--
+                  modal-content = הקופסה עצמה שיש בתוכה: כותרת, תוכן, כפתור סגירה.
+                  bg-dark = רקע כהה.
+                  text-light = טקסט בהיר.
+                  border-info = מסגרת בצבע "info" (טורקיז/כחול).
+                -->
                 <div class="modal-content bg-dark text-light border-info">
 
-                    <!-- החלק העליון של החלונית – הכותרת -->
+                    <!--
+                      modal-header = אזור הכותרת העליון של החלונית.
+                      border-info = קו תחתון בצבע info.
+                    -->
                     <div class="modal-header border-info">
 
-                        <!-- כותרת החלונית -->
+                        <!-- כותרת טקסט בראש המודל -->
                         <h5 class="modal-title">בחר דף נתונים</h5>
 
-                    <!-- סגירת אזור ה-header של המודל -->
                     </div>
 
-                    <!-- גוף החלונית – מרכזת את תוכן הכפתורים -->
+                    <!--
+                      modal-body = גוף החלונית – כאן שמים את התוכן.
+                      text-center = ממרכז את כל מה שבתוך הגוף.
+                    -->
                     <div class="modal-body text-center">
 
-                        <!-- d-grid = פריסה כ-grid; gap-3 = מרווח אנכי בין הכפתורים -->
+                        <!--
+                          d-grid = פריסה ריבועית (grid) שמסדרת אלמנטים אחד מתחת לשני.
+                          gap-3 = רווח בין הכפתורים.
+                        -->
                         <div class="d-grid gap-3">
 
-                            <!-- כפתור (קישור) לדף נתונים של לוח DE10-Lite – ייפתח בטאב חדש -->
-                            <a class="btn btn-outline-info" target="_blank">
+                            <!--
+                              כאן אמור להיות קישור (a) לדף נתונים של לוח DE10-Lite.
+                              class="btn btn-outline-info" = נראה כמו כפתור עם מסגרת בצבע info.
+                              target="_blank" = ייפתח בטאב חדש.
+                              כרגע אין href, אז הוא לא מוביל לשום מקום,
+                              אבל העיצוב מוכן.
+                            -->
+                            <a  href="https://ftp.intel.com/Public/Pub/fpgaup/pub/Intel_Material/Boards/DE10-Lite/DE10_Lite_User_Manual.pdf"
+                                class="btn btn-outline-info" target="_blank">
                                 Datasheet של לוח ה־DE10-Lite
                             </a>
 
-                            <!-- כפתור (קישור) לדף נתונים של FPGA MAX10 – גם בטאב חדש -->
-                            <a class="btn btn-outline-info" target="_blank">
+                            <!--
+                              קישור שני, אמור להוביל ל-Datasheet של FPGA MAX10.
+                              גם כאן כרגע אין href בפועל, רק כפתור מעוצב.
+                            -->
+                            <a  href="https://docs.altera.com/r/docs/683794/current/max-10-fpga-device-datasheet/intel-max-10-fpga-device-datasheet"
+                                class="btn btn-outline-info" target="_blank">
                                 Datasheet של ה־FPGA MAX10
                             </a>
 
-                        <!-- סגירת ה-grid של הכפתורים במודל -->
                         </div>
 
-                    <!-- סגירת גוף המודל -->
                     </div>
 
-                    <!-- אזור התחתית של החלונית – כפתור סגירה -->
+                    <!--
+                      modal-footer = השורה התחתונה של החלונית.
+                      border-info = קו עליון בצבע info.
+                    -->
                     <div class="modal-footer border-info">
 
-                        <!-- כפתור סגירה שמסמן ל-Bootstrap לסגור את המודל -->
+                        <!--
+                          כפתור "סגור" שמסמן ל-Bootstrap לסגור את המודל.
+                          data-bs-dismiss="modal" = אומר שכשלוחצים על הכפתור,
+                          החלונית תיסגר.
+                        -->
                         <button class="btn btn-secondary" data-bs-dismiss="modal">
                             סגור
                         </button>
 
-                    <!-- סגירת modal-footer -->
                     </div>
 
-                <!-- סגירת modal-content -->
                 </div>
 
-            <!-- סגירת modal-dialog -->
             </div>
 
-        <!-- סגירת אלמנט המודל -->
         </div>
 
-    <!-- סגירת main – סוף גוף התוכן המרכזי של הדף -->
     </main>
 
+    <!--
+      עכשיו מתחילים להטעין קבצי JavaScript:
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+      Bootstrap JS – מאפשר לתפריט, למודל, לכפתור ההמבורגר וכו'
+      לעבוד בפועל (פתיחה/סגירה, אנימציות).
+    -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
+    <!--
+      קבצי Firebase:
+      firebase-app-compat.js = מודול בסיסי של Firebase לאתחול האפליקציה.
+      firebase-auth-compat.js = מודול לניהול התחברות/הרשמה (Authentication).
+      firebase-database-compat.js = מודול לניהול בסיס נתונים בזמן אמת (Realtime Database).
+      הסיומת compat אומרת שזה API תואם לקוד בגרסאות ישנות.
+    -->
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
  
-<script src="/main.js"></script>
+    <!--
+      זה קובץ הג‘אווה־סקריפט הראשי שלך,
+      שבו כנראה נמצאות פונקציות כמו login(), sign(), טיפול ב-signOutBtn,
+      הגדרת Firebase וכדומה.
+      src="/main.js" = ישים לב: / בתחילת הנתיב אומר שזו כתובת מהשורש של האתר.
+    -->
+    <script src="/main.js"></script>
 
 </body>
 </html>

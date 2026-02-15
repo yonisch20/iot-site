@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<!-- 
+הצהרת DOCTYPE אומרת לדפדפן שהקובץ כתוב לפי תקן HTML5.
+זה מבטיח שהדפדפן יציג הכול בצורה מודרנית ולא במצב תאימות ישן.
+-->
+
+<html lang="he" dir="rtl">
+<!-- 
+<html> הוא השורש של כל הדף.
+lang="he" מציין שהשפה היא עברית → חשוב לנגישות ולמנועי חיפוש.
+dir="rtl" אומר שהכיווניות של הטקסט היא Right-To-Left → מתאים לעברית.
+-->
+
+<head>
+<!-- 
+<head> מכיל מידע *על* הדף (מטא־דאטה), קישורי CSS, קוד JS, כותרת,
+אבל לא את התוכן שמופיע על המסך.
+-->
+
+    <meta charset="UTF-8">
+    <!-- 
+    מגדיר שהקובץ משתמש בקידוד UTF-8.
+    זה מאפשר כתיבה בעברית, אנגלית, סמלים ואימוג'ים בלי תקלות.
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+    שורה קריטית למובייל.
+    היא אומרת לדפדפן שהאתר צריך להתאים את עצמו לרוחב המסך של המכשיר.
+    בלי זה — העיצוב נשבר בנייד.
+    -->
+
+    <title>טופס אירוע</title>
+    <!-- 
+    כותרת הדף שמופיעה בלשונית של הדפדפן.
+    לא מופיעה בתוך הדף עצמו.
+    -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 
+    טעינת קובץ ה־CSS של Bootstrap מהאינטרנט (CDN = שרת מהיר).
+    Bootstrap נותן לנו כפתורים, גריד, צבעים, עיצוב וכלים מוכנים.
+    rel="stylesheet" אומר שזה קובץ עיצוב.
+    -->
+
+<style>
+/*
+תגית <style> מאפשרת לכתוב CSS ישירות בתוך הדף.
+*/
+
+    body{
+        /* 
+        body הוא אלמנט האב של כל מה שמוצג.
+        כאן נגדיר לו רקע תמונה:
+
+        background: url(project_BG.png)
+            — קובע שהתמונה תהיה הרקע.
+
+        center/cover:
+            center → התמונה ממורכזת.
+            cover → תמיד מכסה את כל המסך בלי להשאיר רווחים.
+
+        no-repeat:
+            התמונה לא תחזור על עצמה כמו טפט.
+
+        fixed:
+            הרקע לא זז עם הגלילה (אפקט פרלקסה עדין).
+        */
+        background: url(project_BG.png) center/cover no-repeat fixed;
+    }
+
+</style>
+
+</head>
+
+<body class="bg-dark text-light">
+<!-- 
+<body> מכיל את כל מה שמוצג בפועל על המסך.
+
+class="bg-dark text-light":
+    bg-dark → רקע כהה.
+    text-light → טקסט בהיר.
+    נותן ניגוד טוב וברור.
+-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+    <!-- 
+    NAVBAR = תפריט ניווט עליון.
+    navbar-expand-lg → בנייד התפריט מתקפל, במסכים גדולים נפרס.
+    navbar-dark → טקסט בהיר לתפריט כהה.
+    bg-dark → רקע שחור לתפריט.
+    -->
+
+        <div class="container-fluid">
+        <!-- 
+        container-fluid = אלמנט של Bootstrap ברוחב מלא.
+        התפריט תמיד יתפרש על כל רוחב הדף.
+        -->
+
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+            <!-- 
+            navbar-brand = טקסט/לוגו של ה-navbar.
+            d-flex → פריסת Flexbox.
+            align-items-center → מיישר אנכית את התמונה והטקסט.
+            gap-2 → רווח קטן בין הלוגו לטקסט.
+            href="index.html" → לחיצה מחזירה לעמוד הבית.
+            -->
+
+                <img src="project_logo.png" alt="לוגו" height="40">
+                <!-- 
+                לוגו הפרויקט בראש הדף.
+                alt="לוגו" → מה יוצג אם התמונה לא נטענת + קריין עזר לעיוורים.
+                height="40" → גובה 40px קבוע.
+                -->
+
+                <span class="d-none d-lg-inline">
+                <!-- 
+                span = טקסט בלבד.
+                d-none = מוסתר בכל המצבים.
+                d-lg-inline = מוצג רק במסכים גדולים.
+                המטרה: לחסוך מקום בנייד.
+                -->
+                    מערכת איתור וסימון ניידת
+                </span>
+
+            </a>
+
+            <button id="signOutBtn" 
+                    class="btn btn-sm btn-outline-danger me-3" 
+                    style="display: none;">
+               התנתקות
+            </button>
+            <!-- 
+            כפתור יציאה מהמערכת.
+            מוסתר כברירת מחדל (display:none).
+            JavaScript מציג אותו רק כשהמשתמש באמת מחובר.
+            btn-outline-danger → מסגרת אדומה.
+            btn-sm → כפתור קטן.
+            me-3 → רווח לימין (margin-end).
+            -->
+
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav">
+                <!-- 
+                כפתור "המבורגר" לתפריט בנייד.
+                כאשר לוחצים עליו → פותח/סוגר את הניווט.
+                
+                data-bs-toggle="collapse":
+                    מצב קיפול.
+
+                data-bs-target="#navbarNav":
+                    היעד שהכפתור שולט עליו.
+                -->
+                <span class="navbar-toggler-icon"></span>
+                <!-- 
+                האייקון של כפתור ההמבורגר.
+                Bootstrap מצייר אותו אוטומטית.
+                -->
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- 
+            אזור פריטי הניווט.
+            collapse → מתקפל בנייד.
+            navbar-collapse → התנהגות של ניווט.
+            id="navbarNav" → הכפתור יודע לפתוח/לסגור את האזור הזה.
+            -->
+
+                <ul class="navbar-nav me-auto">
+                <!-- 
+                ul → רשימה.
+                navbar-nav → עיצוב רשימת ניווט של Bootstrap.
+                me-auto → דוחף את הרשימה לצד שמאל.
+                -->
+
+                    <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
+                    <li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+                    <li class="nav-item"><a class="nav-link" href="form.html">טופס אירוע</a></li>
+                    <li class="nav-item"><a class="nav-link" href="log.html">יומן אירועים</a></li>
+                    <!-- 
+                    כל <a> הוא קישור לעמוד אחר באתר.
+                    nav-link = עיצוב קישור שמתאים לניווט.
+                    -->
+                </ul>
+
+            </div>
+
+        </div>
+    </nav>
+
+
+
+    <div class="container text-center mt-5">
+    <!-- ===========================
+     טופס דיווח אירוע – דסקטופ
+     =========================== -->
+<div class="container mt-4">
+  <div class="card bg-dark text-light border border-secondary rounded-3 shadow-sm">
+    <div class="card-header py-2">
+      <strong>דיווח אירוע</strong>
+    </div>
+
+    <div class="card-body">
+      <form id="eventFormDesk" class="row g-2 needs-validation" novalidate>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1">סוג מטרה</label>
+          <select class="form-select form-select-sm" required>
+            <option selected disabled>בחר...</option>
+            <option>רחפן</option>
+            <option>ציפור</option>
+            <option>בלון</option>
+            <option>מטוס</option>
+            <option>לא ידוע</option>
+          </select>
+          <div class="invalid-feedback">נא לבחור סוג.</div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1 d-block">אירוע אמת או שווא?</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="truthDesk" type="radio" required>
+            <label class="form-check-label">אמת</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" name="truthDesk" type="radio" required>
+            <label class="form-check-label">שווא</label>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1 d-block">ערוץ לשליחת הטופס</label>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Email</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">SMS</label>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox">
+            <label class="form-check-label">Push</label>
+          </div>
+        </div>
+
+        <div class="col-12 mb-3">
+          <label class="form-label mb-1">תיאור האירוע</label>
+          <textarea class="form-control form-control-sm" rows="2"></textarea>
+        </div>
+
+        <div class="col-6 mb-3">
+          <label class="form-label mb-1">רמת איום</label>
+          <select id="threatLevelSel" class="form-select form-select-sm">
+            <option>נמוך</option>
+            <option>בינוני</option>
+            <option>גבוה</option>
+          </select>
+        </div>
+
+        <div class="col-12 d-grid">
+          <button class="btn btn-primary btn-sm mt-3" type="submit">
+            שליחת הטופס
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 
+    טעינת קוד ה-JavaScript של Bootstrap כדי שהכפתורים, ה-collapse והניווט יעבדו.
+    bundle = כולל Popper.js בטעינה אחת.
+    -->
+
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
+    <!-- 
+    טעינת Firebase:
+    firebase-app → ליבה.
+    firebase-auth → התחברות משתמשים.
+    firebase-database → כתיבה/קריאה מהמסד נתונים.
+    -->
+
+    <script src="main.js"></script>
+    <!-- 
+    הקובץ שלך — כולל את הפונקציה sendCommand() 
+    שמעדכנת את Firebase בפקודות כמו:
+        forward / backward / left / right / stop
+    -->
+
+</body>
+</html>

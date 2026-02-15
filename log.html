@@ -1,311 +1,527 @@
 <!DOCTYPE html>
+<!--  
+<!DOCTYPE html> = שורה חובה בראש הדף.
+היא אומרת לדפדפן: "תציג את הדף בתקן HTML5 המודרני".
+אם לא כותבים אותה — הדפדפן עובר למצב ישן שנקרא Quirks Mode ויכול לגרום לבאגים.
+-->
+
 <html lang="he" dir="rtl">
+<!--  
+<html> = תגית האב של *כל* הדף.
+lang="he" = אומר לדפדפן ולמנועי חיפוש שהשפה של הדף היא עברית.
+dir="rtl" = Right To Left → הדפדפן מסדר טקסט, שורות ואלמנטים משמאל לימין.
+-->
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--  
+<head> = אזור הגדרות הדף.
+לא מוצג למסך. מכיל הגדרות כמו קידוד, שם הדף, קישורי CSS, מטה-מידע.
+-->
 
-  <title>יומן אירועים</title>
+    <meta charset="UTF-8">
+    <!--  
+    <meta charset="UTF-8"> = מגדיר את קידוד התווים.
+    UTF-8 תומך בעברית, אנגלית, סמלים ואימוג'ים.
+    בלי זה — עברית יוצאת ג'יבריש.
+    -->
 
-  <!-- Bootstrap 5.3.3 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  
+    קובע איך הדף ייראה במובייל.
+    width=device-width = מתאים את הדף לרוחב המסך של המכשיר.
+    initial-scale=1.0 = רמת הזום ההתחלתית.
+    זה מה שמאפשר לאתר להיות רספונסיבי.
+    -->
+
+    <title>יומן אירועים</title>
+    <!--  
+    <title> = הטקסט שמופיע בכרטיסייה של הדפדפן.
+    כאן: "יומן אירועים".
+    חשוב גם לקידום אתרים (SEO).
+    -->
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--  
+    <link rel="stylesheet"> = טוען קובץ CSS חיצוני.
+    הקישור מפנה ל-CDN של Bootstrap.
+    Bootstrap = ספריית CSS מוכנה שמספקת כפתורים, טבלאות, navbar, גריד ועוד.
+    הדפדפן מוריד את הקובץ הזה ומיישם את כל העיצובים של Bootstrap.
+    -->
 </head>
 
-<!--  
-body = תגית התוכן המרכזית של הדף  
-class="text-light" = מחלקת Bootstrap שמגדירה שכל הטקסט בתוך ה־body יהיה בצבע בהיר (לבן־אפור).  
-זה עובד כי Bootstrap נותן CSS: color: #f8f9fa;  
-style="background: ... " = עיצוב פנימי (inline style):  
-• url(project_BG.png) = טוען תמונת רקע בשם project_BG.png  
-• center = ממקם את התמונה במרכז  
-• cover = מותח את הרקע כך שיכסה את כל המסך בלי עיוות  
-• no-repeat = מונע שכפול של התמונה  
-• fixed = הרקע קבוע במסך ואינו זז בגלילה (parallax effect)  
--->
+
+
+
 <body class="text-light"
       style="background: url(project_BG.png) center/cover no-repeat fixed;">
-
-<!-- מעבר: פה היית כתבת "text-light = טקסט לבן" אבל עכשיו זה בהערות הנכונות כבר -->
-
-
-
 <!--  
-nav = אלמנט HTML לניווט  
-class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow"  
-= מחלקות Bootstrap רבות:  
-• navbar = הופך את האלמנט לבר־ניווט עם סט עיצובים בסיסי  
-• navbar-expand-lg = התפריט יתקפל (collapse) במסכים קטנים, וייפתח מלא רק מ־lg ומעלה  
-• navbar-dark = טקסט/אייקונים בהירים לתפריט כהה  
-• bg-dark = רקע כהה (Bootstrap קובע background-color:#212529)  
-• border-bottom = מסגרת תחתונה 1px  
-• border-info = צבע המסגרת תכלת (#0dcaf0)  
-• shadow = צל עדין סביב התפריט  
+<body> = כל התוכן שמוצג על המסך.
+
+class="text-light"
+→ מחלקה מ-Bootstrap שקובעת שכל הטקסט יהיה בצבע בהיר (לבן).
+
+style="background: url(...) ..."
+→ זה CSS שמוגדר *ישירות* על ה-body:
+
+• url(project_BG.png) = תמונת הרקע של הדף.
+• center = מציב את התמונה במרכז.
+• cover = מותח את התמונה כך שתכסה את כל המסך בלי עיוות.
+• no-repeat = מונע שכפול של התמונה.
+• fixed = הרקע נשאר קבוע בזמן גלילה (אפקט פרלקסה).
 -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow">
 
 
 
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-info shadow" id="navbar">
 <!--  
-div.container-fluid =  
-• container-fluid = קונטיינר ברוחב מלא 100% בכל גודל מסך  
-Bootstrap מוסיף padding אוטומטי משני הצדדים לשמירת עיצוב אחיד  
+<nav> = אלמנט המשמש להצגת תפריט ניווט.
+
+המחלקות:
+
+navbar  
+→ הופך את הבלוק ל-navbar של Bootstrap.
+
+navbar-expand-lg  
+→ התפריט יהיהCollapsed (מכווץ) במובייל, וייפתח אוטומטית רק במסכים גדולים (lg ומעלה).
+
+navbar-dark  
+→ טקסט ואייקונים בהירים, מיועד לרקע כהה.
+
+bg-dark  
+→ רקע בצבע שחור-אפור של Bootstrap.
+
+border-bottom  
+→ מסגרת תחתונה דקה.
+
+border-info  
+→ צבע המסגרת: תכלת.
+
+shadow  
+→ צל עדין מתחת ל-navbar, נותן עומק.
 -->
+
+
+
+
 <div class="container-fluid">
-
-
-
 <!--  
-a.navbar-brand = לוגו התפריט  
-class="navbar-brand d-flex align-items-center gap-2"  
-• navbar-brand = עיצוב מותאם ללוגו/שם פרויקט ב־Navbar  
-• d-flex = הופך את האלמנט ל־flexbox  
-• align-items-center = ממרכז פריטים אנכית בתוך ה־flex  
-• gap-2 = רווח אופקי של 0.5rem בין האלמנטים בפנים (לוגו + טקסט)  
-href="index.html" = לחיצה תחזיר לדף הבית  
+<div> הוא מיכל.
+
+container-fluid = רוחב מלא 100% בכל גדלי המסך.
+Bootstrap מוסיף לו padding אוטומטי משני הצדדים כדי שהתפריט ייראה מסודר.
 -->
+
+
+
+
 <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-
-
-
 <!--  
-img = תמונת לוגו  
-src="project_logo.png" = קובץ התמונה  
-alt="לוגו" = טקסט אלטרנטיבי לנגישות  
-height="40" = גובה קבוע של 40px  
+<a> = קישור.
+
+navbar-brand  
+→ עיצוב שמיועד ללוגו/שם של פרויקט בתפריט.
+
+d-flex  
+→ הופך את האלמנט ל-Flexbox כדי לסדר את הלוגו והטקסט בשורה.
+
+align-items-center  
+→ מיישר אותם אנכית במרכז.
+
+gap-2  
+→ רווח בין הלוגו לטקסט.
+
+href="index.html"  
+→ לחיצה על הלוגו תחזיר לדף הבית.
 -->
+
+
+
+
 <img src="project_logo.png" alt="לוגו" height="40">
-
-
-
 <!--  
-span = טקסט ליד הלוגו  
-class="d-none d-lg-inline"  
-• d-none = מוסתר בכל המסכים  
-• d-lg-inline = אבל במסכים גדולים (>=992px) הוא מוצג כ־inline  
-כלומר: הטקסט נראה רק בדסקטופ, לא במובייל  
+<img> = מציג תמונה.
+
+src="project_logo.png"  
+→ קובץ התמונה.
+
+alt="לוגו"  
+→ טקסט חלופי — חשוב לנגישות ולמנועי חיפוש.
+
+height="40"  
+→ גובה התמונה קבוע על 40 פיקסלים.
 -->
+
+
+
+
 <span class="d-none d-lg-inline">מערכת איתור וסימון ניידת</span>
+<!--  
+<span> = אלמנט טקסט קטן.
+
+class="d-none d-lg-inline":
+• d-none = מוסתר *בכל* המסכים.
+• d-lg-inline = אבל במסכים גדולים (lg ומעלה) מוצג כטקסט inline.
+
+המטרה:
+במובייל לא להעמיס טקסט ליד הלוגו — הוא מופיע רק בדסקטופ.
+-->
+
 </a>
 
 
 
-<!--  
-button#signOutBtn = כפתור התנתקות (JS יפעיל/יחביא אותו)  
-id="signOutBtn" = כדי ש־main.js יוכל להגיע אליו  
-class="btn btn-sm btn-outline-danger me-3"  
-• btn = כפתור Bootstrap  
-• btn-sm = גודל קטן  
-• btn-outline-danger = כפתור מסגרת אדומה (לא מילוי)  
-• me-3 = margin-end של 1rem (רווח לצד ימין בשפה RTL זה לצד שמאל ויזואלית)  
-style="display:none" = הכפתור מוסתר עד שהמשתמש מחובר  
--->
+
 <button id="signOutBtn" class="btn btn-sm btn-outline-danger me-3" style="display: none;">
     התנתקות
 </button>
-
-
-
 <!--  
-button.navbar-toggler = כפתור תפריט בנייד  
-משתמש ב־JS של Bootstrap למכניזם collapse  
-type="button" = כפתור רגיל  
-data-bs-toggle="collapse" = מודיע ל־Bootstrap לפתוח/לסגור תפריט  
-data-bs-target="#navbarNav" = מזהה את התפריט שייפתח  
+כפתור התנתקות.
+
+id="signOutBtn"  
+→ קוד ה-JS מחפש כפתור זה כדי להציג/להסתיר אותו.
+
+class="btn btn-sm btn-outline-danger":
+• btn = כפתור Bootstrap.
+• btn-sm = קטן.
+• btn-outline-danger = מסגרת אדומה.
+
+me-3  
+→ margin-end של 1rem → רווח לצד.
+
+style="display:none"  
+→ הכפתור מוסתר עד ש-JS יגלה שהמשתמש מחובר.
 -->
+
+
+
+
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
-
-
 <!--  
-span.navbar-toggler-icon = אייקון "3 קווים" של תפריט  
-Bootstrap מוסיף אותו עם CSS background-image  
+כפתור תפריט המבורגר במובייל.
+
+navbar-toggler  
+→ עיצוב ברירת מחדל של Bootstrap.
+
+type="button"  
+→ כפתור רגיל.
+
+data-bs-toggle="collapse"  
+→ מפעיל פתיחה/סגירה של התפריט.
+
+data-bs-target="#navbarNav"  
+→ מזהה את היעד שהוא יפתח.
 -->
+
 <span class="navbar-toggler-icon"></span>
+<!--  
+אייקון "שלושה קווים" של Bootstrap.
+מופיע רק כשיש navbar-dark או navbar-light.
+-->
 </button>
 
 
 
-<!--  
-div.collapse.navbar-collapse  
-• collapse = יכול להתקפל ולהיפתח (Mobile menu)  
-• navbar-collapse = עיצוב כשיושב בתוך navbar  
-id="navbarNav" = חייב להתאים לכפתור ה־toggler  
--->
+
 <div class="collapse navbar-collapse" id="navbarNav">
-
-
-
 <!--  
-ul.navbar-nav = רשימת פריטים בתפריט  
-class="navbar-nav me-auto"  
-• navbar-nav = עיצוב סטנדרטי של navbar list  
-• me-auto = margin-end:auto → דוחף את הרשימה לצד שמאל (ב־RTL זה ימין/שמאל תלוי בהקשר)  
+זה הבלוק שמתקפל ונפתח בנייד.
+
+collapse  
+→ מתחבא אוטומטית.
+
+navbar-collapse  
+→ עיצוב נוסף.
+
+id="navbarNav"  
+→ חייב להתאים ל-data-bs-target של הכפתור.
 -->
+
+
+
+
 <ul class="navbar-nav me-auto">
-
-
-
 <!--  
-li.nav-item = פריט אחד בתפריט  
-a.nav-link = הקישור עצמו  
+<ul> = רשימה.
+
+navbar-nav  
+→ מסדרת פריטים בצורה אופקית ב-navbar.
+
+me-auto  
+→ דוחף את הרשימה לקצה אחד (Margin-End:auto).
 -->
+
+
+
+
 <li class="nav-item"><a class="nav-link" href="background_instructions.html">רקע הפרויקט והוראות שימוש</a></li>
-<li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
-<li class="nav-item"><a class="nav-link" href="dc_control.html">שליטה במנועים</a></li>
-
-
-
 <!--  
-nav-link active =  
-• nav-link = קישור בעיצוב Navbar  
-• active = Bootstrap מדגיש את הטאב הנוכחי  
+כל <li> = פריט תפריט.
+
+nav-item  
+→ עיצוב הפריט.
+
+nav-link  
+→ עיצוב הקישור.
 -->
+
+<li class="nav-item"><a class="nav-link" href="live_feed.html">שידור חי</a></li>
+<li class="nav-item"><a class="nav-link" href="form.html">טופס אירוע</a></li>
+
 <li class="nav-item"><a class="nav-link active" href="log.html">יומן אירועים</a></li>
+<!--  
+active  
+→ Bootstrap מדגיש את הפריט הנוכחי בתפריט.
+-->
+
 </ul>
 
-</div>
-</div>
-</nav>
+</div> <!-- סוף collapse -->
+</div> <!-- סוף container-fluid -->
+</nav> <!-- סוף navbar -->
 
 
-  <!-- גוף הדף -->
-  <!--  
-main = אזור התוכן המרכזי של הדף  
-class="container my-5"  
-• container = רוחב מוגבל + מיושר למרכז ע"י Bootstrap  
-• my-5 = margin-top ו־margin-bottom של 3rem (ריווח גדול)  
+<!--  
+main = החלק המרכזי של הדף.
+class="container my-5":
+• container = רוחב מקסימלי קבוע (לא 100%) — נראה באמצע המסך.
+• my-5 = margin-top + margin-bottom של 3rem → ריווח גדול מעל ומתחת.
 -->
 <main class="container my-5">
 
 
 
 <!--  
-div.card = תיבת תוכן מעוצבת של Bootstrap  
-class="card bg-dark bg-opacity-75 border-info shadow-lg"  
-• card = עיצוב בסיסי של כרטיס  
-• bg-dark = רקע כהה  
-• bg-opacity-75 = רקע כהה שקוף 75%  
-• border-info = מסגרת בצבע Info (תכלת)  
-• shadow-lg = צל גדול מתחת לכרטיס  
+div.card = כרטיס Bootstrap — תיבה עם מסגרת, רקע וצל.
+
+class="card bg-dark bg-opacity-75 border-info shadow-lg":
+• card = מבנה כרטיס
+• bg-dark = רקע כהה
+• bg-opacity-75 = שקיפות של 75% → מאפשר לראות את הת背景 מאחור
+• border-info = מסגרת בצבע תכלת (info)
+• shadow-lg = צל גדול, נותן תחושה של עומק
 -->
 <div class="card bg-dark bg-opacity-75 border-info shadow-lg">
 
 
 
 <!--  
-div.card-header = כותרת של הכרטיס  
-class="card-header border-info"  
-• border-info = מסגרת תחתונה בצבע תכלת  
+כותרת הכרטיס.
+card-header = חלק עליון מסודר של הכרטיס.
+border-info = מסגרת תחתונה בצבע תכלת.
 -->
 <div class="card-header border-info">
 
+    <!--  
+    h3 = כותרת.
+    class="text-info mb-0":
+    • text-info = צבע תכלת בהיר.
+    • mb-0 = ללא מרווח מתחת.
+    -->
+    <h3 class="text-info mb-0">
+        יומן אירועים
+    </h3>
+
+</div> <!-- סוף card-header -->
+
+
 
 
 <!--  
-h3 = כותרת ראשית של הכרטיס  
-class="text-info mb-0"  
-• text-info = טקסט בצבע תכלת  
-• mb-0 = ללא מרווח מתחת  
--->
-<h3 class="text-info mb-0">
-  יומן אירועים
-</h3>
+div.card-body = אזור התוכן המרכזי בתוך הכרטיס.
+class="card-body p-0":
+• p-0 = אין ריווח פנימי (padding).
 
-</div> <!-- סוף header -->
-
-
-
-<!--  
-div.card-body = גוף הכרטיס  
-class="card-body p-0"  
-• p-0 = בלי padding פנימי  
+למה?  
+כי בפנים תהיה טבלה ורוצים שהטבלה תתפוס את כל הרוחב ללא שוליים.
 -->
 <div class="card-body p-0">
 
 
 
 <!--  
-div.table-responsive  
-• table-responsive = מאפשר לטבלה לקבל גלילה אופקית במובייל  
-למנוע מצב שבו טבלה גדולה נשפכת מחוץ למסך  
+div.table-responsive:
+מעולה במיוחד למובייל.
+
+המשמעות:
+אם הטבלה רחבה מדי → מופיעה גלילה אופקית במקום שהטבלה "תיישבר" או תצא מהמסך.
 -->
 <div class="table-responsive">
 
 
 
 <!--  
-table = טבלה מעוצבת  
-class="table table-dark table-striped table-hover align-middle text-center mb-0"  
-• table = בסיס עיצוב של טבלה Bootstrap  
-• table-dark = טבלה כהה  
-• table-striped = פסים בין שורות  
-• table-hover = רקע משתנה במעבר עכבר  
-• align-middle = טקסט באמצע אנכית  
-• text-center = טקסט במרכז אופקי  
-• mb-0 = בלי רווח תחתון  
+table = טבלה.
+
+class="table table-dark table-striped table-hover align-middle text-center mb-0":
+• table = טבלה Bootstrap
+• table-dark = רקע כהה (שחור)
+• table-striped = פסים בהירים בין שורות
+• table-hover = האפקט שהשורה משנה צבע כשהעכבר מעליה
+• align-middle = הטקסט בכל תאים ייושר למרכז *אנכית*
+• text-center = יישור למרכז *אופקית*
+• mb-0 = אין רווח מתחת (Margin Bottom)
 -->
 <table class="table table-dark table-striped table-hover align-middle text-center mb-0">
 
 
 
 <!--  
-thead = ראש טבלה  
-class="table-info text-dark"  
-• table-info = רקע תכלת לשורה  
-• text-dark = טקסט כהה (כדי שיהיה ניגודיות טובה)  
+thead = הראש של הטבלה.
+class="table-info text-dark":
+• table-info = רקע תכלת בהיר
+• text-dark = טקסט שחור
 -->
 <thead class="table-info text-dark">
-  <tr>
-    <!-- th = כותרת עמודה -->
-    <th>תאריך ושעה</th>
-    <th>סוג אירוע</th>
-    <th>משתמש</th>
-    <th>פרטים</th>
-  </tr>
+    <tr>
+        <!-- th = כותרת העמודה -->
+        <th>תאריך ושעה</th>
+        <th>סוג אירוע</th>
+        <th>משתמש</th>
+        <th>פרטים</th>
+    </tr>
 </thead>
 
 
 
 <!--  
-tbody = גוף הטבלה  
-id="logTableBody" = אלמנט דינמי שה־JavaScript יוסיף לתוכו שורות לוג מה־Firebase  
-(כל שורה נוצרת ב-main.js ומוזרקת לפה)  
+tbody = החלק שהדפדפן יציג בו את כל שורות הטבלה שיוצרת ה־JavaScript.
+
+id="logTableBody":
+קוד JS (main.js) כל פעם:
+• קורא נתונים מ־Firebase
+• בונה שורת HTML
+• ומכניס לתוך אלמנט זה
+
+לכן הוא ריק עכשיו → כי מתמלא בזמן ריצה.
 -->
 <tbody id="logTableBody"></tbody>
 
 
 
-</table> <!-- סוף טבלה -->
+</table> <!-- סוף table -->
 </div> <!-- סוף table-responsive -->
 </div> <!-- סוף card-body -->
 
 
 
+
 <!--  
-div.card-footer = החלק התחתון של הכרטיס  
-class="card-footer text-center text-light border-info text-secondary"  
-• card-footer = אזור תחתון מעוצב  
-• text-center = טקסט ממורכז  
-• text-light + text-secondary = צבעים בהירים  
-Bootstrap יודע לחבר ביניהם → יוצא אפור בהיר  
-• border-info = מסגרת תכלת עליונה  
+card-footer = אזור תחתון של הכרטיס.
+
+class="card-footer text-center text-light border-info text-secondary":
+• card-footer = תחתית מסודרת
+• text-center = טקסט ממורכז
+• text-light + text-secondary = צבעי טקסט בהירים
+• border-info = מסגרת עליונה בצבע תכלת
 -->
 <div class="card-footer text-center text-light border-info text-secondary">
-  אין אירועים נוספים להצגה
+    אין אירועים נוספים להצגה
 </div>
 
-</div> <!-- סוף כרטיס -->
+<!-- Modal: פרטי אירוע -->
+<div class="modal fade" id="logDetailsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-light border border-info">
+      <div class="modal-header border-info">
+        <h5 class="modal-title">פרטי אירוע</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body">
+        <div id="logDetailsBody" class="small"></div>
+      </div>
+
+      <div class="modal-footer border-info">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div> <!-- סוף card -->
+
+<!-- Modal: פרטי אירוע -->
+<div class="modal fade" id="logDetailsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark text-light border border-info">
+      <div class="modal-header border-info">
+        <h5 class="modal-title">פרטי אירוע</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div id="logDetailsBody" class="small"></div>
+      </div>
+      <div class="modal-footer border-info">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 </main> <!-- סוף MAIN -->
 
 
-  <!-- Bootstrap JS bundle -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+
+
+<!--  
+כאן מתחילים הסקריפטים (JavaScript) החיצוניים.
+Bootstrap JS Bundle = כולל Popper.js ו־Bootstrap.js.
+מאפשר:
+• collapse (תפריט במובייל)
+• מודלים
+• Offcanvas
+• dropdown
+ועוד.
+
+ניטען מה-CDN.
+-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!--  
+טעינת ספריות Firebase — גרסת compat.
+למה compat?
+כי אתה משתמש בקוד Firebase ישן יותר (syntax v8) עם config וכו'.
+
+firebase-app-compat.js  
+→ הגרעין של Firebase.
+
+firebase-auth-compat.js  
+→ אחריות על התחברות/התנתקות, ניהול משתמשים, אימות.
+
+firebase-database-compat.js  
+→ עבודה עם Firebase Realtime Database:
+קריאה, כתיבה, מאזינים לשינויים.
+-->
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
+
+
+<!--  
+script src="main.js":
+קובץ ה־JavaScript שלך.
+
+מה קורה בו?
+• התחברות ל-Firebase (firebase.initializeApp)
+• טוען את כל האירועים מה־Realtime Database
+• כל אירוע הופך לשורת HTML בטבלה
+• טיפול בכפתור התנתקות
+• בדיקת אם משתמש מחובר
+• ניהול הרשאות תצוגה
+
+כל הלוגיקה של הדף מגיעה מפה.
+-->
 <script src="main.js"></script>
 
-</body>
+
 </body>
 </html>

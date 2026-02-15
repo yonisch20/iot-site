@@ -1,130 +1,227 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>הרשמה - מערכת איתור וסימון ניידת</title>
+<!-- 
+  השורה הזאת אומרת לדפדפן:
+  "שלום, הדף הזה כתוב בשפת HTML בגרסה החדשה".
+  זה כמו להציג תעודת זהות של הדף.
+-->
 
-  <!-- Bootstrap CSS -->
+<html lang="he" dir="rtl">
+<!-- 
+  <html> = ההתחלה של הדף.
+  lang="he" = השפה של הדף היא עברית.
+  dir="rtl" = כיוון הכתיבה הוא מימין לשמאל (Right To Left),
+  כמו בעברית. זה עושה שהתפריט, הפסקאות והכול יצאו בכיוון הנכון.
+-->
+
+<head>
+  <!-- 
+    <head> = אזור "מאחורי הקלעים" של הדף.
+    פה שמים הגדרות, קישורים לקבצי עיצוב, שם הדף וכו'.
+    זה לא דברים שמופיעים על המסך.
+  -->
+
+  <meta charset="UTF-8">
+  <!-- 
+    זה אומר לדפדפן באיזה "קידוד אותיות" להשתמש.
+    UTF-8 = יכול להציג עברית, אנגלית, מספרים, סמיילים — הכול.
+    בלי זה, עברית עלולה לצאת כמו קובצי ג'יבריש.
+  -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    השורה הזאת גורמת לאתר להיראות טוב בטלפונים.
+    width=device-width = אומר לדפדפן לא להקטין או להגדיל בכוח,
+    אלא להשתמש ברוחב המסך האמיתי.
+    initial-scale=1.0 = מתחיל בזום רגיל (100%).
+  -->
+
+  <title>הרשמה - מערכת איתור וסימון ניידת</title>
+  <!-- 
+    זה השם שמופיע בחלונית/טאב של הדפדפן למעלה.
+  -->
+
+  <!-- Bootstrap CSS – ספרייה מוכנה שמעצבת לבד את רוב הדברים באתר -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 
+    כאן אנחנו "מביאים" מהאינטרנט קובץ עיצוב ענק בשם Bootstrap
+    שנותן לנו כפתורים מוכנים, טפסים יפים, תפריטים וכו'.
+  -->
 
   <style>
+    /* 
+      כאן כותבים עיצוב שאנחנו יוצרים בעצמנו.
+      body = כל הדף.
+    */
     body {
+      /*
+        background: = הגדרת רקע של הדף.
+        url("project_BG.png") = תמונת רקע ששמורה אצלך בקבצים.
+        center = למקם את התמונה במרכז.
+        cover = שהתמונה תכסה את כל המסך בלי להשאיר חורים.
+        no-repeat = שלא יופיעו כמה תמונות ברצף.
+        fixed = שהתמונה "מודבקת למסך" גם כשגוללים למטה.
+      */
       background: url("project_BG.png") center/cover no-repeat fixed;
     }
   </style>
 </head>
+
 <body>
+  <!-- 
+    <body> = כל מה שמופיע על המסך אצל המשתמש:
+    טקסטים, תמונות, טפסים, כפתורים — הכול.
+  -->
 
-
-
-  <!-- כותרת -->
+  <!-- כותרת הדף -->
   <header class="container py-4 text-center">
-    <!-- container = מגביל רוחב ומרכז -->
-    <!-- py-4 = ריווח אנכי גדול -->
-    <!-- text-center = יישור למרכז -->
+    <!-- 
+      container = קופסה שמגבילה את הרוחב כדי שהדברים לא יתפרשו על כל המסך.
+      py-4 = רווח אנכי (padding) למעלה ולמטה.
+      text-center = ממרכז את הטקסט.
+    -->
 
     <h1 class="h4 fw-bold mb-1 text-light">צור חשבון חדש</h1>
-    <!-- h4 = גודל כותרת -->
-    <!-- fw-bold = טקסט מודגש -->
-    <!-- mb-1 = ריווח קטן מתחת -->
+    <!-- 
+      <h1> = כותרת ראשית.
+      class="h4" = גורם לה להיראות בגודל של כותרת h4.
+      fw-bold = טקסט מודגש.
+      mb-1 = רווח קטן מתחת.
+      text-light = צבע טקסט בהיר (לבן).
+    -->
 
     <p class="text-body-secondary m-0 text-light">מלא את הטופס כדי להירשם</p>
-    <!-- m-0 = ללא מרווח -->
+    <!-- 
+      <p> = פסקה קטנה.
+      text-body-secondary = צבע טקסט משני (בהיר עדין).
+      m-0 = בלי רווח מסביב.
+      text-light = צבע בהיר.
+    -->
   </header>
 
   <!-- טופס הרשמה -->
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
-    <!-- d-flex = פריסה עם Flexbox -->
-    <!-- align-items-center = יישור אנכי -->
-    <!-- justify-content-center = יישור אופקי -->
-    <!-- min-vh-75 = גובה מינימלי 75% מהמסך -->
-    <!-- pb-5 = ריווח תחתון -->
+    <!-- 
+      d-flex = מפעיל Flexbox (שיטה לסדר דברים בצורה גמישה).
+      align-items-center = יישור אנכי למרכז.
+      justify-content-center = יישור אופקי למרכז.
+      min-vh-75 = גובה של לפחות 75% מהמסך.
+      pb-5 = רווח גדול בתחתית.
+    -->
 
     <div class="container">
       <div class="row justify-content-center">
-        <!-- row = שורה ברשת -->
-        <!-- justify-content-center = מרכז את העמודות -->
+        <!-- 
+          row = שורה בפריסת Bootstrap.
+          justify-content-center = מרכז את כל העמודות שבתוכה.
+        -->
 
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-          <!-- col-12 = רוחב מלא בטלפון -->
-          <!-- col-sm-10 = 10/12 במסכים קטנים -->
-          <!-- col-md-8 = 8/12 במסכים בינוניים -->
-          <!-- col-lg-5 = 5/12 במסכים גדולים -->
+          <!-- 
+            col-12 = במסך קטן — רוחב מלא.
+            col-sm-10 = במסך טלפון רגיל — 10/12 מהרוחב.
+            col-md-8 = במסך בינוני — 8/12 מהרוחב.
+            col-lg-5 = במסך גדול — חצי רוחב בערך.
+            זה גורם לטופס להיות צר ואלגנטי במסכים גדולים,
+            ורחב ונוח במסכים קטנים.
+          -->
 
           <div class="card shadow-sm rounded-4 bg-secondary">
-            <!-- card = קופסה מעוצבת -->
-            <!-- shadow-sm = צל קטן -->
-            <!-- rounded-4 = פינות מעוגלות -->
-            <!-- bg-secondary = רקע אפור כהה -->
+            <!-- 
+              card = קופסה לבנה/אפורה מגונדרת.
+              shadow-sm = צל קטן מסביב.
+              rounded-4 = פינות מעוגלות.
+              bg-secondary = רקע אפור כהה.
+            -->
 
             <div class="card-body p-4 p-sm-5">
-              <!-- card-body = אזור פנימי -->
-              <!-- p-4 = ריווח גדול -->
-              <!-- p-sm-5 = ריווח גדול יותר במסכים גדולים -->
+              <!-- 
+                card-body = תוכן הקופסה.
+                p-4 = רווח מכל הצדדים.
+                p-sm-5 = במסכים גדולים — אפילו יותר רווח.
+              -->
 
               <form class="vstack gap-3 needs-validation">
-                <!-- vstack = הערימה אנכית -->
-                <!-- gap-3 = מרווח בין שורות -->
-                <!-- needs-validation = הפעלת בדיקת טופס Bootstrap -->
+                <!-- 
+                  <form> = טופס שמכיל את שדות ההרשמה.
+                  vstack = מסדר את השדות אחד מתחת לשני.
+                  gap-3 = רווח בין השדות.
+                  needs-validation = הכנה לבדיקות תקינות של Bootstrap.
+                -->
 
-                <!-- שם מלא -->
+                <!-- שדה: שם מלא -->
                 <div>
                   <label for="fullname" class="form-label text-light">שם מלא</label>
-                  <!-- form-label = עיצוב תווית -->
+                  <!-- 
+                    <label> = כותרת קטנה שמסבירה למה מיועד השדה.
+                    for="fullname" = מחבר אותו לשדה עם אותו id.
+                  -->
 
                   <input id="fullname" type="text" class="form-control">
-                  <!-- form-control = עיצוב שדה קלט -->
+                  <!-- 
+                    <input> = שדה למילוי טקסט.
+                    id="fullname" = ניתן לזהות אותו בקוד JavaScript.
+                    type="text" = שדה טקסט רגיל.
+                    class="form-control" = שדה מעוצב יפה של Bootstrap.
+                  -->
                 </div>
 
-                <!-- אימייל -->
+                <!-- שדה: אימייל -->
                 <div>
                   <label for="email" class="form-label text-light">אימייל</label>
+
                   <input id="email" type="email" class="form-control" placeholder="name@example.com">
+                  <!-- 
+                    type="email" = הדפדפן יודע לבד לבדוק אם הכתובת תקינה.
+                    placeholder = טקסט רמז שמופיע עד שמתחילים להקליד.
+                  -->
                 </div>
 
-                <!-- סיסמה -->
+                <!-- שדה: סיסמה -->
                 <div>
                   <label for="password" class="form-label text-light">סיסמה</label>
 
                   <div class="input-group">
-                    <!-- input-group = מצמיד כפתור לשדה -->
+                    <!-- 
+                      input-group = קבוצה של מספר אלמנטים שיושבים על אותה שורה,
+                      למשל שדה + כפתור.
+                    -->
 
                     <input id="password" type="password" class="form-control" placeholder="******">
+                    <!-- 
+                      type="password" = מסתיר את מה שכותבים (מציג נקודות).
+                    -->
 
                     <button class="btn btn-outline-black bg-light rounded-start" type="button" id="togglePass">
-                      <!-- btn = כפתור -->
-                      <!-- btn-outline-black = מסגרת שחורה -->
-                      <!-- bg-light = רקע בהיר -->
-                      <!-- rounded-start = פינה מעוגלת בצד שמאל בלבד -->
+                      <!-- 
+                        כפתור שמטרתו: להצגה/הסתרה של הסיסמה.
+                        id="togglePass" = נשתמש בו ב-JS כדי להגיב ללחיצה.
+                        type="button" = לא שולח את הטופס.
+                      -->
                       הצג
                     </button>
                   </div>
                 </div>
 
-                <!-- אישור סיסמה -->
+                <!-- שדה: אישור סיסמה -->
                 <div class="mb-4">
-                  <!-- mb-4 = רווח גדול מתחת -->
-
                   <label for="confirmPass" class="form-label text-light">אישור סיסמה</label>
+
                   <input id="confirmPass" type="password" class="form-control" placeholder="******">
                 </div>
 
                 <!-- כפתור הרשמה -->
-                <button type="button" class="btn btn-primary btn-lg w-100" onclick="sign()" >
-                  <!-- btn-primary = כפתור כחול -->
-                  <!-- btn-lg = כפתור גדול -->
-                  <!-- w-100 = רוחב מלא -->
+                <button type="button" class="btn btn-primary btn-lg w-100" onclick="sign()">
+                  <!-- 
+                    כפתור גדול ומלא רוחב.
+                    onclick="sign()": מפעיל פונקציה בשם sign() שנמצאת ב-main.js.
+                  -->
                   הרשמה
                 </button>
 
-                <!-- קישור לכניסה -->
+                <!-- קישור לעמוד כניסה -->
                 <div class="text-center mt-3">
-                  <!-- text-center = טקסט ממורכז -->
-                  <!-- mt-3 = רווח עליון -->
-
                   <p class="mb-0 text-light">
-                    כבר יש לך חשבון? 
+                    כבר יש לך חשבון?
                     <a href="index.html" class="text-light">כניסה</a>
                   </p>
                 </div>
@@ -138,58 +235,66 @@
     </div>
   </main>
 
-  <!-- Bootstrap JS -->
+  <!-- Bootstrap JS – מאפשר לתפריטים ולכפתורים לעבוד -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
+  <!-- קבצי Firebase – לטיפול בהרשמה והתחברות -->
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
+  <!-- main.js – קובץ הג'אווה־סקריפט שלך -->
   <script src="/main.js"></script>
 
-  <!-- JS : הצגת/הסתרת סיסמה -->
+  <!-- קוד שמטפל בהצגת/הסתרת סיסמה -->
   <script>
 
-    // שליפת אלמנט שדה הסיסמה לפי ה-ID שלו
-    // document = אובייקט שמייצג את כל ה־HTML
-    // . = אופרטור גישה (Access Operator) שמאפשר להגיע למתודות/מאפיינים בתוך אובייקט
-    // getElementById = פונקציה שמחזירה אלמנט HTML לפי ה-id שלו
-    // 'password' = מחרוזת — מזהה השדה בקובץ ה־HTML
+    /*
+      כאן אנחנו מביאים את שדה הסיסמה מהדף עצמו.
+      document = כל הדף.
+      getElementById('password') = מחפש את האלמנט עם id="password".
+      passInput = המשתנה שבו נשמור את השדה.
+    */
     const passInput = document.getElementById('password');
 
+    /*
+      כאן אנחנו מביאים את הכפתור שמראה/מסתיר את הסיסמה.
+      שמו בקובץ שלך: togglePass
+    */
+    const toggleBtn = document.getElementById('togglePass');
 
-    // שליפת כפתור "הצג/הסתר" לפי ה-ID שלו
-    // שוב: document → . → getElementById
-    const toggleBtn = document.getElementById('toggleLoginPass');
-
-
-    // הוספת מאזין לאירוע click על הכפתור
-    // addEventListener("click", function) = מפעיל פונקציה ברגע שהמשתמש לוחץ
+    /*
+      addEventListener = אומר לדפדפן:
+      "כשיש קליק על הכפתור הזה — תפעיל פונקציה".
+    */
     toggleBtn.addEventListener('click', () => {
 
-        // בדיקה האם השדה כרגע מסוג password
-        // passInput.type = גישה למאפיין type של האינפוט
-        // === = השוואה מוחלטת (ערך + טיפוס)
+        /*
+          passInput.type = הבדיקה האם השדה כרגע "password" (מוסתר)
+          או "text" (גלוי).
+          === = בדיקה מדויקת (גם סוג וגם ערך).
+          אם זה password → משתנה isPwd יהיה true.
+        */
         const isPwd = passInput.type === 'password';
 
-
-        // החלפת סוג השדה בין password ל-text באמצעות אופרטור תנאי (ternary operator)
-        // מה ההיגיון?
-        // אם isPwd true → נציג טקסט
-        // אם false → נסיר ונחזיר ל-password
+        /*
+          עכשיו מחליפים בין שני המצבים:
+          אם היה password → נהפוך ל-text (נראה את הסיסמה).
+          אם היה text → נהפוך ל-password (נסתיר שוב).
+          ? : = תנאי קצר.
+        */
         passInput.type = isPwd ? 'text' : 'password';
 
-
-        // שינוי הטקסט בכפתור בהתאם למצב
-        // textContent = המחרוזת שמוצגת בתוך הכפתור
-        // אם הסיסמה נחשפה → הכפתור צריך לרשום "הסתר"
-        // אם הסיסמה הוסתרה → הכפתור צריך לרשום "הצג"
+        /*
+          משנה את הכיתוב של הכפתור עצמו:
+          אם עכשיו הסיסמה גלויה → הכפתור יראה "הסתר".
+          אם הסיסמה מוסתרת → הכפתור יראה "הצג".
+        */
         toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
 
     });
 
-</script>
-
+  </script>
 
 </body>
 </html>
