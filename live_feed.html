@@ -70,6 +70,17 @@
       z-index: 9999;
     }
 
+    /* אנימציה להבהוב אדום-שחור */
+@keyframes blink-danger {
+    0% { background-color: #dc3545; color: white; border-color: black; } /* אדום */
+    50% { background-color: black; color: #dc3545; border-color: #dc3545; } /* שחור */
+    100% { background-color: #dc3545; color: white; border-color: black; } /* אדום */
+}
+
+/* המחלקה שתפעיל את האנימציה */
+.blink-active {
+    animation: blink-danger 0.5s infinite; /* מהירות הבהוב */
+}
   </style>
 
 </head>
@@ -216,11 +227,13 @@
 
         </div>
       </div>
-      
+      <div id="distanceAlertBox" class="p-3 mt-4 text-center fw-bold rounded-3 border bg-secondary text-white">
+          ממתין לנתוני מרחק...
+      </div>
     </div> 
     
     <div class="col-12 col-lg-8">
-      
+     
       <div class="d-flex justify-content-between align-items-center mb-2">
         <h1 class="h5 m-0 text-light">שידור חי</h1>
         <div class="d-none d-lg-flex gap-2">

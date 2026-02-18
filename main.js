@@ -658,3 +658,37 @@ if (streamElement) {
      }
    });
 }
+
+// ==========================================
+//           DISTANCE SENSOR LOGIC
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const distBox = document.getElementById("distanceAlertBox");
+    if (!distBox) return;
+
+    // האזנה לנתיב fromAltera/A
+    const distRef = firebase.database().ref("fromAltera/A");
+
+    distRef.on("value", (snapshot) => {
+        const val = snapshot.val();
+        
+        // המרה למספר (אם אין ערך, זה יהפוך ל-0)
+        const distance = Number(val);
+
+        // איפוס עיצוב בסיסי
+        distBox.className = "p-3 mt-3 text-center fw-bold rounded-3 border";
+
+        // לוגיקה פשוטה: מעל 30 ירוק, מתחת ל-30 מהבהב
+        if (distance > 30) {
+            // מצב תקין: ירוק
+            distBox.classList.add("bg-success", "text-white", "border-success");
+            distBox.innerText = `מרחק תקין: ${distance} ס"מ`;
+        } else {
+            // מצב סכנה: הבהוב אדום/שחור
+            distBox.classList.add("blink-active", "border-danger");
+            distBox.innerText = `⚠ זהירות! התקרבות: ${distance} ס"מ`;
+        }
+    });
+});
