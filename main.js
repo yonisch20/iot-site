@@ -44,84 +44,81 @@ firebase.initializeApp(firebaseConfig);
 // ===========================  REGISTER  ================================
 // =======================================================================
 
-// sign() — פונקציה שתופעל כאשר המשתמש ינסה להירשם למערכת.
-// התפקיד שלה: לקחת נתונים מהטופס (email, password), לבצע בדיקות,
-// ליצור חשבון ב-Firebase Authentication, ולשמור פרטי משתמש במסד הנתונים.
 function sign() {
+    // שלב 1: בדיקה שהכפתור בכלל נלחץ (לצורך דיבאג)
+    console.log("כפתור הרשמה נלחץ");
 
     // ---------------------------------------------------------
-    // שליפת הערכים מהטופס
+    // שליפת הערכים מהטופס - שימוש ב-const ושמות ייחודיים
     // ---------------------------------------------------------
-    // document.getElementById("email") — מביא את אלמנט ה-input
-    // .value — מביא את תוכן הטקסט שהמשתמש הקליד.
-    // הערה חשובה: לא הוגדר let/const ולכן משתנים אלו גלובליים — לא אידיאלי, אבל עובד.
-    email = document.getElementById("email").value;
-    password = document.getElementById("password").value;
-    confirmPass = document.getElementById("confirmPass").value;
+    const emailInput = document.getElementById("email").value;
+    const passInput = document.getElementById("password").value;
+    const confirmInput = document.getElementById("confirmPass").value;
 
     // ---------------------------------------------------------
-    // בדיקות תקינות בסיסיות
+    // בדיקות תקינות
     // ---------------------------------------------------------
 
-    // אם אחד השדות ריק — מציגים הודעת שגיאה ועוצרים את הפונקציה
-    if (!email || !password || !confirmPass) {
+    // בדיקה אם השדות ריקים
+    if (!emailInput || !passInput || !confirmInput) {
         alert("נא למלא את כל השדות");
         return;
     }
 
-    // בדיקה האם הסיסמה ואימות הסיסמה זהות
-    if (password !== confirmPass) {
+    // בדיקה האם הסיסמאות תואמות
+    if (passInput !== confirmInput) {
         alert("הסיסמאות אינן תואמות");
         return;
     }
 
+    // בדיקה שהסיסמה ארוכה מספיק (Firebase דורש מינימום 6)
+    if (passInput.length < 6) {
+        alert("הסיסמה חייבת להכיל לפחות 6 תווים");
+        return;
+    }
+
     // ---------------------------------------------------------
-    // יצירת משתמש בפועל בפיירבייס
+    // יצירת משתמש ב-Firebase
     // ---------------------------------------------------------
-    // firebase.auth() — שירות הזדהות.
-    // createUserWithEmailAndPassword(email, password) — יוצר משתמש חדש.
-    // מחזיר Promise ולכן משתמשים ב-then().
     firebase.auth()
-        .createUserWithEmailAndPassword(email, password)
+        .createUserWithEmailAndPassword(emailInput, passInput)
         .then((userCredential) => {
+            
+            // המשתמש נוצר בהצלחה
+            const user = userCredential.user;
 
-            // userCredential — אובייקט מלא שמכיל:
-            // user: פרטי המשתמש (uid, email וכו')
-            user = userCredential.user;
-
-            // -----------------------------------------------------
-            // יצירת אובייקט משתמש לשמירה במסד הנתונים
-            // -----------------------------------------------------
-            newUser = {
-                uid: user.uid,           // מזהה ייחודי של המשתמש
-                email: email,            // המייל שהמשתמש הזין
-                createdAt: Date.now(),   // תאריך יצירה כ-UNIX timestamp
-                role: "user"             // תפקיד בסיסי למערכת
+            const newUser = {
+                uid: user.uid,
+                email: emailInput,
+                createdAt: Date.now(),
+                role: "user"
             };
 
-            // -----------------------------------------------------
-            // שמירת המשתמש ב-Realtime Database
-            // -----------------------------------------------------
-            // ref("users/" + user.uid) — נתיב ב-JSON שבו מאחסנים משתמשים.
-            firebase.database().ref("users/" + user.uid).set(newUser)
-                .then(() => {
-
-                    // -------------------------------------------------
-                    // התנתקות יזומה
-                    // -------------------------------------------------
-                    // אחרי הרשמה, Firebase שומר את המשתמש כמחובר.
-                    // אנחנו מנתקים אותו כדי שייכנס שוב בצורה רגילה.
-                    firebase.auth().signOut().then(() => {
-                        // הפניה חזרה לעמוד הבית
-                        window.location.href = "index.html";
-                    });
-
-                });
-
+            // שמירה ב-Realtime Database
+            return firebase.database().ref("users/" + user.uid).set(newUser);
+        })
+        .then(() => {
+            // התנתקות יזומה (כדי שהמשתמש ייכנס ידנית)
+            return firebase.auth().signOut();
+        })
+        .then(() => {
+            alert("ההרשמה בוצעה בהצלחה! כעת ניתן להתחבר.");
+            window.location.href = "index.html";
         })
         .catch((error) => {
-            // במקרה של שגיאה — מציגים הודעה
-            alert(error.message);
+            // טיפול בשגיאות נפוצות
+            let errorMsg = error.message;
+            
+            if (error.code === "auth/email-already-in-use") {
+                errorMsg = "כתובת האימייל הזו כבר רשומה במערכת.";
+            } else if (error.code === "auth/invalid-email") {
+                errorMsg = "כתובת האימייל אינה תקינה.";
+            } else if (error.code === "auth/weak-password") {
+                errorMsg = "הסיסמה חלשה מדי.";
+            }
+
+            alert("שגיאה בהרשמה: \n" + errorMsg);
+            console.error("Registration Error:", error);
         });
 }
 
