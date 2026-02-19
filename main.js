@@ -615,7 +615,7 @@ if (streamElement) {
       const ip = snapshot.val();
      if (ip) {
        console.log("IP מצלמה התקבל: " + ip);
-       streamElement.src = ip;
+       streamElement.src = `http://${ip}/stream`;
       streamElement.style.borderColor = "#28a745"; // מסגרת ירוקה
      } else {
        streamElement.style.borderColor = "#dc3545"; // מסגרת אדומה
