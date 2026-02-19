@@ -1,77 +1,41 @@
 // ------------------------------------------------------------
 // הגדרת קונפיגורציה של Firebase
 // ------------------------------------------------------------
-// firebaseConfig: אובייקט שמכיל את כל פרטי הזיהוי של הפרויקט שלך ב-Firebase.
-// הדפדפן משתמש בערכים האלה כדי לדעת לאיזה פרויקט בענן להתחבר.
-// הערכים האלו ניתנים ליישום Web בלבד והם *לא* מסוכנים לשיתוף, כי
-// Firebase מזהה פרויקטים לפי אישורים בצד השרת.
-// const = משתנה קבוע — לא ניתן לשנות אותו אחרי ההשמה.
 const firebaseConfig = {
-    // apiKey — מפתח זיהוי ייחודי המאפשר לדפדפן שלך להתחבר לשירותי Firebase.
     apiKey: "AIzaSyA8b2SO1E0FCUf1BFvpGs4jNZbJSbofIdE",
-
-    // authDomain — הדומיין שבו מערכת Authentication של Firebase מנהלת חשבונות.
     authDomain: "detect-and-mark-mobile-system.firebaseapp.com",
-
-    // databaseURL — כתובת ה-Realtime Database של הפרויקט שלך.
     databaseURL: "https://detect-and-mark-mobile-system-default-rtdb.firebaseio.com",
-
-    // projectId — מזהה פנימי של הפרויקט ב-Firebase Console / Google Cloud.
     projectId: "detect-and-mark-mobile-system",
-
-    // storageBucket — שם ה-bucket שבו נשמרים קבצים (תמונות/וידאו וכו').
     storageBucket: "detect-and-mark-mobile-system.firebasestorage.app",
-
-    // messagingSenderId — מזהה שירות Firebase Cloud Messaging (התראות).
     messagingSenderId: "685772763226",
-
-    // appId — מזהה כניסה ייחודי לאפליקציה הזו.
     appId: "1:685772763226:web:aff3564e44d4577b4e6863"
 };
 
 // ------------------------------------------------------------
 // אתחול (initialize) של Firebase בדפדפן
 // ------------------------------------------------------------
-// firebase.initializeApp():
-// פונקציה מובנית של Firebase שמקבלת את אובייקט ההגדרות (firebaseConfig),
-// מחברת את דף ה־HTML שלך לפרויקט המתאים בענן, ומאפשרת להפעיל
-// Authentication, Database, Storage ועוד שירותים.
 firebase.initializeApp(firebaseConfig);
-
-
 
 // =======================================================================
 // ===========================  REGISTER  ================================
 // =======================================================================
 
 function sign() {
-    // שלב 1: בדיקה שהכפתור בכלל נלחץ (לצורך דיבאג)
     console.log("כפתור הרשמה נלחץ");
 
-    // ---------------------------------------------------------
-    // שליפת הערכים מהטופס - שימוש ב-const ושמות ייחודיים
-    // ---------------------------------------------------------
     const emailInput = document.getElementById("email").value;
     const passInput = document.getElementById("password").value;
     const confirmInput = document.getElementById("confirmPass").value;
-
-    // ---------------------------------------------------------
-    // בדיקות תקינות
-    // ---------------------------------------------------------
-
-    // בדיקה אם השדות ריקים
     if (!emailInput || !passInput || !confirmInput) {
         alert("נא למלא את כל השדות");
         return;
     }
 
-    // בדיקה האם הסיסמאות תואמות
     if (passInput !== confirmInput) {
         alert("הסיסמאות אינן תואמות");
         return;
     }
 
-    // בדיקה שהסיסמה ארוכה מספיק (Firebase דורש מינימום 6)
     if (passInput.length < 6) {
         alert("הסיסמה חייבת להכיל לפחות 6 תווים");
         return;
