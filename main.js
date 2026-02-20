@@ -290,7 +290,6 @@ function pushMotorCommand(direction, speedLevel, reason) {
 
   firebase.database().ref("control/motorCommand").set({
     command: vector8,
-    timestamp: now,
     timeString: timeString
   });
 
@@ -321,7 +320,6 @@ function toggleLaser() {
 
     firebase.database().ref("control/laserCommand").set({
         command: laserState,
-        timestamp: now,
         timeString: timeString
     });
     firebase.database().ref("toAltera").set(laserState);
