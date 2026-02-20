@@ -229,7 +229,7 @@ let activeKey = null;
 document.addEventListener("keydown", (e) => {
 
     const currentPage = window.location.pathname.split("/").pop();
-    if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
+    if (currentPage !== "live_feed.html") {
         return;
     }
 
@@ -270,7 +270,7 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("keyup", (e) => {
 
     const currentPage = window.location.pathname.split("/").pop();
-    if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
+    if (currentPage !== "live_feed.html") {
         return;
     }
 
