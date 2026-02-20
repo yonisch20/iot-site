@@ -307,7 +307,7 @@ firebase.database().ref("toAltera").set(vector8);
 
 function setSpeedLevel(level) {
   level = Number(level);
-  if (![1,2,3,4].includes(level)) return;
+  if (![1,2,3].includes(level)) return;
 
   currentSpeedLevel = level;
 
