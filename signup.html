@@ -22,47 +22,43 @@
 </head>
 
 <body>
+
+  <!-- כותרת הדף -->
   <header class="container py-4 text-center">
 
     <h1 class="h4 fw-bold mb-1 text-light">צור חשבון חדש</h1>
+
     <p class="text-body-secondary m-0 text-light">מלא את הטופס כדי להירשם</p>
+
   </header>
 
   <!-- טופס הרשמה -->
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
+
     <div class="container">
       <div class="row justify-content-center">
 
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
+
           <div class="card shadow-sm rounded-4 bg-secondary">
+
             <div class="card-body p-4 p-sm-5">
+
               <form class="vstack gap-3 needs-validation">
+
                 <!-- שדה: שם מלא -->
                 <div>
                   <label for="fullname" class="form-label text-light">שם מלא</label>
-                  <!-- 
-                    <label> = כותרת קטנה שמסבירה למה מיועד השדה.
-                    for="fullname" = מחבר אותו לשדה עם אותו id.
-                  -->
 
                   <input id="fullname" type="text" class="form-control">
-                  <!-- 
-                    <input> = שדה למילוי טקסט.
-                    id="fullname" = ניתן לזהות אותו בקוד JavaScript.
-                    type="text" = שדה טקסט רגיל.
-                    class="form-control" = שדה מעוצב יפה של Bootstrap.
-                  -->
+
                 </div>
 
-                <!-- שדה: אימייל -->
                 <div>
                   <label for="email" class="form-label text-light">אימייל</label>
 
                   <input id="email" type="email" class="form-control" placeholder="name@example.com">
-                  <!-- 
-                    type="email" = הדפדפן יודע לבד לבדוק אם הכתובת תקינה.
-                    placeholder = טקסט רמז שמופיע עד שמתחילים להקליד.
-                  -->
+
                 </div>
 
                 <!-- שדה: סיסמה -->
@@ -70,22 +66,10 @@
                   <label for="password" class="form-label text-light">סיסמה</label>
 
                   <div class="input-group">
-                    <!-- 
-                      input-group = קבוצה של מספר אלמנטים שיושבים על אותה שורה,
-                      למשל שדה + כפתור.
-                    -->
 
                     <input id="password" type="password" class="form-control" placeholder="******">
-                    <!-- 
-                      type="password" = מסתיר את מה שכותבים (מציג נקודות).
-                    -->
 
                     <button class="btn btn-outline-black bg-light rounded-start" type="button" id="togglePass">
-                      <!-- 
-                        כפתור שמטרתו: להצגה/הסתרה של הסיסמה.
-                        id="togglePass" = נשתמש בו ב-JS כדי להגיב ללחיצה.
-                        type="button" = לא שולח את הטופס.
-                      -->
                       הצג
                     </button>
                   </div>
@@ -100,10 +84,6 @@
 
                 <!-- כפתור הרשמה -->
                 <button type="button" class="btn btn-primary btn-lg w-100" onclick="sign()">
-                  <!-- 
-                    כפתור גדול ומלא רוחב.
-                    onclick="sign()": מפעיל פונקציה בשם sign() שנמצאת ב-main.js.
-                  -->
                   הרשמה
                 </button>
 
@@ -124,61 +104,26 @@
     </div>
   </main>
 
-  <!-- Bootstrap JS – מאפשר לתפריטים ולכפתורים לעבוד -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <!-- קבצי Firebase – לטיפול בהרשמה והתחברות -->
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
-  <!-- main.js – קובץ הג'אווה־סקריפט שלך -->
   <script src="main.js"></script>
 
   <!-- קוד שמטפל בהצגת/הסתרת סיסמה -->
   <script>
 
-    /*
-      כאן אנחנו מביאים את שדה הסיסמה מהדף עצמו.
-      document = כל הדף.
-      getElementById('password') = מחפש את האלמנט עם id="password".
-      passInput = המשתנה שבו נשמור את השדה.
-    */
     const passInput = document.getElementById('password');
-
-    /*
-      כאן אנחנו מביאים את הכפתור שמראה/מסתיר את הסיסמה.
-      שמו בקובץ שלך: togglePass
-    */
     const toggleBtn = document.getElementById('togglePass');
 
-    /*
-      addEventListener = אומר לדפדפן:
-      "כשיש קליק על הכפתור הזה — תפעיל פונקציה".
-    */
     toggleBtn.addEventListener('click', () => {
 
-        /*
-          passInput.type = הבדיקה האם השדה כרגע "password" (מוסתר)
-          או "text" (גלוי).
-          === = בדיקה מדויקת (גם סוג וגם ערך).
-          אם זה password → משתנה isPwd יהיה true.
-        */
         const isPwd = passInput.type === 'password';
 
-        /*
-          עכשיו מחליפים בין שני המצבים:
-          אם היה password → נהפוך ל-text (נראה את הסיסמה).
-          אם היה text → נהפוך ל-password (נסתיר שוב).
-          ? : = תנאי קצר.
-        */
         passInput.type = isPwd ? 'text' : 'password';
 
-        /*
-          משנה את הכיתוב של הכפתור עצמו:
-          אם עכשיו הסיסמה גלויה → הכפתור יראה "הסתר".
-          אם הסיסמה מוסתרת → הכפתור יראה "הצג".
-        */
         toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
 
     });
