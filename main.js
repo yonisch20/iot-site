@@ -227,13 +227,12 @@ let lastDirection = "stop";
 let activeKey = null;
 
 document.addEventListener("keydown", (e) => {
-    // 1. בדיקה האם אנחנו בעמוד הנכון
+
     const currentPage = window.location.pathname.split("/").pop();
     if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
-        return; // אם זה לא עמוד השליטה, אל תעשה כלום
+        return;
     }
 
-    // 2. בדיקה האם המשתמש מקליד בתוך שדה טקסט
     const tag = document.activeElement.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         return;
