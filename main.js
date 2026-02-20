@@ -305,6 +305,17 @@ firebase.database().ref("toAltera").set(vector8);
   console.log("Pushed motorCommand:", vector8, { direction, speedLevel, reason }, timeString);
 }
 
+function setSpeedLevel(level) {
+  level = Number(level);
+  if (![1,2,3,4].includes(level)) return;
+
+  currentSpeedLevel = level;
+
+  if (typeof paintSpeedButtons === "function") paintSpeedButtons(level);
+
+  pushMotorCommand(lastDirection, currentSpeedLevel, "speed");
+}
+
 // =======================================================================
 // ============================ LASER TOGGLER =============================
 // =======================================================================
@@ -456,18 +467,6 @@ function paintSpeedButtons(level) {
 
   const txt = document.getElementById("speedLevelText");
   if (txt) txt.textContent = String(level);
-}
-
-
-function setSpeedLevel(level) {
-  level = Number(level);
-  if (![1,2,3,4].includes(level)) return;
-
-  currentSpeedLevel = level;
-
-  if (typeof paintSpeedButtons === "function") paintSpeedButtons(level);
-
-  pushMotorCommand(lastDirection, currentSpeedLevel, "speed");
 }
 
 // ==========================================
