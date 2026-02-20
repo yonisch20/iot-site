@@ -166,7 +166,7 @@ firebase.auth().onAuthStateChanged(user => {
         "log.html",
         "live_feed.html",
         "background_instructions.html",
-        "dc_control.html"
+        "form.html"
     ];
 
     currentPage = window.location.pathname.split("/").pop();
