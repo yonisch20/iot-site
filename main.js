@@ -222,46 +222,45 @@ let currentSpeedLevel = 1;
 let lastDirection = "stop";
 
 // -----------------------------------------------------------------------
-// מנגנון המונע שליחה כפולה כשמקש נשאר לחוץ + מניעת התנגשות עם טפסים
+// מנגנון המונע שליחה כפולה + הגבלה לעמוד שליטה בלבד
 // -----------------------------------------------------------------------
 let activeKey = null;
 
 document.addEventListener("keydown", (e) => {
+    // 1. בדיקה האם אנחנו בעמוד הנכון
+    const currentPage = window.location.pathname.split("/").pop();
+    if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
+        return; // אם זה לא עמוד השליטה, אל תעשה כלום
+    }
 
+    // 2. בדיקה האם המשתמש מקליד בתוך שדה טקסט
     const tag = document.activeElement.tagName;
-    
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         return;
     }
 
     const allowedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "];
-
     if (!allowedKeys.includes(e.key)) return;
 
     if (activeKey === e.key) return;
 
     switch (e.key) {
-
         case "ArrowUp":
             activeKey = e.key;
             sendCommand("forward");
             break;
-
         case "ArrowDown":
             activeKey = e.key;
             sendCommand("backward");
             break;
-
         case "ArrowLeft":
             activeKey = e.key;
             sendCommand("left");
             break;
-
         case "ArrowRight":
             activeKey = e.key;
             sendCommand("right");
             break;
-
         case " ":
             activeKey = e.key;
             sendCommand("stop");
@@ -270,6 +269,11 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
+    // 1. בדיקה האם אנחנו בעמוד הנכון
+    const currentPage = window.location.pathname.split("/").pop();
+    if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
+        return;
+    }
 
     const tag = document.activeElement.tagName;
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
@@ -277,11 +281,9 @@ document.addEventListener("keyup", (e) => {
     }
 
     const allowedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "];
-
     if (!allowedKeys.includes(e.key)) return;
 
     activeKey = null;
-
     sendCommand("stop");
 });
 
