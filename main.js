@@ -23,10 +23,11 @@ firebase.initializeApp(firebaseConfig);
 function sign() {
     console.log("כפתור הרשמה נלחץ");
 
+    const userName = document.getElementById("fullname").value;
     const emailInput = document.getElementById("email").value;
     const passInput = document.getElementById("password").value;
     const confirmInput = document.getElementById("confirmPass").value;
-    if (!emailInput || !passInput || !confirmInput) {
+    if (!emailInput || !passInput || !confirmInput || userName) {
         alert("נא למלא את כל השדות");
         return;
     }
@@ -40,6 +41,7 @@ function sign() {
         alert("הסיסמה חייבת להכיל לפחות 6 תווים");
         return;
     }
+    
 
     // ---------------------------------------------------------
     // יצירת משתמש ב-Firebase
@@ -53,6 +55,7 @@ function sign() {
 
             const newUser = {
                 uid: user.uid,
+                name: userName,
                 email: emailInput,
                 createdAt: Date.now(),
                 role: "user"
@@ -91,36 +94,26 @@ function sign() {
 // =======================================================================
 // ===============================  LOGIN  ================================
 // =======================================================================
-
-// פונקציה לביצוע התחברות עם אימייל וסיסמה קיימים.
 function login() {
 
-    // שליפת כתובת אימייל מהטופס
     const email = document.getElementById("email").value;
-
-    // שליפת הסיסמה מהטופס
     const password = document.getElementById("password").value;
 
-    // אם שדה ריק → נציג הודעה
     if (!email || !password) {
         alert("נא למלא את כל השדות");
         return;
     }
 
-    // ניסיון להתחבר דרך Firebase Authentication
     firebase.auth()
         .signInWithEmailAndPassword(email, password)
         .then(userCredential => {
 
-            // הוצאת אובייקט המשתמש
             const user = userCredential.user;
 
-            // כתיבת לוג התחברות ליומן האירועים
             return writeLog("Login", user.email, "התחברות מוצלחת");
 
         })
         .then(() => {
-            // מעבר לדף הבא לאחר התחברות מוצלחת
             window.location.href = "background_instructions.html";
         })
         .catch(error => {

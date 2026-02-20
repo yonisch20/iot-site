@@ -1,153 +1,42 @@
 <!DOCTYPE html>
-<!-- 
-  השורה הזאת אומרת לדפדפן:
-  "שלום, הדף הזה כתוב בשפת HTML בגרסה החדשה".
-  זה כמו להציג תעודת זהות של הדף.
--->
 
 <html lang="he" dir="rtl">
-<!-- 
-  <html> = ההתחלה של הדף.
-  lang="he" = השפה של הדף היא עברית.
-  dir="rtl" = כיוון הכתיבה הוא מימין לשמאל (Right To Left),
-  כמו בעברית. זה עושה שהתפריט, הפסקאות והכול יצאו בכיוון הנכון.
--->
 
 <head>
-  <!-- 
-    <head> = אזור "מאחורי הקלעים" של הדף.
-    פה שמים הגדרות, קישורים לקבצי עיצוב, שם הדף וכו'.
-    זה לא דברים שמופיעים על המסך.
-  -->
 
   <meta charset="UTF-8">
-  <!-- 
-    זה אומר לדפדפן באיזה "קידוד אותיות" להשתמש.
-    UTF-8 = יכול להציג עברית, אנגלית, מספרים, סמיילים — הכול.
-    בלי זה, עברית עלולה לצאת כמו קובצי ג'יבריש.
-  -->
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--
-    השורה הזאת גורמת לאתר להיראות טוב בטלפונים.
-    width=device-width = אומר לדפדפן לא להקטין או להגדיל בכוח,
-    אלא להשתמש ברוחב המסך האמיתי.
-    initial-scale=1.0 = מתחיל בזום רגיל (100%).
-  -->
 
   <title>הרשמה - מערכת איתור וסימון ניידת</title>
-  <!-- 
-    זה השם שמופיע בחלונית/טאב של הדפדפן למעלה.
-  -->
-
-  <!-- Bootstrap CSS – ספרייה מוכנה שמעצבת לבד את רוב הדברים באתר -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- 
-    כאן אנחנו "מביאים" מהאינטרנט קובץ עיצוב ענק בשם Bootstrap
-    שנותן לנו כפתורים מוכנים, טפסים יפים, תפריטים וכו'.
-  -->
+  
 
   <style>
-    /* 
-      כאן כותבים עיצוב שאנחנו יוצרים בעצמנו.
-      body = כל הדף.
-    */
+    
     body {
-      /*
-        background: = הגדרת רקע של הדף.
-        url("project_BG.png") = תמונת רקע ששמורה אצלך בקבצים.
-        center = למקם את התמונה במרכז.
-        cover = שהתמונה תכסה את כל המסך בלי להשאיר חורים.
-        no-repeat = שלא יופיעו כמה תמונות ברצף.
-        fixed = שהתמונה "מודבקת למסך" גם כשגוללים למטה.
-      */
+      
       background: url("project_BG.png") center/cover no-repeat fixed;
     }
   </style>
 </head>
 
 <body>
-  <!-- 
-    <body> = כל מה שמופיע על המסך אצל המשתמש:
-    טקסטים, תמונות, טפסים, כפתורים — הכול.
-  -->
-
-  <!-- כותרת הדף -->
   <header class="container py-4 text-center">
-    <!-- 
-      container = קופסה שמגבילה את הרוחב כדי שהדברים לא יתפרשו על כל המסך.
-      py-4 = רווח אנכי (padding) למעלה ולמטה.
-      text-center = ממרכז את הטקסט.
-    -->
 
     <h1 class="h4 fw-bold mb-1 text-light">צור חשבון חדש</h1>
-    <!-- 
-      <h1> = כותרת ראשית.
-      class="h4" = גורם לה להיראות בגודל של כותרת h4.
-      fw-bold = טקסט מודגש.
-      mb-1 = רווח קטן מתחת.
-      text-light = צבע טקסט בהיר (לבן).
-    -->
-
     <p class="text-body-secondary m-0 text-light">מלא את הטופס כדי להירשם</p>
-    <!-- 
-      <p> = פסקה קטנה.
-      text-body-secondary = צבע טקסט משני (בהיר עדין).
-      m-0 = בלי רווח מסביב.
-      text-light = צבע בהיר.
-    -->
   </header>
 
   <!-- טופס הרשמה -->
   <main class="d-flex align-items-center justify-content-center min-vh-75 pb-5">
-    <!-- 
-      d-flex = מפעיל Flexbox (שיטה לסדר דברים בצורה גמישה).
-      align-items-center = יישור אנכי למרכז.
-      justify-content-center = יישור אופקי למרכז.
-      min-vh-75 = גובה של לפחות 75% מהמסך.
-      pb-5 = רווח גדול בתחתית.
-    -->
-
     <div class="container">
       <div class="row justify-content-center">
-        <!-- 
-          row = שורה בפריסת Bootstrap.
-          justify-content-center = מרכז את כל העמודות שבתוכה.
-        -->
 
         <div class="col-12 col-sm-10 col-md-8 col-lg-5">
-          <!-- 
-            col-12 = במסך קטן — רוחב מלא.
-            col-sm-10 = במסך טלפון רגיל — 10/12 מהרוחב.
-            col-md-8 = במסך בינוני — 8/12 מהרוחב.
-            col-lg-5 = במסך גדול — חצי רוחב בערך.
-            זה גורם לטופס להיות צר ואלגנטי במסכים גדולים,
-            ורחב ונוח במסכים קטנים.
-          -->
-
           <div class="card shadow-sm rounded-4 bg-secondary">
-            <!-- 
-              card = קופסה לבנה/אפורה מגונדרת.
-              shadow-sm = צל קטן מסביב.
-              rounded-4 = פינות מעוגלות.
-              bg-secondary = רקע אפור כהה.
-            -->
-
             <div class="card-body p-4 p-sm-5">
-              <!-- 
-                card-body = תוכן הקופסה.
-                p-4 = רווח מכל הצדדים.
-                p-sm-5 = במסכים גדולים — אפילו יותר רווח.
-              -->
-
               <form class="vstack gap-3 needs-validation">
-                <!-- 
-                  <form> = טופס שמכיל את שדות ההרשמה.
-                  vstack = מסדר את השדות אחד מתחת לשני.
-                  gap-3 = רווח בין השדות.
-                  needs-validation = הכנה לבדיקות תקינות של Bootstrap.
-                -->
-
                 <!-- שדה: שם מלא -->
                 <div>
                   <label for="fullname" class="form-label text-light">שם מלא</label>
