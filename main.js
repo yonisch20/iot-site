@@ -179,7 +179,6 @@ firebase.auth().onAuthStateChanged(user => {
 // =======================================================================
 // ====================== LOGOUT BUTTON HANDLER ==========================
 // =======================================================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const signOutBtn = document.getElementById("signOutBtn");
@@ -202,12 +201,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 });
 
-
-
 // =======================================================================
 // ================================ MOTOR CONTROL ========================
 // =======================================================================
-
 const MOTOR_MAP = {
   forward:  { 1: "9", 2: "10", 3: "11" },
   backward: { 1: "5", 2: "6", 3: "7" },
@@ -222,14 +218,8 @@ function sendCommand(direction) {
   pushMotorCommand(lastDirection, currentSpeedLevel, "direction");
 }
 
-
-
-
-
 let currentSpeedLevel = 1;
 let lastDirection = "stop";
-
-
 
 // -----------------------------------------------------------------------
 // מנגנון המונע שליחה כפולה כשמקש נשאר לחוץ + מניעת התנגשות עם טפסים
@@ -285,7 +275,6 @@ document.addEventListener("keyup", (e) => {
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         return;
     }
-    // ---------------------------------------------------
 
     const allowedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "];
 
@@ -316,7 +305,6 @@ function pushMotorCommand(direction, speedLevel, reason) {
 
 firebase.database().ref("toAltera").set(vector8);
 
-  // 2) לוג
   const user = firebase.auth().currentUser;
   writeLog(
     "Motor Command",
@@ -330,8 +318,6 @@ firebase.database().ref("toAltera").set(vector8);
 // =======================================================================
 // ============================ LASER TOGGLER =============================
 // =======================================================================
-
-
 let laserState = "32";
 
 function toggleLaser() {
@@ -351,9 +337,6 @@ function toggleLaser() {
 
     console.log("Laser:", laserState, timeString);
 
-    // --------------------------------------------------------------
-    // רושמים לוג של שינוי מצבי הלייזר
-    // --------------------------------------------------------------
     const user = firebase.auth().currentUser;
 
     writeLog(
@@ -366,7 +349,6 @@ function toggleLaser() {
 // =======================================================================
 // ============================= WRITE LOG ================================
 // =======================================================================
-
 function writeLog(type, user, details, payload = null) {
   return firebase.database().ref("logs").push({
     createdAt: Date.now(),
@@ -378,14 +360,9 @@ function writeLog(type, user, details, payload = null) {
   });
 }
 
-
-
-
-
 // =======================================================================
 // ===================== LOG PAGE DYNAMIC TABLE LOADER ===================
 // =======================================================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const logBody = document.getElementById("logTableBody");
@@ -432,11 +409,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 // =======================================================================
 // ============================ EVENT REPORT ==============================
 // =======================================================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const form = document.getElementById("eventFormDesk") || document.getElementById("eventFormMobile");
@@ -527,7 +502,6 @@ if (streamElement) {
 // ==========================================
 //           DISTANCE SENSOR LOGIC
 // ==========================================
-
 document.addEventListener("DOMContentLoaded", () => {
     
     const distBox = document.getElementById("distanceAlertBox");
