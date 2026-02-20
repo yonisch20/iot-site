@@ -121,7 +121,34 @@ function login() {
         });
 }
 
+// =======================================================================
+// ========================= PASSWORD RESET ==============================
+// =======================================================================
 
+function resetPassword() {
+    const email = document.getElementById("email").value;
+
+    if (!email) {
+        alert("נא להזין כתובת אימייל בשדה למעלה כדי לקבל קישור לאיפוס.");
+        return;
+    }
+
+    firebase.auth().sendPasswordResetEmail(email)
+        .then(() => {
+            alert("אימייל לאיפוס הסיסמה נשלח בהצלחה.");
+            
+            window.location.href = "index.html";
+        })
+        .catch((error) => {
+            let errorMsg = "שגיאה בשליחת המייל: " + error.message;
+            
+            if (error.code === "auth/user-not-found") {
+                errorMsg = "לא נמצא משתמש עם כתובת האימייל הזו.";
+            }
+            
+            alert(errorMsg);
+        });
+}
 
 
 
