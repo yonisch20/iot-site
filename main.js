@@ -233,11 +233,6 @@ document.addEventListener("keydown", (e) => {
         return;
     }
 
-    const tag = document.activeElement.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
-        return;
-    }
-
     const allowedKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", " "];
     if (!allowedKeys.includes(e.key)) return;
 
@@ -271,11 +266,6 @@ document.addEventListener("keyup", (e) => {
 
     const currentPage = window.location.pathname.split("/").pop();
     if (currentPage !== "live_feed.html") {
-        return;
-    }
-
-    const tag = document.activeElement.tagName;
-    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") {
         return;
     }
 
