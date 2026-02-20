@@ -268,7 +268,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
-    // 1. בדיקה האם אנחנו בעמוד הנכון
+
     const currentPage = window.location.pathname.split("/").pop();
     if (currentPage !== "live_feed.html" && currentPage !== "dc_control.html") {
         return;
