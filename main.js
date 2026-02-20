@@ -426,7 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = form.querySelector("select").value;
 
         const radioChecked = form.querySelector("input[type='radio']:checked");
-
         const realFakeValue = radioChecked ? radioChecked.nextElementSibling.innerText : "לא נבחר";
 
         const alerts = [...form.querySelectorAll("input[type='checkbox']:checked")]
@@ -434,8 +433,21 @@ document.addEventListener("DOMContentLoaded", () => {
             .join(", ");
 
         const description = form.querySelector("textarea").value;
-        
         const threatLevel = document.getElementById("threatLevelSel").value;
+
+        emailjs.send("service_ooehx6j", "template_bwk870q", {
+            target: target,
+            real_fake: realFakeValue,
+            threatLevel: threatLevel,
+            description: description,
+            user_email: user ? user.email : "Unknown"
+        })
+        .then(() => {
+            console.log("אימייל התראה נשלח בהצלחה!");
+        })
+        .catch((error) => {
+            console.error("שגיאה בשליחת המייל:", error);
+        });
 
         const details = `מטרה: ${target} | סוג: ${realFakeValue} | איום: ${threatLevel} | התראות: ${alerts || "ללא"} | תיאור: ${description}`;
 

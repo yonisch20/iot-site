@@ -291,13 +291,16 @@ class="bg-dark text-light":
     firebase-auth → התחברות משתמשים.
     firebase-database → כתיבה/קריאה מהמסד נתונים.
     -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+   (function(){
+      emailjs.init("X-tKIv2nGf60-F10F");
+   })();
+    </script>
 
     <script src="main.js"></script>
-    <!-- 
-    הקובץ שלך — כולל את הפונקציה sendCommand() 
-    שמעדכנת את Firebase בפקודות כמו:
-        forward / backward / left / right / stop
-    -->
+
+    
 
 </body>
 </html>
