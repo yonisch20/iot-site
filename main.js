@@ -435,19 +435,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const description = form.querySelector("textarea").value;
         const threatLevel = document.getElementById("threatLevelSel").value;
 
-        emailjs.send("service_ooehx6j", "template_bwk870q", {
-            target: target,
-            real_fake: realFakeValue,
-            threatLevel: threatLevel,
-            description: description,
-            user_email: user ? user.email : "Unknown"
-        })
-        .then(() => {
-            console.log("אימייל התראה נשלח בהצלחה!");
-        })
-        .catch((error) => {
-            console.error("שגיאה בשליחת המייל:", error);
-        });
+        const emailInput = document.getElementById("sendEmailCheckbox");
+        
+        const noSendLabel = Array.from(form.querySelectorAll("label")).find(label => label.textContent.trim() === "ללא שליחה");
+        const noSendInput = noSendLabel ? noSendLabel.previousElementSibling : null;
+
+        const isEmailChecked = emailInput && emailInput.checked;
+        const isNoSendChecked = noSendInput && noSendInput.checked;
+
+        if (isEmailChecked && !isNoSendChecked) {
+            emailjs.send("service_ooehx6j", "template_bwk870q", {
+                target: target,
+                real_fake: realFakeValue,
+                threatLevel: threatLevel,
+                description: description,
+                user_email: user ? user.email : "Unknown"
+            })
+            .then(() => {
+                console.log("אימייל התראה נשלח בהצלחה!");
+            })
+            .catch((error) => {
+                console.error("שגיאה בשליחת המייל:", error);
+            });
+        } else if (isEmailChecked && isNoSendChecked) {
+            console.log("לוגיקה: שניהם נלחצו יחד - המערכת ביטלה את שליחת המייל כנדרש.");
+        }
 
         const details = `מטרה: ${target} | סוג: ${realFakeValue} | איום: ${threatLevel} | התראות: ${alerts || "ללא"} | תיאור: ${description}`;
 
