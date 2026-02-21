@@ -457,11 +457,10 @@ document.addEventListener("DOMContentLoaded", () => {
             .catch((error) => {
                 console.error("שגיאה בשליחת המייל:", error);
             });
-        } else if (isEmailChecked && isNoSendChecked) {
-            console.log("לוגיקה: שניהם נלחצו יחד - המערכת ביטלה את שליחת המייל כנדרש.");
         }
 
-        const details = `מטרה: ${target} | סוג: ${realFakeValue} | איום: ${threatLevel} | התראות: ${alerts || "ללא"} | תיאור: ${description}`;
+        const details = `מטרה: ${target} | סוג: ${realFakeValue} | איום: ${threatLevel}
+         | התראות: ${alerts || "ללא"} | תיאור: ${description}`;
 
         writeLog(
             "Alert",
