@@ -40,7 +40,7 @@
 
           <div class="card shadow-sm rounded-4 bg-secondary">
 
-            <div class="card-body p-4 p-sm-5">
+            <div class="card-body p-4 p-sm-4">
 
               <form class="vstack gap-3 needs-validation">
 
@@ -80,24 +80,6 @@
   <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
 
   <script src="main.js"></script>
-
-  <!-- קוד שמטפל בהצגת/הסתרת סיסמה -->
-  <script>
-
-    const passInput = document.getElementById('password');
-    const toggleBtn = document.getElementById('togglePass');
-
-    toggleBtn.addEventListener('click', () => {
-
-        const isPwd = passInput.type === 'password';
-
-        passInput.type = isPwd ? 'text' : 'password';
-
-        toggleBtn.textContent = isPwd ? 'הסתר' : 'הצג';
-
-    });
-
-  </script>
 
 </body>
 </html>
